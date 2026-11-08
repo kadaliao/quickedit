@@ -183,7 +183,14 @@ while true {
             continue
         }
     }
-    if frontAt == 0 && isFront(window) { frontAt = now() }
+    if frontAt == 0 {
+        // A capture can take the window server a hundred milliseconds:
+        // none until the window is in front, so that it shows on time.
+        if isFront(window) { frontAt = now() } else {
+            RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.002))
+            continue
+        }
+    }
     let c0 = now()
     let maybeShot = capture(window)
     if debug { print(String(format: "capture at %.0f took %.1f ms: %@", (c0 - t0) * 1000, (now() - c0) * 1000, maybeShot == nil ? "nil" : "ok")) }
