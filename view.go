@@ -71,11 +71,7 @@ func newDocWindow(doc *mygo.Document[content]) *mygo.Window {
 	}
 	v.applySettings()
 
-	v.win = mygo.NewWindow(mygo.WindowOptions{
-		Width: 960, Height: 720, MinWidth: 360, MinHeight: 240,
-		StateKey: "document",
-		Content:  ui.View(v.view),
-	})
+	v.win = takeWindow(v)
 	views[v.win] = v
 	v.win.OnClosed(func() { delete(views, v.win) })
 
