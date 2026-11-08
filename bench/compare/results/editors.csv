@@ -15,6 +15,10 @@ QuickEdit,huge.log,44 MB 日志,cold,531,530,512,579,267,5
 QuickEdit,huge.log,44 MB 日志,warm,251,251,219,307,369,5
 QuickEdit,small.go,"1,300 行 Go",cold,403,402,391,433,116,5
 QuickEdit,small.go,"1,300 行 Go",warm,130,130,115,148,137,5
+QuickEdit 常驻,big.go,10.8 万行 Go,cold,123,123,89,161,79,5
+QuickEdit 常驻,doc.md,Markdown,cold,111,110,107,207,70,5
+QuickEdit 常驻,huge.log,44 MB 日志,cold,219,219,207,265,206,5
+QuickEdit 常驻,small.go,"1,300 行 Go",cold,133,133,94,139,70,5
 Sublime Text,big.go,10.8 万行 Go,cold,1018,609,980,1208,203,5
 Sublime Text,big.go,10.8 万行 Go,warm,492,107,477,523,184,5
 Sublime Text,doc.md,Markdown,cold,598,581,555,1077,212,5

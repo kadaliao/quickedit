@@ -192,6 +192,54 @@
   "memoryMB": null
  },
  {
+  "editor": "QuickEdit 常驻",
+  "file": "big.go",
+  "mode": "cold",
+  "n": 5,
+  "errors": [],
+  "windowMs": 123,
+  "visualMs": 123,
+  "visualMin": 89,
+  "visualMax": 161,
+  "memoryMB": 79
+ },
+ {
+  "editor": "QuickEdit 常驻",
+  "file": "doc.md",
+  "mode": "cold",
+  "n": 5,
+  "errors": [],
+  "windowMs": 110,
+  "visualMs": 111,
+  "visualMin": 107,
+  "visualMax": 207,
+  "memoryMB": 70
+ },
+ {
+  "editor": "QuickEdit 常驻",
+  "file": "huge.log",
+  "mode": "cold",
+  "n": 5,
+  "errors": [],
+  "windowMs": 219,
+  "visualMs": 219,
+  "visualMin": 207,
+  "visualMax": 265,
+  "memoryMB": 206
+ },
+ {
+  "editor": "QuickEdit 常驻",
+  "file": "small.go",
+  "mode": "cold",
+  "n": 5,
+  "errors": [],
+  "windowMs": 133,
+  "visualMs": 133,
+  "visualMin": 94,
+  "visualMax": 139,
+  "memoryMB": 70
+ },
+ {
   "editor": "Sublime Text",
   "file": "big.go",
   "mode": "cold",

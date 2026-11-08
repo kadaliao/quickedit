@@ -33,12 +33,13 @@
   <header class="qe-head" id="summary">
     <h1>QuickEdit 打开速度对比</h1>
     <p class="qe-lede">
-      编辑器没在运行时，双击打开一个 10.8 万行的 Go 文件：QuickEdit
-      <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=QuickEdit&amp;file=big.go&amp;mode=cold">—</b> 毫秒，TextEdit
+      双击打开一个 10.8 万行的 Go 文件，而编辑器还没有打开任何窗口时：登录后就在后台待命的 QuickEdit 用
+      <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=QuickEdit 常驻&amp;file=big.go&amp;mode=cold">—</b> 毫秒；别的编辑器要先冷启动，TextEdit
       <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=TextEdit&amp;file=big.go&amp;mode=cold">—</b>，Zed
       <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=Zed&amp;file=big.go&amp;mode=cold">—</b>，Sublime Text
       <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=Sublime Text&amp;file=big.go&amp;mode=cold">—</b>，VS Code
-      <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=VS Code&amp;file=big.go&amp;mode=cold">—</b>。TextEdit 和它接近，但不做语法高亮。
+      <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=VS Code&amp;file=big.go&amp;mode=cold">—</b>。QuickEdit 自己冷启动是
+      <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=QuickEdit&amp;file=big.go&amp;mode=cold">—</b> 毫秒，在冷启动里也最快。
       编辑器已经开着时，Zed 把文件开成标签页最快，
       <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=Zed&amp;file=big.go&amp;mode=warm">—</b> 毫秒；QuickEdit 每个文件开一个新窗口，
       <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=QuickEdit&amp;file=big.go&amp;mode=warm">—</b> 毫秒。
@@ -46,8 +47,9 @@
   </header>
 
   <section class="qe-section" id="cold">
-    <h2>冷启动：编辑器没在运行，双击文件</h2>
-    <p>从请求打开到文件内容（包括语法高亮和 Markdown 渲染）在窗口里稳定下来的毫秒数，5 次的中位数，越短越好。四张图用同一个刻度。</p>
+    <h2>双击文件：编辑器没有打开的窗口</h2>
+    <p>别的编辑器这时要冷启动。“QuickEdit 常驻”是登录时已在后台启动、没有窗口的 QuickEdit：这是它的默认设置，可以在应用菜单里关掉；别的编辑器默认不会这样做，不过也能手动加进登录项。“QuickEdit”是它没在运行时的冷启动。</p>
+    <p>数字是从请求打开到文件内容（包括语法高亮和 Markdown 渲染）在窗口里稳定下来的毫秒数，5 次的中位数，越短越好。四张图用同一个刻度。</p>
     <div class="qe-grid">
       <article class="qe-card">
         <h3>small.go <span>Go 源码，1,300 行</span></h3>
@@ -114,6 +116,8 @@
       <dd>Mac mini（Apple M2，16 GB），macOS 26，2026 年 11 月 8 日。</dd>
       <dt>编辑器</dt>
       <dd>QuickEdit 0.1.0（MyGo 0.8.3），TextEdit（系统自带），Sublime Text 4（build 4215），CotEditor 7.1.3，Zed 1.27.0，VS Code 1.145.2，Typora（本机已装）。</dd>
+      <dt>QuickEdit 常驻</dt>
+      <dd>以登录项的方式在后台启动（不开窗口），等 3 秒后再打开文件；每次测量前都重新启动一次。</dd>
       <dt>怎么打开</dt>
       <dd>用 NSWorkspace 让编辑器打开文件，和在 Finder 里双击走同一条路。冷启动前先退出编辑器，并删掉它保存的窗口状态。</dd>
       <dt>怎么计时</dt>
@@ -209,7 +213,7 @@
     const items = rows.map((r) => ({
       label: r.editor,
       value: Number(r[metric]),
-      me: r.editor === 'QuickEdit',
+      me: r.editor.startsWith('QuickEdit'),
       tip: metric === 'memory_mb'
         ? [`${fmt(Number(r.memory_mb))} MB，${r.runs} 次中位数`]
         : [

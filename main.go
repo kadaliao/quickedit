@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/egoist/mygo"
 	_ "github.com/egoist/mygo/locales/zh-Hans"
@@ -70,14 +71,19 @@ func main() {
 		// the main thread's queue: look after them. Started with nothing to
 		// open and nothing to recover, show a new document, as Sublime Text
 		// shows an empty one.
+		//
+		// Started at login, it waits in the background, without a window,
+		// for the files the user opens: they then open at once.
 		go func() {
 			mygo.RunOnMain(func() {})
 			mygo.RunOnMain(func() {
-				if !requested.Load() && !hasRecoveryCopies() {
+				if !requested.Load() && !mygo.App.WasOpenedAtLogin() && !hasRecoveryCopies() {
 					go docs.New()
 				}
+				time.AfterFunc(500*time.Millisecond, func() { mygo.RunOnMain(prepareSpare) })
 			})
 		}()
+		offerOpenAtLogin()
 	})
 	if err := mygo.App.Run(); err != nil {
 		log.Fatal(err)

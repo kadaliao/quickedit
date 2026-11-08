@@ -2,8 +2,10 @@ package main
 
 import (
 	"encoding/json"
+	"log"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/egoist/mygo"
 )
@@ -11,6 +13,9 @@ import (
 // settings are the app's preferences, kept across launches.
 type appSettings struct {
 	fontSize float32
+	// loginItemOffered tells that QuickEdit made itself start at login
+	// once, which the user may have turned off since.
+	loginItemOffered bool
 }
 
 var settings = appSettings{fontSize: defaultFontSize}
@@ -18,7 +23,8 @@ var settings = appSettings{fontSize: defaultFontSize}
 const defaultFontSize = 13
 
 type savedSettings struct {
-	FontSize float32 `json:"fontSize"`
+	FontSize         float32 `json:"fontSize"`
+	LoginItemOffered bool    `json:"loginItemOffered,omitempty"`
 }
 
 // userData is the app's directory of its own data.
@@ -37,13 +43,17 @@ func loadSettings() {
 		return
 	}
 	var s savedSettings
-	if json.Unmarshal(b, &s) == nil && s.FontSize >= 8 && s.FontSize <= 40 {
+	if json.Unmarshal(b, &s) != nil {
+		return
+	}
+	if s.FontSize >= 8 && s.FontSize <= 40 {
 		settings.fontSize = s.FontSize
 	}
+	settings.loginItemOffered = s.LoginItemOffered
 }
 
 func saveSettings() {
-	b, _ := json.MarshalIndent(savedSettings{FontSize: settings.fontSize}, "", "  ")
+	b, _ := json.MarshalIndent(savedSettings{FontSize: settings.fontSize, LoginItemOffered: settings.loginItemOffered}, "", "  ")
 	os.MkdirAll(filepath.Dir(settingsPath()), 0o755)
 	os.WriteFile(settingsPath(), b, 0o644)
 }
@@ -74,9 +84,62 @@ func onView(fn func(v *docView)) func(*mygo.MenuItem, *mygo.Window) {
 	}
 }
 
+// installed reports whether this is the app in /Applications or
+// ~/Applications, as opposed to a build being tried out or measured.
+func installed() bool {
+	exe, err := os.Executable()
+	if err != nil || !mygo.App.IsPackaged() {
+		return false
+	}
+	home, _ := os.UserHomeDir()
+	return strings.HasPrefix(exe, "/Applications/") || strings.HasPrefix(exe, filepath.Join(home, "Applications")+"/")
+}
+
+// offerOpenAtLogin makes the installed app start at login the first time
+// it runs, so that files open in a running app: a cold start of any app
+// costs macOS a few hundred milliseconds. The App menu turns it off.
+func offerOpenAtLogin() {
+	if settings.loginItemOffered || !installed() {
+		return
+	}
+	if err := mygo.App.SetOpenAtLogin(true); err != nil {
+		log.Printf("open at login: %v", err)
+		return
+	}
+	settings.loginItemOffered = true
+	saveSettings()
+	if item := mygo.App.Menu().ItemByID("open-at-login"); item != nil {
+		item.SetChecked(true)
+	}
+}
+
+func toggleOpenAtLogin(item *mygo.MenuItem, _ *mygo.Window) {
+	// The item is checked or unchecked already, as it was chosen.
+	if err := mygo.App.SetOpenAtLogin(item.Checked); err != nil {
+		log.Printf("open at login: %v", err)
+		item.SetChecked(mygo.App.OpenAtLogin())
+		return
+	}
+	settings.loginItemOffered = true
+	saveSettings()
+}
+
 func buildMenu() *mygo.Menu {
 	return mygo.NewMenu([]*mygo.MenuItem{
-		{Role: mygo.RoleAppMenu},
+		{Label: "QuickEdit", Submenu: []*mygo.MenuItem{
+			{Role: mygo.RoleAbout},
+			mygo.Separator(),
+			{ID: "open-at-login", Label: tr("登录时在后台启动", "Open at Login in the Background"), Type: mygo.MenuItemCheckbox,
+				Checked: installed() && mygo.App.OpenAtLogin(), Disabled: !installed(), Click: toggleOpenAtLogin},
+			mygo.Separator(),
+			{Role: mygo.RoleServices},
+			mygo.Separator(),
+			{Role: mygo.RoleHide},
+			{Role: mygo.RoleHideOthers},
+			{Role: mygo.RoleUnhide},
+			mygo.Separator(),
+			{Role: mygo.RoleQuit},
+		}},
 		{Label: tr("文件", "File"), Submenu: []*mygo.MenuItem{
 			{Role: mygo.RoleNew},
 			{Label: tr("打开…", "Open…"), Accelerator: "CmdOrCtrl+O", Click: func(*mygo.MenuItem, *mygo.Window) { openDialog() }},

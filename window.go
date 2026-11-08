@@ -10,7 +10,9 @@ import (
 // Making a window and drawing its first frame takes macOS most of the time
 // a file takes to open in a running app. So a hidden window waits for the
 // next document, which only gives it its view and shows it, and another is
-// made once that one has shown.
+// made once that one has shown. It is empty: drawing code in it beforehand,
+// to warm fonts and tokenizers up, made the first document open slower, as
+// it then had to replace that view, which kept drawing frames meanwhile.
 
 // docWindow is a window of a document, whose view it shows once it has one.
 type docWindow struct {
@@ -49,12 +51,14 @@ func takeWindow(v *docView) *mygo.Window {
 		go mygo.RunOnMain(w.win.Show)
 	}
 	// The next one, made while nothing else is going on.
-	time.AfterFunc(400*time.Millisecond, func() {
-		mygo.RunOnMain(func() {
-			if spare == nil {
-				spare = newWindow(true)
-			}
-		})
-	})
+	time.AfterFunc(400*time.Millisecond, func() { mygo.RunOnMain(prepareSpare) })
 	return w.win
+}
+
+// prepareSpare makes the window the next document opens in, if there is
+// none. Main thread.
+func prepareSpare() {
+	if spare == nil {
+		spare = newWindow(true)
+	}
 }
