@@ -4,3 +4,5 @@ bench/build/
 bench/run/run
 .DS_Store
 bench/tools/winshot
+build/
+.mygo/

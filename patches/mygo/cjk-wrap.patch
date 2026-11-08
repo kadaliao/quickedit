@@ -1,0 +1,33 @@
+--- a/ui/editor/view.go
++++ b/ui/editor/view.go
+@@ -240,12 +240,28 @@
+ 	if v, ok := w.other[r]; ok {
+ 		return v
+ 	}
+-	l := text.Shared().Shape(text.Params{Text: string(r), Style: w.style, NoWrap: true, KeepSpaces: true})
+-	v := l.Width
++	v := w.shape(string(r))
++	if isCJKPunct(r) {
++		// Alone, a mark of CJK punctuation is trimmed to half its width,
++		// as at the start or end of a line, though between ideographs it
++		// takes a whole one: measured alone, a row of Chinese would be
++		// measured narrower than it shows, and wrap past the edge.
++		v = w.shape("\u4e00"+string(r)+"\u4e00") - 2*w.shape("\u4e00")
++	}
+ 	if len(w.other) < 4096 {
+ 		w.other[r] = v
+ 	}
+ 	return v
++}
++
++func (w *charWidths) shape(s string) float32 {
++	return text.Shared().Shape(text.Params{Text: s, Style: w.style, NoWrap: true, KeepSpaces: true}).Width
++}
++
++// isCJKPunct reports whether r is a mark of CJK punctuation, or a
++// full-width form, which text layout trims at the ends of lines.
++func isCJKPunct(r rune) bool {
++	return r >= 0x3000 && r <= 0x303f || r >= 0xff00 && r <= 0xff65 || r == 0x30fb
+ }
+ 
+ // width returns the width of s.

@@ -1,0 +1,22 @@
+#!/bin/sh
+# qe: open files in QuickEdit, as subl and code do.
+#   qe                 open QuickEdit
+#   qe FILE...         open the files; a file that doesn't exist is created empty
+#   cmd | qe -         open what cmd prints, in a temporary file
+app=QuickEdit
+[ -d /Applications/QuickEdit.app ] || [ -d "$HOME/Applications/QuickEdit.app" ] || {
+  echo "qe: QuickEdit.app is not installed" >&2; exit 1; }
+[ $# -eq 0 ] && exec open -a "$app"
+set -- "$@" --end
+for f do
+  shift
+  if [ "$f" = --end ]; then break; fi
+  if [ "$f" = - ]; then
+    f=$(mktemp "${TMPDIR:-/tmp}/qe-stdin.XXXXXX") && mv "$f" "$f.txt" && f="$f.txt"
+    cat > "$f"
+  elif [ ! -e "$f" ]; then
+    mkdir -p "$(dirname "$f")" && : > "$f"
+  fi
+  set -- "$@" "$f"
+done
+exec open -a "$app" "$@"

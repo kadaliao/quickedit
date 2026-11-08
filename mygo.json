@@ -1,0 +1,28 @@
+{
+  "name": "QuickEdit",
+  "slug": "quickedit",
+  "identifier": "com.kadaliao.quickedit",
+  "version": "0.1.0",
+  "copyright": "© 2026 Kada Liao",
+  "license": "MIT",
+  "out": "build",
+  "macos": {
+    "minimumSystemVersion": "13.0",
+    "infoPlist": {
+      "CFBundleDocumentTypes": [
+        {
+          "CFBundleTypeName": "Text",
+          "CFBundleTypeRole": "Editor",
+          "LSHandlerRank": "Alternate",
+          "LSItemContentTypes": ["public.text", "public.plain-text", "public.source-code", "public.script", "net.daringfireball.markdown", "public.json", "public.xml", "public.yaml"]
+        },
+        {
+          "CFBundleTypeName": "Any File",
+          "CFBundleTypeRole": "Viewer",
+          "LSHandlerRank": "Alternate",
+          "LSItemContentTypes": ["public.data"]
+        }
+      ]
+    }
+  }
+}
