@@ -31,38 +31,24 @@
 
 ## 速度对比
 
-同一台 Mac（Apple M2，macOS 26），一次测完：QuickEdit、Sublime Text、Zed、CotEditor、VS Code 依次在**同样的三种状态**下，
-打开**同样的四个文件**，各测 3 次取中位数。计时从请求打开（与在 Finder 里双击走同一条路），到内容（含语法高亮）显示稳定、
-窗口到了最前面为止，越短越好。Markdown 大家都显示带高亮的源码。
-
-**打开 10.8 万行的 Go 文件（3.1 MB）**
-
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/images/bench-bigfile-dark.svg">
-  <img src="docs/images/bench-bigfile-light.svg" width="100%" alt="打开 10.8 万行的 Go 文件：冷启动 QuickEdit 517 毫秒，第二名 Zed 730；运行中无窗口 QuickEdit 135 毫秒，第二名 CotEditor 438；运行中有窗口 QuickEdit 68 毫秒，第二名 VS Code 448">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/bench-hero-dark.svg">
+  <img src="docs/images/bench-hero-light.svg" width="100%" alt="打开 10.8 万行的 Go 文件：冷启动 QuickEdit 517 毫秒，第二名 Zed 730；运行中无窗口 QuickEdit 135 毫秒，第二名 CotEditor 438；运行中有窗口 QuickEdit 68 毫秒，第二名 VS Code 448">
 </picture>
 
-三种状态都是 QuickEdit 第一：冷启动 517 毫秒（第二名 Zed 730），运行中无窗口 135 毫秒（第二名 CotEditor 438），
-运行中有窗口 68 毫秒（第二名 VS Code 448）。
-
-**依次打开四个文件的总时间**
-
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/images/bench-files-dark.svg">
-  <img src="docs/images/bench-files-light.svg" width="100%" alt="依次打开四个文件的总时间：冷启动 QuickEdit 2,214 毫秒，Zed 2,819；运行中无窗口 QuickEdit 625 毫秒，Zed 1,779；运行中有窗口 QuickEdit 321 毫秒，Zed 1,340">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/bench-scoreboard-dark.svg">
+  <img src="docs/images/bench-scoreboard-light.svg" width="100%" alt="12 项成绩，QuickEdit 9 项第一；另外 3 项是小文件，第二">
 </picture>
-
-三种状态都是 QuickEdit 最短：冷启动 2.2 秒（Zed 2.8 秒），运行中无窗口 0.6 秒（Zed 1.8 秒），运行中有窗口 0.3 秒（Zed 1.3 秒）。
-
-逐个文件看（下表），12 项里 QuickEdit 9 项第一。另外 3 项都是 1,300 行左右的小文件：运行中无窗口时打开小 Go 文件和 Markdown，
-Sublime Text 分别快 58 和 19 毫秒；运行中有窗口时打开小 Go 文件，Zed 快 13 毫秒。
-
-**体积和内存**
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/bench-footprint-dark.svg">
-  <img src="docs/images/bench-footprint-light.svg" width="100%" alt="应用体积：QuickEdit 12 MB，其他 129 到 963 MB；冷启动打开 10.8 万行 Go 文件后的内存：QuickEdit 124 MB 最少，其他 197 到 1,370 MB">
+  <img src="docs/images/bench-footprint-light.svg" width="100%" alt="应用体积 QuickEdit 12 MB，其他 129 到 963 MB；内存 QuickEdit 124 MB，其他 197 到 1,370 MB">
 </picture>
+
+**测法**：同一台 Mac（Apple M2，macOS 26），所有编辑器在同一次测试里、同样的状态下打开同样的文件，计时到内容带语法高亮显示完毕、
+窗口到最前面。Markdown 都显示源码，谁都不开语言服务器；Zed 设为信任文件，否则它的对话框会压暗编辑区。TextEdit 不做语法高亮，不参加。
+脚本和原始数据见 [bench/compare/](bench/compare/)。
 
 <details>
 <summary>全部数据（毫秒，3 次中位数，粗体为每行最快）</summary>
@@ -98,17 +84,6 @@ Sublime Text 分别快 58 和 19 毫秒；运行中有窗口时打开小 Go 文�
 | huge.log | **116** | 1,209 | 137 | 901 | 1,058 |
 
 </details>
-
-测法：
-
-- **三种状态**：冷启动是编辑器没在运行；运行中无窗口是编辑器打开过一个文件、窗口已关（macOS 上的编辑器关掉最后一个窗口通常不退出），
-  每个编辑器都一样；运行中有窗口是编辑器开着一个文件，新文件开成标签页（CotEditor 开新窗口）。
-- **显示同样的内容**：Markdown 都显示源码（QuickEdit 测试时关掉了"打开 Markdown 时显示预览"）；谁都不开语言服务器。
-  Zed 打开了"信任所有项目"：否则它打开每个文件都弹 Restricted Mode 对话框、压暗编辑区，语法高亮就计不进去。
-- **为了公平**：测试期间关掉系统的窗口打开动画；关掉每个编辑器恢复上次窗口的功能；VS Code 用临时数据目录、不装扩展；
-  每个编辑器先启动一次不计时。TextEdit 不参加：它不做语法高亮。
-- 版本：Sublime Text 4（build 4215）、CotEditor 7.1.3、Zed 1.27.0、VS Code 1.145.2。2026-11-08 测试，脚本 `bench/compare/fair.sh`，
-  原始数据 `bench/compare/results/fair.jsonl`，见 [bench/compare/](bench/compare/)。
 
 ## 按文件自适应
 

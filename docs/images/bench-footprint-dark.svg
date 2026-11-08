@@ -1,39 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="976" height="226" viewBox="-8 -8 976 226" role="img" aria-label="各编辑器的应用体积和内存" font-family='-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif'>
-<title>各编辑器的应用体积和内存</title>
-<text x="0.0" y="15.0" font-size="15" font-weight="600" fill="#f0efec" text-anchor="start" style="">应用体积</text>
-<text x="0.0" y="35.0" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="">安装后的 .app 大小</text>
-<text x="94.0" y="71.5" font-size="13" font-weight="600" fill="#f0efec" text-anchor="end" style="">QuickEdit</text>
-<path d="M104.0,59.0 H105.8 Q107.5,59.0 107.5,60.8 V73.2 Q107.5,75.0 105.8,75.0 H104.0 Z" fill="#3987e5"/>
-<text x="113.5" y="71.5" font-size="12.5" font-weight="600" fill="#f0efec" text-anchor="start" style="font-variant-numeric: tabular-nums;">12 MB</text>
-<text x="94.0" y="101.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">CotEditor</text>
-<path d="M104.0,89.0 H138.5 Q142.5,89.0 142.5,93.0 V101.0 Q142.5,105.0 138.5,105.0 H104.0 Z" fill="#6e6c66"/>
-<text x="148.5" y="101.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">129 MB</text>
-<text x="94.0" y="131.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">Sublime Text</text>
-<path d="M104.0,119.0 H141.8 Q145.8,119.0 145.8,123.0 V131.0 Q145.8,135.0 141.8,135.0 H104.0 Z" fill="#6e6c66"/>
-<text x="151.8" y="131.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">140 MB</text>
-<text x="94.0" y="161.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">Zed</text>
-<path d="M104.0,149.0 H152.7 Q156.7,149.0 156.7,153.0 V161.0 Q156.7,165.0 152.7,165.0 H104.0 Z" fill="#6e6c66"/>
-<text x="162.7" y="161.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">176 MB</text>
-<text x="94.0" y="191.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">VS Code</text>
-<path d="M104.0,179.0 H388.0 Q392.0,179.0 392.0,183.0 V191.0 Q392.0,195.0 388.0,195.0 H104.0 Z" fill="#6e6c66"/>
-<text x="398.0" y="191.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">963 MB</text>
-<line x1="104" y1="50" x2="104" y2="204" stroke="#383835" stroke-width="1"/>
-<text x="498.0" y="15.0" font-size="15" font-weight="600" fill="#f0efec" text-anchor="start" style="">内存</text>
-<text x="498.0" y="35.0" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="">打开 10.8 万行 Go 文件后，全部进程</text>
-<text x="592.0" y="71.5" font-size="13" font-weight="600" fill="#f0efec" text-anchor="end" style="">QuickEdit</text>
-<path d="M602.0,59.0 H624.1 Q628.1,59.0 628.1,63.0 V71.0 Q628.1,75.0 624.1,75.0 H602.0 Z" fill="#3987e5"/>
-<text x="634.1" y="71.5" font-size="12.5" font-weight="600" fill="#f0efec" text-anchor="start" style="font-variant-numeric: tabular-nums;">124 MB</text>
-<text x="592.0" y="101.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">Sublime Text</text>
-<path d="M602.0,89.0 H639.4 Q643.4,89.0 643.4,93.0 V101.0 Q643.4,105.0 639.4,105.0 H602.0 Z" fill="#6e6c66"/>
-<text x="649.4" y="101.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">197 MB</text>
-<text x="592.0" y="131.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">CotEditor</text>
-<path d="M602.0,119.0 H646.8 Q650.8,119.0 650.8,123.0 V131.0 Q650.8,135.0 646.8,135.0 H602.0 Z" fill="#6e6c66"/>
-<text x="656.8" y="131.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">232 MB</text>
-<text x="592.0" y="161.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">Zed</text>
-<path d="M602.0,149.0 H656.2 Q660.2,149.0 660.2,153.0 V161.0 Q660.2,165.0 656.2,165.0 H602.0 Z" fill="#6e6c66"/>
-<text x="666.2" y="161.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">277 MB</text>
-<text x="592.0" y="191.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">VS Code</text>
-<path d="M602.0,179.0 H886.0 Q890.0,179.0 890.0,183.0 V191.0 Q890.0,195.0 886.0,195.0 H602.0 Z" fill="#6e6c66"/>
-<text x="896.0" y="191.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">1,370 MB</text>
-<line x1="602.0" y1="50" x2="602.0" y2="204" stroke="#383835" stroke-width="1"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="312" viewBox="0 0 960 312" role="img" aria-label="应用体积和内存：QuickEdit 都最小" font-family='-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif'>
+<title>应用体积和内存：QuickEdit 都最小</title>
+<text x="2.0" y="24.0" font-size="20" font-weight="650" fill="#f0f6fc" text-anchor="start">体积和内存</text>
+<text x="2.0" y="48.0" font-size="13" font-weight="400" fill="#9198a1" text-anchor="start">安装后的 .app 大小；冷启动打开 10.8 万行 Go 文件后，全部进程的内存</text>
+<rect x="0.0" y="70.0" width="472.0" height="240.0" rx="14" fill="#161b22" stroke="#30363d"/>
+<text x="20.0" y="102.0" font-size="15" font-weight="600" fill="#f0f6fc" text-anchor="start">应用体积</text>
+<text x="20.0" y="150.0" fill="#f0f6fc"><tspan font-size="36" font-weight="650">12</tspan><tspan font-size="15" fill="#9198a1" dx="5">MB</tspan></text>
+<rect x="281.8" y="125.0" width="170.2" height="26" rx="13" fill="#3987e5" fill-opacity="0.16"/><text x="366.9" y="142.5" font-size="13" font-weight="600" fill="#f0f6fc" text-anchor="middle">仅为 CotEditor 的 9%</text>
+<line x1="20.0" y1="170.0" x2="452.0" y2="170.0" stroke="#30363d"/>
+<text x="89.0" y="200.0" font-size="12" font-weight="600" fill="#f0f6fc" text-anchor="end">QuickEdit</text>
+<path d="M98.0,191.0 H99.8 Q101.5,191.0 101.5,192.8 V199.2 Q101.5,201.0 99.8,201.0 H98.0 Z" fill="#3987e5"/>
+<text x="107.5" y="200.0" font-size="11.5" font-weight="600" fill="#f0f6fc" text-anchor="start">12 MB</text>
+<text x="89.0" y="221.0" font-size="12" font-weight="400" fill="#9198a1" text-anchor="end">CotEditor</text>
+<path d="M98.0,212.0 H132.5 Q136.5,212.0 136.5,216.0 V218.0 Q136.5,222.0 132.5,222.0 H98.0 Z" fill="#6e6c66"/>
+<text x="142.5" y="221.0" font-size="11.5" font-weight="400" fill="#9198a1" text-anchor="start">129 MB</text>
+<text x="89.0" y="242.0" font-size="12" font-weight="400" fill="#9198a1" text-anchor="end">Sublime</text>
+<path d="M98.0,233.0 H135.8 Q139.8,233.0 139.8,237.0 V239.0 Q139.8,243.0 135.8,243.0 H98.0 Z" fill="#6e6c66"/>
+<text x="145.8" y="242.0" font-size="11.5" font-weight="400" fill="#9198a1" text-anchor="start">140 MB</text>
+<text x="89.0" y="263.0" font-size="12" font-weight="400" fill="#9198a1" text-anchor="end">Zed</text>
+<path d="M98.0,254.0 H146.7 Q150.7,254.0 150.7,258.0 V260.0 Q150.7,264.0 146.7,264.0 H98.0 Z" fill="#6e6c66"/>
+<text x="156.7" y="263.0" font-size="11.5" font-weight="400" fill="#9198a1" text-anchor="start">176 MB</text>
+<text x="89.0" y="284.0" font-size="12" font-weight="400" fill="#9198a1" text-anchor="end">VS Code</text>
+<path d="M98.0,275.0 H382.0 Q386.0,275.0 386.0,279.0 V281.0 Q386.0,285.0 382.0,285.0 H98.0 Z" fill="#6e6c66"/>
+<text x="392.0" y="284.0" font-size="11.5" font-weight="400" fill="#9198a1" text-anchor="start">963 MB</text>
+<rect x="488.0" y="70.0" width="472.0" height="240.0" rx="14" fill="#161b22" stroke="#30363d"/>
+<text x="508.0" y="102.0" font-size="15" font-weight="600" fill="#f0f6fc" text-anchor="start">内存</text>
+<text x="508.0" y="150.0" fill="#f0f6fc"><tspan font-size="36" font-weight="650">124</tspan><tspan font-size="15" fill="#9198a1" dx="5">MB</tspan></text>
+<rect x="777.6" y="125.0" width="162.4" height="26" rx="13" fill="#3987e5" fill-opacity="0.16"/><text x="858.8" y="142.5" font-size="13" font-weight="600" fill="#f0f6fc" text-anchor="middle">仅为 Sublime 的 63%</text>
+<line x1="508.0" y1="170.0" x2="940.0" y2="170.0" stroke="#30363d"/>
+<text x="577.0" y="200.0" font-size="12" font-weight="600" fill="#f0f6fc" text-anchor="end">QuickEdit</text>
+<path d="M586.0,191.0 H608.1 Q612.1,191.0 612.1,195.0 V197.0 Q612.1,201.0 608.1,201.0 H586.0 Z" fill="#3987e5"/>
+<text x="618.1" y="200.0" font-size="11.5" font-weight="600" fill="#f0f6fc" text-anchor="start">124 MB</text>
+<text x="577.0" y="221.0" font-size="12" font-weight="400" fill="#9198a1" text-anchor="end">Sublime</text>
+<path d="M586.0,212.0 H623.4 Q627.4,212.0 627.4,216.0 V218.0 Q627.4,222.0 623.4,222.0 H586.0 Z" fill="#6e6c66"/>
+<text x="633.4" y="221.0" font-size="11.5" font-weight="400" fill="#9198a1" text-anchor="start">197 MB</text>
+<text x="577.0" y="242.0" font-size="12" font-weight="400" fill="#9198a1" text-anchor="end">CotEditor</text>
+<path d="M586.0,233.0 H630.8 Q634.8,233.0 634.8,237.0 V239.0 Q634.8,243.0 630.8,243.0 H586.0 Z" fill="#6e6c66"/>
+<text x="640.8" y="242.0" font-size="11.5" font-weight="400" fill="#9198a1" text-anchor="start">232 MB</text>
+<text x="577.0" y="263.0" font-size="12" font-weight="400" fill="#9198a1" text-anchor="end">Zed</text>
+<path d="M586.0,254.0 H640.2 Q644.2,254.0 644.2,258.0 V260.0 Q644.2,264.0 640.2,264.0 H586.0 Z" fill="#6e6c66"/>
+<text x="650.2" y="263.0" font-size="11.5" font-weight="400" fill="#9198a1" text-anchor="start">277 MB</text>
+<text x="577.0" y="284.0" font-size="12" font-weight="400" fill="#9198a1" text-anchor="end">VS Code</text>
+<path d="M586.0,275.0 H870.0 Q874.0,275.0 874.0,279.0 V281.0 Q874.0,285.0 870.0,285.0 H586.0 Z" fill="#6e6c66"/>
+<text x="880.0" y="284.0" font-size="11.5" font-weight="400" fill="#9198a1" text-anchor="start">1,370 MB</text>
 </svg>

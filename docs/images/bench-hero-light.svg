@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="344" viewBox="0 0 960 344" role="img" aria-label="打开 10.8 万行的 Go 文件：三种状态下 QuickEdit 都最快" font-family='-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif'>
+<title>打开 10.8 万行的 Go 文件：三种状态下 QuickEdit 都最快</title>
+<text x="2.0" y="24.0" font-size="20" font-weight="650" fill="#1f2328" text-anchor="start">打开 10.8 万行的 Go 文件</text>
+<text x="2.0" y="48.0" font-size="13" font-weight="400" fill="#59636e" text-anchor="start">同一台 Mac、同一标准实测，3 次中位数，越短越好</text>
+<rect x="0.0" y="70.0" width="309.3" height="272.0" rx="14" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="20.0" y="102.0" font-size="15" font-weight="600" fill="#1f2328" text-anchor="start">冷启动</text>
+<text x="20.0" y="121.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="start">编辑器没在运行</text>
+<text x="20.0" y="174.0" fill="#1f2328"><tspan font-size="40" font-weight="650">517</tspan><tspan font-size="17" fill="#59636e" dx="5">ms</tspan></text>
+<rect x="215.3" y="148.0" width="74.0" height="26" rx="13" fill="#2a78d6" fill-opacity="0.16"/><text x="252.3" y="165.5" font-size="13" font-weight="600" fill="#1f2328" text-anchor="middle">快 1.4×</text>
+<text x="20.0" y="198.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="start">第二名 Zed 730 ms</text>
+<line x1="20.0" y1="216.0" x2="289.3" y2="216.0" stroke="#d0d7de"/>
+<text x="89.0" y="244.0" font-size="12" font-weight="600" fill="#1f2328" text-anchor="end">QuickEdit</text>
+<path d="M98.0,235.0 H125.4 Q129.4,235.0 129.4,239.0 V241.0 Q129.4,245.0 125.4,245.0 H98.0 Z" fill="#2a78d6"/>
+<text x="135.4" y="244.0" font-size="11.5" font-weight="600" fill="#1f2328" text-anchor="start">517</text>
+<text x="89.0" y="265.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="end">Zed</text>
+<path d="M98.0,256.0 H138.3 Q142.3,256.0 142.3,260.0 V262.0 Q142.3,266.0 138.3,266.0 H98.0 Z" fill="#8a8880"/>
+<text x="148.3" y="265.0" font-size="11.5" font-weight="400" fill="#59636e" text-anchor="start">730</text>
+<text x="89.0" y="286.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="end">Sublime</text>
+<path d="M98.0,277.0 H155.6 Q159.6,277.0 159.6,281.0 V283.0 Q159.6,287.0 155.6,287.0 H98.0 Z" fill="#8a8880"/>
+<text x="165.6" y="286.0" font-size="11.5" font-weight="400" fill="#59636e" text-anchor="start">1,016</text>
+<text x="89.0" y="307.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="end">CotEditor</text>
+<path d="M98.0,298.0 H172.2 Q176.2,298.0 176.2,302.0 V304.0 Q176.2,308.0 172.2,308.0 H98.0 Z" fill="#8a8880"/>
+<text x="182.2" y="307.0" font-size="11.5" font-weight="400" fill="#59636e" text-anchor="start">1,289</text>
+<text x="89.0" y="328.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="end">VS Code</text>
+<path d="M98.0,319.0 H219.3 Q223.3,319.0 223.3,323.0 V325.0 Q223.3,329.0 219.3,329.0 H98.0 Z" fill="#8a8880"/>
+<text x="229.3" y="328.0" font-size="11.5" font-weight="400" fill="#59636e" text-anchor="start">2,066</text>
+<rect x="325.3" y="70.0" width="309.3" height="272.0" rx="14" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="345.3" y="102.0" font-size="15" font-weight="600" fill="#1f2328" text-anchor="start">运行中，无窗口</text>
+<text x="345.3" y="121.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="start">打开过文件，窗口已关</text>
+<text x="345.3" y="174.0" fill="#1f2328"><tspan font-size="40" font-weight="650">135</tspan><tspan font-size="17" fill="#59636e" dx="5">ms</tspan></text>
+<rect x="540.7" y="148.0" width="74.0" height="26" rx="13" fill="#2a78d6" fill-opacity="0.16"/><text x="577.7" y="165.5" font-size="13" font-weight="600" fill="#1f2328" text-anchor="middle">快 3.2×</text>
+<text x="345.3" y="198.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="start">第二名 CotEditor 438 ms</text>
+<line x1="345.3" y1="216.0" x2="614.7" y2="216.0" stroke="#d0d7de"/>
+<text x="414.3" y="244.0" font-size="12" font-weight="600" fill="#1f2328" text-anchor="end">QuickEdit</text>
+<path d="M423.3,235.0 H427.5 Q431.5,235.0 431.5,239.0 V241.0 Q431.5,245.0 427.5,245.0 H423.3 Z" fill="#2a78d6"/>
+<text x="437.5" y="244.0" font-size="11.5" font-weight="600" fill="#1f2328" text-anchor="start">135</text>
+<text x="414.3" y="265.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="end">CotEditor</text>
+<path d="M423.3,256.0 H445.9 Q449.9,256.0 449.9,260.0 V262.0 Q449.9,266.0 445.9,266.0 H423.3 Z" fill="#8a8880"/>
+<text x="455.9" y="265.0" font-size="11.5" font-weight="400" fill="#59636e" text-anchor="start">438</text>
+<text x="414.3" y="286.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="end">Sublime</text>
+<path d="M423.3,277.0 H447.5 Q451.5,277.0 451.5,281.0 V283.0 Q451.5,287.0 447.5,287.0 H423.3 Z" fill="#8a8880"/>
+<text x="457.5" y="286.0" font-size="11.5" font-weight="400" fill="#59636e" text-anchor="start">464</text>
+<text x="414.3" y="307.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="end">Zed</text>
+<path d="M423.3,298.0 H489.5 Q493.5,298.0 493.5,302.0 V304.0 Q493.5,308.0 489.5,308.0 H423.3 Z" fill="#8a8880"/>
+<text x="499.5" y="307.0" font-size="11.5" font-weight="400" fill="#59636e" text-anchor="start">1,157</text>
+<text x="414.3" y="328.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="end">VS Code</text>
+<path d="M423.3,319.0 H512.7 Q516.7,319.0 516.7,323.0 V325.0 Q516.7,329.0 512.7,329.0 H423.3 Z" fill="#8a8880"/>
+<text x="522.7" y="328.0" font-size="11.5" font-weight="400" fill="#59636e" text-anchor="start">1,539</text>
+<rect x="650.7" y="70.0" width="309.3" height="272.0" rx="14" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="670.7" y="102.0" font-size="15" font-weight="600" fill="#1f2328" text-anchor="start">运行中，有窗口</text>
+<text x="670.7" y="121.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="start">编辑器开着一个文件</text>
+<text x="670.7" y="174.0" fill="#1f2328"><tspan font-size="40" font-weight="650">68</tspan><tspan font-size="17" fill="#59636e" dx="5">ms</tspan></text>
+<rect x="866.0" y="148.0" width="74.0" height="26" rx="13" fill="#2a78d6" fill-opacity="0.16"/><text x="903.0" y="165.5" font-size="13" font-weight="600" fill="#1f2328" text-anchor="middle">快 6.6×</text>
+<text x="670.7" y="198.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="start">第二名 VS Code 448 ms</text>
+<line x1="670.7" y1="216.0" x2="940.0" y2="216.0" stroke="#d0d7de"/>
+<text x="739.7" y="244.0" font-size="12" font-weight="600" fill="#1f2328" text-anchor="end">QuickEdit</text>
+<path d="M748.7,235.0 H750.7 Q752.8,235.0 752.8,237.1 V242.9 Q752.8,245.0 750.7,245.0 H748.7 Z" fill="#2a78d6"/>
+<text x="758.8" y="244.0" font-size="11.5" font-weight="600" fill="#1f2328" text-anchor="start">68</text>
+<text x="739.7" y="265.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="end">VS Code</text>
+<path d="M748.7,256.0 H771.8 Q775.8,256.0 775.8,260.0 V262.0 Q775.8,266.0 771.8,266.0 H748.7 Z" fill="#8a8880"/>
+<text x="781.8" y="265.0" font-size="11.5" font-weight="400" fill="#59636e" text-anchor="start">448</text>
+<text x="739.7" y="286.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="end">CotEditor</text>
+<path d="M748.7,277.0 H772.4 Q776.4,277.0 776.4,281.0 V283.0 Q776.4,287.0 772.4,287.0 H748.7 Z" fill="#8a8880"/>
+<text x="782.4" y="286.0" font-size="11.5" font-weight="400" fill="#59636e" text-anchor="start">457</text>
+<text x="739.7" y="307.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="end">Sublime</text>
+<path d="M748.7,298.0 H773.7 Q777.7,298.0 777.7,302.0 V304.0 Q777.7,308.0 773.7,308.0 H748.7 Z" fill="#8a8880"/>
+<text x="783.7" y="307.0" font-size="11.5" font-weight="400" fill="#59636e" text-anchor="start">478</text>
+<text x="739.7" y="328.0" font-size="12" font-weight="400" fill="#59636e" text-anchor="end">Zed</text>
+<path d="M748.7,319.0 H809.8 Q813.8,319.0 813.8,323.0 V325.0 Q813.8,329.0 809.8,329.0 H748.7 Z" fill="#8a8880"/>
+<text x="819.8" y="328.0" font-size="11.5" font-weight="400" fill="#59636e" text-anchor="start">1,074</text>
+</svg>
