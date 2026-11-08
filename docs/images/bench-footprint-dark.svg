@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="976" height="256" viewBox="-8 -8 976 256" role="img" aria-label="各编辑器的应用体积和内存" font-family='-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif'>
+<svg xmlns="http://www.w3.org/2000/svg" width="976" height="226" viewBox="-8 -8 976 226" role="img" aria-label="各编辑器的应用体积和内存" font-family='-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif'>
 <title>各编辑器的应用体积和内存</title>
 <text x="0.0" y="15.0" font-size="15" font-weight="600" fill="#f0efec" text-anchor="start" style="">应用体积</text>
-<text x="0.0" y="35.0" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="">TextEdit 随系统自带，不计</text>
+<text x="0.0" y="35.0" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="">安装后的 .app 大小</text>
 <text x="94.0" y="71.5" font-size="13" font-weight="600" fill="#f0efec" text-anchor="end" style="">QuickEdit</text>
 <path d="M104.0,59.0 H105.8 Q107.5,59.0 107.5,60.8 V73.2 Q107.5,75.0 105.8,75.0 H104.0 Z" fill="#3987e5"/>
 <text x="113.5" y="71.5" font-size="12.5" font-weight="600" fill="#f0efec" text-anchor="start" style="font-variant-numeric: tabular-nums;">12 MB</text>
@@ -20,23 +20,20 @@
 <line x1="104" y1="50" x2="104" y2="204" stroke="#383835" stroke-width="1"/>
 <text x="498.0" y="15.0" font-size="15" font-weight="600" fill="#f0efec" text-anchor="start" style="">内存</text>
 <text x="498.0" y="35.0" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="">打开 10.8 万行 Go 文件后，全部进程</text>
-<text x="592.0" y="71.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">TextEdit</text>
-<path d="M602.0,59.0 H607.6 Q611.6,59.0 611.6,63.0 V71.0 Q611.6,75.0 607.6,75.0 H602.0 Z" fill="#6e6c66"/>
-<text x="617.6" y="71.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">45 MB</text>
-<text x="592.0" y="101.5" font-size="13" font-weight="600" fill="#f0efec" text-anchor="end" style="">QuickEdit</text>
-<path d="M602.0,89.0 H624.3 Q628.3,89.0 628.3,93.0 V101.0 Q628.3,105.0 624.3,105.0 H602.0 Z" fill="#3987e5"/>
-<text x="634.3" y="101.5" font-size="12.5" font-weight="600" fill="#f0efec" text-anchor="start" style="font-variant-numeric: tabular-nums;">123 MB</text>
-<text x="592.0" y="131.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">Sublime Text</text>
-<path d="M602.0,119.0 H641.3 Q645.3,119.0 645.3,123.0 V131.0 Q645.3,135.0 641.3,135.0 H602.0 Z" fill="#6e6c66"/>
-<text x="651.3" y="131.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">203 MB</text>
-<text x="592.0" y="161.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">CotEditor</text>
-<path d="M602.0,149.0 H646.0 Q650.0,149.0 650.0,153.0 V161.0 Q650.0,165.0 646.0,165.0 H602.0 Z" fill="#6e6c66"/>
-<text x="656.0" y="161.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">225 MB</text>
-<text x="592.0" y="191.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">Zed</text>
-<path d="M602.0,179.0 H655.4 Q659.4,179.0 659.4,183.0 V191.0 Q659.4,195.0 655.4,195.0 H602.0 Z" fill="#6e6c66"/>
-<text x="665.4" y="191.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">269 MB</text>
-<text x="592.0" y="221.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">VS Code</text>
-<path d="M602.0,209.0 H886.0 Q890.0,209.0 890.0,213.0 V221.0 Q890.0,225.0 886.0,225.0 H602.0 Z" fill="#6e6c66"/>
-<text x="896.0" y="221.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">1,349 MB</text>
-<line x1="602.0" y1="50" x2="602.0" y2="234" stroke="#383835" stroke-width="1"/>
+<text x="592.0" y="71.5" font-size="13" font-weight="600" fill="#f0efec" text-anchor="end" style="">QuickEdit</text>
+<path d="M602.0,59.0 H624.3 Q628.3,59.0 628.3,63.0 V71.0 Q628.3,75.0 624.3,75.0 H602.0 Z" fill="#3987e5"/>
+<text x="634.3" y="71.5" font-size="12.5" font-weight="600" fill="#f0efec" text-anchor="start" style="font-variant-numeric: tabular-nums;">123 MB</text>
+<text x="592.0" y="101.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">Sublime Text</text>
+<path d="M602.0,89.0 H641.3 Q645.3,89.0 645.3,93.0 V101.0 Q645.3,105.0 641.3,105.0 H602.0 Z" fill="#6e6c66"/>
+<text x="651.3" y="101.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">203 MB</text>
+<text x="592.0" y="131.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">CotEditor</text>
+<path d="M602.0,119.0 H646.0 Q650.0,119.0 650.0,123.0 V131.0 Q650.0,135.0 646.0,135.0 H602.0 Z" fill="#6e6c66"/>
+<text x="656.0" y="131.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">225 MB</text>
+<text x="592.0" y="161.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">Zed</text>
+<path d="M602.0,149.0 H655.4 Q659.4,149.0 659.4,153.0 V161.0 Q659.4,165.0 655.4,165.0 H602.0 Z" fill="#6e6c66"/>
+<text x="665.4" y="161.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">269 MB</text>
+<text x="592.0" y="191.5" font-size="13" font-weight="400" fill="#c3c2b7" text-anchor="end" style="">VS Code</text>
+<path d="M602.0,179.0 H886.0 Q890.0,179.0 890.0,183.0 V191.0 Q890.0,195.0 886.0,195.0 H602.0 Z" fill="#6e6c66"/>
+<text x="896.0" y="191.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">1,349 MB</text>
+<line x1="602.0" y1="50" x2="602.0" y2="204" stroke="#383835" stroke-width="1"/>
 </svg>

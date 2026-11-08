@@ -23,7 +23,7 @@
 
 - **后台待命，双击即开**：登录时在后台启动、不开窗口，关掉最后一个窗口也不退出，还总备着一个隐藏窗口。
   双击文件时只需把内容放进窗口：10.8 万行的 Go 文件 135 毫秒显示完毕。不想要可以在应用菜单里关掉。
-- **冷启动也快**：没在运行时打开同一个文件 406 毫秒，比系统自带的 TextEdit 还快。
+- **冷启动也快**：没在运行时打开同一个文件 406 毫秒，比 Zed、Sublime Text、VS Code 都快。
 - **文件再大也不拖慢**：只排版看得见的行，60 万行、44 MB 的日志 0.3 秒打开。
 - **轻**：原生 GPU 绘制（[MyGo](https://github.com/egoist/mygo)），没有 Electron，没有 WebView。
   应用 12 MB，后台待命时占约 45 MB 内存。
@@ -52,13 +52,13 @@
 </picture>
 
 大文件和 Markdown，QuickEdit 最快。1,300 行的小文件，Sublime Text 快 21 毫秒；44 MB 的日志，Zed 快 70 毫秒。
-四个文件加起来 QuickEdit 用时最短：721 毫秒，Zed 855，TextEdit 1,071。
+四个文件加起来 QuickEdit 用时最短：721 毫秒，第二的 Zed 是 855 毫秒。
 
 **体积和内存**
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/bench-footprint-dark.svg">
-  <img src="docs/images/bench-footprint-light.svg" width="100%" alt="应用体积：QuickEdit 12 MB，其他 129 到 963 MB；打开大文件后的内存：TextEdit 45 MB，QuickEdit 123 MB，其他 203 到 1,349 MB">
+  <img src="docs/images/bench-footprint-light.svg" width="100%" alt="应用体积：QuickEdit 12 MB，其他 129 到 963 MB；打开大文件后的内存：QuickEdit 123 MB 最少，其他 203 到 1,349 MB">
 </picture>
 
 <details>
@@ -69,34 +69,32 @@
 
 **冷启动**：编辑器没在运行。5 次中位数。
 
-| | QuickEdit | TextEdit | Sublime Text | Zed | CotEditor | VS Code |
-|---|---:|---:|---:|---:|---:|---:|
-| small.go | **403** | 449 | 558 | 635 | 944 | 1,573 |
-| big.go | **406** | 458 | 1,018 | 548 | 979 | 1,679 |
-| doc.md | 476 | **454** | 598 | 560 | 898 | 1,837 |
-| huge.log | **531** | 776 | 1,699 | 620 | 1,391 | 1,905 |
-
-TextEdit 把 Markdown 当纯文本显示，不渲染；QuickEdit 显示的是渲染后的预览。
+|  | QuickEdit | Sublime Text | Zed | CotEditor | VS Code |
+|---|---:|---:|---:|---:|---:|
+| small.go | **403** | 558 | 635 | 944 | 1,573 |
+| big.go | **406** | 1,018 | 548 | 979 | 1,679 |
+| doc.md | **476** | 598 | 560 | 898 | 1,837 |
+| huge.log | **531** | 1,699 | 620 | 1,391 | 1,905 |
 
 **后台待命**：编辑器在运行，没有窗口。3 次中位数。
 
-| | QuickEdit | TextEdit | Sublime Text | Zed | CotEditor | VS Code |
-|---|---:|---:|---:|---:|---:|---:|
-| small.go | 135 | 173 | **114** | 202 | 304 | 1,326 |
-| big.go | **135** | 196 | 490 | 197 | 1,797 | 1,540 |
-| doc.md | **137** | 198 | 196 | 212 | 379 | 1,848 |
-| huge.log | 314 | 504 | 1,211 | **244** | 803 | 1,890 |
+|  | QuickEdit | Sublime Text | Zed | CotEditor | VS Code |
+|---|---:|---:|---:|---:|---:|
+| small.go | 135 | **114** | 202 | 304 | 1,326 |
+| big.go | **135** | 490 | 197 | 1,797 | 1,540 |
+| doc.md | **137** | 196 | 212 | 379 | 1,848 |
+| huge.log | 314 | 1,211 | **244** | 803 | 1,890 |
 
 **已有窗口**：编辑器开着一个文件，再打开另一个。5 次中位数。
 
-| | QuickEdit | TextEdit | Sublime Text | Zed | CotEditor | VS Code |
-|---|---:|---:|---:|---:|---:|---:|
-| small.go | 130 | 166 | 120 | **53** | 352 | 246 |
-| big.go | 135 | 182 | 492 | **56** | 1,892 | 394 |
-| doc.md | 168 | 167 | 161 | **52** | 361 | 417 |
-| huge.log | 251 | 496 | 1,202 | **57** | 838 | 925 |
+|  | QuickEdit | Sublime Text | Zed | CotEditor | VS Code |
+|---|---:|---:|---:|---:|---:|
+| small.go | 130 | 120 | **53** | 352 | 246 |
+| big.go | 135 | 492 | **56** | 1,892 | 394 |
+| doc.md | 168 | 161 | **52** | 361 | 417 |
+| huge.log | 251 | 1,202 | **57** | 838 | 925 |
 
-Sublime Text、Zed、VS Code 在原窗口里开标签页，TextEdit、CotEditor、QuickEdit 每个文件开一个新窗口。
+Sublime Text、Zed、VS Code 在原窗口里开标签页，CotEditor、QuickEdit 每个文件开一个新窗口。
 
 </details>
 

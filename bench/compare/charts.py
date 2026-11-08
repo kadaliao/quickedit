@@ -15,7 +15,8 @@ res = here / "results"
 out = here.parent.parent / "docs" / "images"
 out.mkdir(parents=True, exist_ok=True)
 
-EDITORS = ["QuickEdit", "TextEdit", "Sublime Text", "Zed", "CotEditor", "VS Code"]
+# TextEdit is left out: it neither highlights code nor renders Markdown.
+EDITORS = ["QuickEdit", "Sublime Text", "Zed", "CotEditor", "VS Code"]
 THEMES = {
     # Transparent: the chart sits on GitHub's page, white or #0d1117.
     "light": {"ink": "#0b0b0b", "ink2": "#52514e", "muted": "#6f6d66", "me": "#2a78d6", "other": "#8e8c84", "rule": "#d6d4cc"},
@@ -122,7 +123,7 @@ svg("bench-files", W, int(250 + row_h + 8), body, "编辑器都在后台待命�
 pw = (W - gap) / 2
 body = []
 size_rows = [(e, sizes[e]) for e in EDITORS if e in sizes]
-p1, h1 = panel(0, 0, pw, "应用体积", "TextEdit 随系统自带，不计", size_rows, max(v for _, v in size_rows), lambda v: f"{v:,.0f} MB")
+p1, h1 = panel(0, 0, pw, "应用体积", "安装后的 .app 大小", size_rows, max(v for _, v in size_rows), lambda v: f"{v:,.0f} MB")
 mem_rows = [(e, memory[e]) for e in EDITORS]
 p2, h2 = panel(pw + gap, 0, pw, "内存", "打开 10.8 万行 Go 文件后，全部进程", mem_rows, max(v for _, v in mem_rows), lambda v: f"{v:,.0f} MB")
 svg("bench-footprint", W, int(max(h1, h2) + 8), p1 + p2, "各编辑器的应用体积和内存")
