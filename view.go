@@ -43,15 +43,8 @@ type docView struct {
 	mdText    string
 	mdVersion uint64
 	mdDir     string
-}
-
-var views = map[*mygo.Window]*docView{}
-
-func viewOf(w *mygo.Window) *docView {
-	if w == nil {
-		return nil
-	}
-	return views[w]
+	// previewScroll is where the preview is scrolled to.
+	previewScroll ui.ScrollState
 }
 
 func newDocWindow(doc *mygo.Document[content]) *mygo.Window {
@@ -72,8 +65,6 @@ func newDocWindow(doc *mygo.Document[content]) *mygo.Window {
 	v.applySettings()
 
 	v.win = takeWindow(v)
-	views[v.win] = v
-	v.win.OnClosed(func() { delete(views, v.win) })
 
 	// Reverted, or changed by another app: show the file's text. Setting
 	// it as an edit keeps the undo history, as Sublime and VS Code do.
@@ -260,7 +251,7 @@ func (v *docView) preview(c *ui.Context) {
 	th := markdown.DefaultTheme(c.Theme())
 	th.FontSize = settings.fontSize + 2
 	v.md.Theme = th
-	ui.Scroll(c.Key("preview")).Grow(1).Basis(0).Children(func() {
+	ui.Scroll(c.Key("preview")).Grow(1).Basis(0).TrackScroll(&v.previewScroll).Children(func() {
 		ui.Column(c).FillWidth().AlignItems(ui.Center).Padding(28, 32).Children(func() {
 			ui.Column(c).FillWidth().MaxWidth(860).Children(func() {
 				markdown.View(c, v.mdText, &v.md)

@@ -42,7 +42,10 @@ func main() {
 		// QuickEdit opens files of any name, which the documents leave to
 		// openAnyFile, so it makes the untitled document itself.
 		NoUntitled: true,
+		// A document in a tab not shown, before asking to save it.
+		Focus: focusDocument,
 	})
+	mygo.App.OnBeforeQuit(func(e *mygo.QuitEvent) { quitting = !e.DefaultPrevented() })
 
 	mygo.App.OnOpenFile(func(path string) {
 		requested.Store(true)
@@ -186,4 +189,8 @@ var appBindings = []editor.Binding{
 	{Mods: ui.Cmd, Key: ui.KeyEqual, Command: editor.NoCommand},
 	{Mods: ui.Cmd, Key: ui.KeyMinus, Command: editor.NoCommand},
 	{Mods: ui.Cmd, Key: ui.Key0, Command: editor.NoCommand},
+	{Mods: ui.Cmd, Key: ui.KeyW, Command: editor.NoCommand},
+	{Mods: ui.Cmd | ui.Shift, Key: ui.KeyW, Command: editor.NoCommand},
+	{Mods: ui.Cmd | ui.Shift, Key: ui.KeyBracketLeft, Command: editor.NoCommand},
+	{Mods: ui.Cmd | ui.Shift, Key: ui.KeyBracketRight, Command: editor.NoCommand},
 }

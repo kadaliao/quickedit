@@ -65,18 +65,34 @@ func (s *appSettings) wrap(prose bool) bool { return prose }
 func setFontSize(size float32) {
 	settings.fontSize = max(8, min(40, size))
 	saveSettings()
-	for w, v := range views {
-		v.applySettings()
+	for w, h := range hosts {
+		for _, v := range h.tabs {
+			v.applySettings()
+		}
 		w.Update(func() {})
+	}
+}
+
+func orFocused(w *mygo.Window) *mygo.Window {
+	if w == nil {
+		return mygo.FocusedWindow()
+	}
+	return w
+}
+
+// onWindow runs fn with the focused document window, if any.
+func onWindow(fn func(w *docWindow)) func(*mygo.MenuItem, *mygo.Window) {
+	return func(_ *mygo.MenuItem, w *mygo.Window) {
+		if h := hosts[orFocused(w)]; h != nil && len(h.tabs) > 0 {
+			fn(h)
+		}
 	}
 }
 
 // onView runs fn with the focused window's view, if it shows a document.
 func onView(fn func(v *docView)) func(*mygo.MenuItem, *mygo.Window) {
 	return func(_ *mygo.MenuItem, w *mygo.Window) {
-		if w == nil {
-			w = mygo.FocusedWindow()
-		}
+		w = orFocused(w)
 		if v := viewOf(w); v != nil {
 			fn(v)
 			w.Update(func() {})
@@ -145,7 +161,12 @@ func buildMenu() *mygo.Menu {
 			{Label: tr("打开…", "Open…"), Accelerator: "CmdOrCtrl+O", Click: func(*mygo.MenuItem, *mygo.Window) { openDialog() }},
 			{Role: mygo.RoleOpenRecent},
 			mygo.Separator(),
-			{Role: mygo.RoleClose},
+			{Label: tr("关闭标签页", "Close Tab"), Accelerator: "CmdOrCtrl+W", Click: onWindow(func(w *docWindow) { w.closeTab(w.current(), nil) })},
+			{Label: tr("关闭窗口", "Close Window"), Accelerator: "CmdOrCtrl+Shift+W", Click: func(_ *mygo.MenuItem, w *mygo.Window) {
+				if w = orFocused(w); w != nil {
+					w.Close()
+				}
+			}},
 			{Role: mygo.RoleSave},
 			{Role: mygo.RoleDuplicate},
 			{Role: mygo.RoleSaveAs},
@@ -174,6 +195,9 @@ func buildMenu() *mygo.Menu {
 			{Label: tr("实际大小", "Actual Size"), Accelerator: "CmdOrCtrl+0", Click: func(*mygo.MenuItem, *mygo.Window) { setFontSize(defaultFontSize) }},
 			mygo.Separator(),
 			{Role: mygo.RoleToggleFullScreen},
+			mygo.Separator(),
+			{Label: tr("显示上一个标签页", "Show Previous Tab"), Accelerator: "CmdOrCtrl+Shift+[", Click: onWindow(func(w *docWindow) { w.next(-1) })},
+			{Label: tr("显示下一个标签页", "Show Next Tab"), Accelerator: "CmdOrCtrl+Shift+]", Click: onWindow(func(w *docWindow) { w.next(1) })},
 		}},
 		{Role: mygo.RoleWindowMenu},
 	})

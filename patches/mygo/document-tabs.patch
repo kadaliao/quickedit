@@ -1,0 +1,308 @@
+--- a/document.go	2026-11-08 22:53:14
++++ b/document.go	2026-11-08 22:53:14
+@@ -95,6 +95,11 @@
+ 	// documents to open, or (macOS) when its Dock icon is clicked while
+ 	// it has no windows.
+ 	NoUntitled bool
++	// Focus brings to the front a document without a window (see
++	// Document.Detach), when it must show, as before asking to save it:
++	// an app that shows several documents in one window, as tabs, gives it
++	// its window again (Document.Attach). Main thread.
++	Focus func(doc *Document[T])
+ }
+ 
+ // Documents opens, creates and keeps track of the documents of one kind,
+@@ -152,6 +157,11 @@
+ 		autosaveDelay: opts.AutosaveDelay,
+ 		askOnQuit:     opts.AskOnQuit,
+ 		noUntitled:    opts.NoUntitled,
++		focus: func(b *docBase) {
++			if opts.Focus != nil {
++				opts.Focus(b.ops.(*Document[T]))
++			}
++		},
+ 		create: func(content any, name string) (*docBase, error) {
+ 			v, _ := content.(T)
+ 			return &ds.newDocument(v, name).docBase, nil
+@@ -443,8 +453,9 @@
+ 	// recovery copy.
+ 	io sync.Mutex
+ 
+-	// Main thread only.
++	// Main thread only. offs remove the listeners attach added to window.
+ 	closing bool
++	offs    []func()
+ 	// notifying tells that a state change waits for the main thread.
+ 	notifying bool
+ 
+@@ -784,6 +795,9 @@
+ 	create func(content any, name string) (*docBase, error)
+ 	read   func(r io.Reader) (any, error)
+ 	empty  func() any
++	// focus brings a document without a window to the front
++	// (DocumentsOptions.Focus), or nil.
++	focus func(b *docBase)
+ }
+ 
+ func newDocKind(c docKindConfig) *docKind {
+--- a/document_flow.go	2026-11-08 22:53:14
++++ b/document_flow.go	2026-11-08 22:53:14
+@@ -193,32 +193,143 @@
+ 	}
+ 	docRegistry.byWindow[w] = b
+ 	docRegistry.Unlock()
+-	w.OnClose(b.windowClosing)
+-	w.OnClosed(b.windowClosed)
+-	w.OnFocus(func() {
+-		go b.checkDisk()
+-		refreshDocumentMenus()
+-	})
+-	w.OnBlur(func() {
++	b.offs = append(b.offs,
++		w.OnClose(b.windowClosing),
++		w.OnClosed(b.windowClosed),
++		w.OnFocus(func() {
++			go b.checkDisk()
++			refreshDocumentMenus()
++		}),
++		w.OnBlur(func() {
++			b.persistEdits()
++			refreshDocumentMenus()
++		}))
++	if p := w.Page(); p != nil {
++		// The document names the window, not the page.
++		b.offs = append(b.offs, p.OnPageTitleUpdated(func(e *TitleEvent) { e.PreventDefault() }))
++	}
++}
++
++// persistEdits saves the changes of an autosaved document now.
++func (b *docBase) persistEdits() {
++	b.mu.Lock()
++	now := b.edited && b.autosavesLocked()
++	b.mu.Unlock()
++	if now {
++		go b.persist()
++	}
++}
++
++// Detach takes the document out of its window, which stays open to show
++// another document, as an app that shows several documents in a window,
++// as tabs, does with those it hides. The document stays open without a
++// window until Attach gives it one, or CloseKeepingWindow closes it; its
++// window's title, File menu and dialogs then are no longer its own.
++// Safe from any goroutine.
++func (b *docBase) Detach() { onMain(b.detach) }
++
++func (b *docBase) detach() {
++	b.mu.Lock()
++	w, offs := b.window, b.offs
++	b.window, b.offs = nil, nil
++	b.mu.Unlock()
++	for _, off := range offs {
++		off()
++	}
++	if w != nil {
++		docRegistry.Lock()
++		if docRegistry.byWindow[w] == b {
++			delete(docRegistry.byWindow, w)
++		}
++		docRegistry.Unlock()
++	}
++	b.persistEdits()
++	refreshDocumentMenus()
++}
++
++// Attach makes w the window of the document, as DocumentsOptions.Window's
++// is: w's title and File menu are the document's, its dialogs open on
++// w, and closing w closes it. The document w showed is detached; a nil
++// w only detaches this one. Safe from any goroutine.
++func (b *docBase) Attach(w *Window) {
++	if w == nil {
++		b.Detach()
++		return
++	}
++	onMain(func() {
++		if other := documentFor(w); other != nil && other != b {
++			other.detach()
++		}
+ 		b.mu.Lock()
+-		now := b.edited && b.autosavesLocked()
++		same := b.window == w
+ 		b.mu.Unlock()
+-		if now {
+-			go b.persist()
++		if same {
++			return
+ 		}
++		b.detach()
++		b.attach(w)
+ 		refreshDocumentMenus()
+ 	})
+-	if p := w.Page(); p != nil {
+-		// The document names the window, not the page.
+-		p.OnPageTitleUpdated(func(e *TitleEvent) { e.PreventDefault() })
+-	}
++	b.notify()
++	go b.checkDisk()
+ }
+ 
+-// focus brings b's window to the front.
++// CloseKeepingWindow closes the document as closing its window would,
++// saved first or asking whether to save when it must, but leaves its
++// window open, as closing a tab does. done, if not nil, learns on the
++// main thread whether the document closed. Safe from any goroutine.
++func (b *docBase) CloseKeepingWindow(done func(closed bool)) {
++	onMain(func() {
++		finish := func(ok bool) {
++			if ok {
++				b.detach()
++				b.closeDocument()
++			}
++			if done != nil {
++				done(ok)
++			}
++		}
++		if b.closing {
++			finish(false)
++			return
++		}
++		b.mu.Lock()
++		edited, autosaves, path := b.edited, b.autosavesLocked(), b.path
++		b.mu.Unlock()
++		if !edited {
++			finish(true)
++			return
++		}
++		b.closing = true
++		go func() {
++			ok := false
++			if autosaves {
++				_, err := b.write(path, writeAutosave)
++				ok = err == nil
++			}
++			if !ok {
++				ok = b.askToSave()
++			}
++			onMain(func() {
++				b.closing = false
++				finish(ok)
++			})
++		}()
++	})
++}
++
++// focus brings b's window to the front, or asks the app to give b one
++// (DocumentsOptions.Focus).
+ func (b *docBase) focus() {
+ 	b.mu.Lock()
+ 	w := b.window
+ 	b.mu.Unlock()
++	if w == nil && b.kind.focus != nil {
++		onMain(func() { b.kind.focus(b) })
++		b.mu.Lock()
++		w = b.window
++		b.mu.Unlock()
++	}
+ 	if w != nil {
+ 		w.Show()
+ 		w.Focus()
+@@ -266,16 +377,26 @@
+ func (b *docBase) windowClosed() {
+ 	b.mu.Lock()
+ 	w := b.window
++	b.window, b.offs = nil, nil
++	b.mu.Unlock()
++	docRegistry.Lock()
++	if docRegistry.byWindow[w] == b {
++		delete(docRegistry.byWindow, w)
++	}
++	docRegistry.Unlock()
++	b.closeDocument()
++}
++
++// closeDocument closes b, whose window closed, or which closed keeping
++// it. Main thread only.
++func (b *docBase) closeDocument() {
++	b.mu.Lock()
+ 	b.closed = true
+-	b.window = nil
+ 	keep := b.edited && !b.discarded
+ 	if b.timer != nil {
+ 		b.timer.Stop()
+ 	}
+ 	b.mu.Unlock()
+-	docRegistry.Lock()
+-	delete(docRegistry.byWindow, w)
+-	docRegistry.Unlock()
+ 	k := b.kind
+ 	k.mu.Lock()
+ 	if i := slices.Index(k.docs, b); i >= 0 {
+--- a/document_tabs_test.go	1970-01-01 07:30:00
++++ b/document_tabs_test.go	2026-11-08 22:53:14
+@@ -0,0 +1,66 @@
++//go:build !js
++
++package mygo
++
++import (
++	"slices"
++	"testing"
++)
++
++// Several documents in one window, as tabs: one attached, the others
++// detached, each closing without the window.
++func TestDocumentTabs(t *testing.T) {
++	var focused []*Document[string]
++	var host *Window
++	ds := testDocs(t, DocumentsOptions[string]{Autosave: AutosaveOff, Focus: func(d *Document[string]) {
++		focused = append(focused, d)
++		d.Attach(host)
++	}})
++	p1, p2 := writeTemp(t, "one.txt", "1"), writeTemp(t, "two.txt", "2")
++	d1, _ := ds.Open(p1)
++	d2, _ := ds.Open(p2)
++	w1, w2 := d1.Window(), d2.Window()
++	host = w1
++
++	// d2 moves into d1's window, which then is its own.
++	d2.Attach(w1)
++	if d1.Window() != nil || d2.Window() != w1 || ds.ForWindow(w1) != d2 || ds.ForWindow(w2) != nil {
++		t.Fatalf("after Attach: d1 in %p, d2 in %p, w1 shows %v", d1.Window(), d2.Window(), ds.ForWindow(w1))
++	}
++	w2.Destroy()
++	waitFor(t, "w2 to close", func() bool { return w2.IsDestroyed() })
++	if len(ds.Documents()) != 2 {
++		t.Fatalf("closing the emptied window closed documents: %d left", len(ds.Documents()))
++	}
++
++	// Opening the detached d1 again asks the app to show it.
++	if d, _ := ds.Open(p1); d != d1 || !slices.Contains(focused, d1) || d1.Window() != w1 || d2.Window() != nil {
++		t.Fatalf("Open of a detached document: focused %v, d1 in %p", focused, d1.Window())
++	}
++
++	// d1, edited, closes after saving, and its window stays.
++	d1.Set("one")
++	asked := answer("Save")
++	closed := make(chan bool, 1)
++	d1.CloseKeepingWindow(func(ok bool) { closed <- ok })
++	if !<-closed || len(asked.all()) != 1 || readString(t, p1) != "one" {
++		t.Fatalf("CloseKeepingWindow: asked %q, file %q", asked.all(), readString(t, p1))
++	}
++	if w1.IsDestroyed() || slices.Contains(ds.Documents(), d1) || ds.ForWindow(w1) != nil {
++		t.Fatalf("after CloseKeepingWindow: window destroyed %v, documents %d", w1.IsDestroyed(), len(ds.Documents()))
++	}
++
++	// Canceled, the document stays open.
++	d2.Attach(w1)
++	d2.Set("two")
++	answer("Cancel")
++	d2.CloseKeepingWindow(func(ok bool) { closed <- ok })
++	if <-closed || !slices.Contains(ds.Documents(), d2) || d2.Window() != w1 {
++		t.Fatal("a canceled CloseKeepingWindow closed the document")
++	}
++	d2.SetEdited(false)
++
++	// Closing the window closes the document it shows.
++	w1.Close()
++	waitFor(t, "d2 to close with w1", func() bool { return !slices.Contains(ds.Documents(), d2) })
++}
