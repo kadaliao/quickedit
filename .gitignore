@@ -1,0 +1,6 @@
+target/
+bench/bin/
+bench/build/
+bench/run/run
+.DS_Store
+bench/tools/winshot

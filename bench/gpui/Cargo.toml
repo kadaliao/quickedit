@@ -1,0 +1,21 @@
+[package]
+name = "bench-gpui"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[dependencies]
+# gpui-kit is longbridge's umbrella crate: GPUI (published as the gpui-pre-*
+# snapshot crates), the platform layer, gpui-base, gpui-component and the
+# default icon assets, all at matching versions. Only the Go grammar is
+# compiled in, since the test files are Go (and the Markdown code blocks are
+# mostly Go).
+gpui-kit = { version = "0.9.0", features = ["tree-sitter-go"] }
+
+# The smallest and fastest build Cargo makes.
+[profile.release]
+lto = "fat"
+codegen-units = 1
+strip = true

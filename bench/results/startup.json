@@ -1,0 +1,796 @@
+{
+  "date": "2026-11-08T09:06:29Z",
+  "runs": 10,
+  "samples": {
+    "egui": {
+      "big.go": [
+        {
+          "StartupMs": 4052.796583,
+          "HighlightMs": 4052.796583,
+          "FootprintMB": 1055.033264
+        },
+        {
+          "StartupMs": 4041.015125,
+          "HighlightMs": 4041.015125,
+          "FootprintMB": 1053.88636
+        },
+        {
+          "StartupMs": 4098.331875,
+          "HighlightMs": 4098.331875,
+          "FootprintMB": 1055.54112
+        },
+        {
+          "StartupMs": 4073.600667,
+          "HighlightMs": 4073.600667,
+          "FootprintMB": 1052.362648
+        },
+        {
+          "StartupMs": 4059.944416,
+          "HighlightMs": 4059.944416,
+          "FootprintMB": 1055.295408
+        },
+        {
+          "StartupMs": 4080.976375,
+          "HighlightMs": 4080.976375,
+          "FootprintMB": 1052.034944
+        },
+        {
+          "StartupMs": 4082.119375,
+          "HighlightMs": 4082.119375,
+          "FootprintMB": 1055.164288
+        },
+        {
+          "StartupMs": 4047.618625,
+          "HighlightMs": 4047.618625,
+          "FootprintMB": 1052.57564
+        },
+        {
+          "StartupMs": 4044.395,
+          "HighlightMs": 4044.395,
+          "FootprintMB": 1055.115184
+        },
+        {
+          "StartupMs": 4042.684,
+          "HighlightMs": 4042.684,
+          "FootprintMB": 1052.346216
+        }
+      ],
+      "doc.md": [
+        {
+          "StartupMs": 416.175417,
+          "HighlightMs": 416.175417,
+          "FootprintMB": 121.734224
+        },
+        {
+          "StartupMs": 396.852917,
+          "HighlightMs": 396.852917,
+          "FootprintMB": 121.34096
+        },
+        {
+          "StartupMs": 396.717125,
+          "HighlightMs": 396.717125,
+          "FootprintMB": 121.799712
+        },
+        {
+          "StartupMs": 398.426958,
+          "HighlightMs": 398.426958,
+          "FootprintMB": 121.619512
+        },
+        {
+          "StartupMs": 567.48075,
+          "HighlightMs": 567.48075,
+          "FootprintMB": 121.930832
+        },
+        {
+          "StartupMs": 405.299917,
+          "HighlightMs": 405.299917,
+          "FootprintMB": 121.40652
+        },
+        {
+          "StartupMs": 405.848208,
+          "HighlightMs": 405.848208,
+          "FootprintMB": 121.930784
+        },
+        {
+          "StartupMs": 383.154917,
+          "HighlightMs": 383.154917,
+          "FootprintMB": 121.439288
+        },
+        {
+          "StartupMs": 378.341958,
+          "HighlightMs": 378.341958,
+          "FootprintMB": 121.652304
+        },
+        {
+          "StartupMs": 399.990166,
+          "HighlightMs": 399.990166,
+          "FootprintMB": 121.79976
+        }
+      ],
+      "small.go": [
+        {
+          "StartupMs": 314.185583,
+          "HighlightMs": 314.185583,
+          "FootprintMB": 92.324776
+        },
+        {
+          "StartupMs": 314.355833,
+          "HighlightMs": 314.355833,
+          "FootprintMB": 92.636096
+        },
+        {
+          "StartupMs": 336.621584,
+          "HighlightMs": 336.621584,
+          "FootprintMB": 92.17732
+        },
+        {
+          "StartupMs": 313.8165,
+          "HighlightMs": 313.8165,
+          "FootprintMB": 91.882432
+        },
+        {
+          "StartupMs": 311.630958,
+          "HighlightMs": 311.630958,
+          "FootprintMB": 91.94792
+        },
+        {
+          "StartupMs": 353.591166,
+          "HighlightMs": 353.591166,
+          "FootprintMB": 91.489216
+        },
+        {
+          "StartupMs": 327.635166,
+          "HighlightMs": 327.635166,
+          "FootprintMB": 92.259264
+        },
+        {
+          "StartupMs": 312.325958,
+          "HighlightMs": 312.325958,
+          "FootprintMB": 92.210112
+        },
+        {
+          "StartupMs": 330.21425,
+          "HighlightMs": 330.21425,
+          "FootprintMB": 91.882384
+        },
+        {
+          "StartupMs": 354.749917,
+          "HighlightMs": 354.749917,
+          "FootprintMB": 92.160936
+        }
+      ]
+    },
+    "gpui": {
+      "big.go": [
+        {
+          "StartupMs": 363.001084,
+          "HighlightMs": 883.258,
+          "FootprintMB": 197.624792
+        },
+        {
+          "StartupMs": 321.379458,
+          "HighlightMs": 820.841291,
+          "FootprintMB": 197.805064
+        },
+        {
+          "StartupMs": 370.476083,
+          "HighlightMs": 835.166875,
+          "FootprintMB": 198.067184
+        },
+        {
+          "StartupMs": 312.193208,
+          "HighlightMs": 787.773458,
+          "FootprintMB": 197.91968
+        },
+        {
+          "StartupMs": 395.13625,
+          "HighlightMs": 859.329458,
+          "FootprintMB": 197.854192
+        },
+        {
+          "StartupMs": 345.761208,
+          "HighlightMs": 879.686208,
+          "FootprintMB": 197.477384
+        },
+        {
+          "StartupMs": 322.0135,
+          "HighlightMs": 794.589459,
+          "FootprintMB": 197.362648
+        },
+        {
+          "StartupMs": 372.19175,
+          "HighlightMs": 904.615917,
+          "FootprintMB": 197.788656
+        },
+        {
+          "StartupMs": 353.67525,
+          "HighlightMs": 815.398875,
+          "FootprintMB": 198.149128
+        },
+        {
+          "StartupMs": 351.674666,
+          "HighlightMs": 871.804041,
+          "FootprintMB": 197.559256
+        }
+      ],
+      "doc.md": [
+        {
+          "StartupMs": 456.822708,
+          "HighlightMs": 456.828708,
+          "FootprintMB": 83.788808
+        },
+        {
+          "StartupMs": 481.976167,
+          "HighlightMs": 481.985042,
+          "FootprintMB": 84.722696
+        },
+        {
+          "StartupMs": 452.959166,
+          "HighlightMs": 452.964375,
+          "FootprintMB": 95.68364
+        },
+        {
+          "StartupMs": 470.754084,
+          "HighlightMs": 470.759625,
+          "FootprintMB": 84.427808
+        },
+        {
+          "StartupMs": 478.379708,
+          "HighlightMs": 478.383417,
+          "FootprintMB": 85.2306
+        },
+        {
+          "StartupMs": 491.336875,
+          "HighlightMs": 491.34325,
+          "FootprintMB": 83.952648
+        },
+        {
+          "StartupMs": 488.56575,
+          "HighlightMs": 488.573292,
+          "FootprintMB": 84.558856
+        },
+        {
+          "StartupMs": 432.731833,
+          "HighlightMs": 432.736875,
+          "FootprintMB": 84.329504
+        },
+        {
+          "StartupMs": 452.51075,
+          "HighlightMs": 452.516,
+          "FootprintMB": 84.427808
+        },
+        {
+          "StartupMs": 450.63275,
+          "HighlightMs": 450.64775,
+          "FootprintMB": 84.395064
+        }
+      ],
+      "small.go": [
+        {
+          "StartupMs": 330.362458,
+          "HighlightMs": 538.02425,
+          "FootprintMB": 83.034976
+        },
+        {
+          "StartupMs": 337.055208,
+          "HighlightMs": 554.844458,
+          "FootprintMB": 83.084152
+        },
+        {
+          "StartupMs": 358.697125,
+          "HighlightMs": 526.661917,
+          "FootprintMB": 83.100536
+        },
+        {
+          "StartupMs": 325.968916,
+          "HighlightMs": 548.634125,
+          "FootprintMB": 83.051336
+        },
+        {
+          "StartupMs": 319.164625,
+          "HighlightMs": 538.403958,
+          "FootprintMB": 83.2644
+        },
+        {
+          "StartupMs": 328.797125,
+          "HighlightMs": 547.263375,
+          "FootprintMB": 82.8056
+        },
+        {
+          "StartupMs": 307.95725,
+          "HighlightMs": 476.022417,
+          "FootprintMB": 83.182456
+        },
+        {
+          "StartupMs": 308.379541,
+          "HighlightMs": 534.108291,
+          "FootprintMB": 83.116944
+        },
+        {
+          "StartupMs": 311.591917,
+          "HighlightMs": 535.350834,
+          "FootprintMB": 83.231608
+        },
+        {
+          "StartupMs": 340.412458,
+          "HighlightMs": 499.750333,
+          "FootprintMB": 82.838368
+        }
+      ]
+    },
+    "iced": {
+      "big.go": [
+        {
+          "StartupMs": 3676.390417,
+          "HighlightMs": 3676.395833,
+          "FootprintMB": 1153.910512
+        },
+        {
+          "StartupMs": 3504.549208,
+          "HighlightMs": 3504.623208,
+          "FootprintMB": 1153.812232
+        },
+        {
+          "StartupMs": 3754.816,
+          "HighlightMs": 3754.820583,
+          "FootprintMB": 1153.812232
+        },
+        {
+          "StartupMs": 3704.885542,
+          "HighlightMs": 3704.885542,
+          "FootprintMB": 1153.812232
+        },
+        {
+          "StartupMs": 3684.077708,
+          "HighlightMs": 3684.077708,
+          "FootprintMB": 1153.894152
+        },
+        {
+          "StartupMs": 3636.129833,
+          "HighlightMs": 3636.129833,
+          "FootprintMB": 1153.943328
+        },
+        {
+          "StartupMs": 3659.958417,
+          "HighlightMs": 3659.968833,
+          "FootprintMB": 1153.845
+        },
+        {
+          "StartupMs": 3615.460708,
+          "HighlightMs": 3615.460708,
+          "FootprintMB": 1155.155696
+        },
+        {
+          "StartupMs": 3818.812042,
+          "HighlightMs": 3818.819875,
+          "FootprintMB": 1153.812232
+        },
+        {
+          "StartupMs": 3642.039208,
+          "HighlightMs": 3642.04675,
+          "FootprintMB": 1153.910536
+        }
+      ],
+      "doc.md": [
+        {
+          "StartupMs": 536.079,
+          "HighlightMs": 536.08475,
+          "FootprintMB": 159.712504
+        },
+        {
+          "StartupMs": 538.099042,
+          "HighlightMs": 538.105875,
+          "FootprintMB": 160.269488
+        },
+        {
+          "StartupMs": 532.435458,
+          "HighlightMs": 532.441166,
+          "FootprintMB": 159.876272
+        },
+        {
+          "StartupMs": 518.524042,
+          "HighlightMs": 518.528917,
+          "FootprintMB": 159.564976
+        },
+        {
+          "StartupMs": 526.77475,
+          "HighlightMs": 526.782208,
+          "FootprintMB": 159.614176
+        },
+        {
+          "StartupMs": 536.535,
+          "HighlightMs": 536.54425,
+          "FootprintMB": 159.581384
+        },
+        {
+          "StartupMs": 581.682917,
+          "HighlightMs": 581.682917,
+          "FootprintMB": 159.483104
+        },
+        {
+          "StartupMs": 591.316625,
+          "HighlightMs": 591.321334,
+          "FootprintMB": 159.368296
+        },
+        {
+          "StartupMs": 501.417125,
+          "HighlightMs": 501.417125,
+          "FootprintMB": 170.93552
+        },
+        {
+          "StartupMs": 486.477375,
+          "HighlightMs": 486.477375,
+          "FootprintMB": 159.220912
+        }
+      ],
+      "small.go": [
+        {
+          "StartupMs": 340.206709,
+          "HighlightMs": 340.206709,
+          "FootprintMB": 74.990528
+        },
+        {
+          "StartupMs": 339.227042,
+          "HighlightMs": 339.227042,
+          "FootprintMB": 73.712576
+        },
+        {
+          "StartupMs": 338.629792,
+          "HighlightMs": 338.632667,
+          "FootprintMB": 73.925544
+        },
+        {
+          "StartupMs": 349.145334,
+          "HighlightMs": 349.145334,
+          "FootprintMB": 74.171328
+        },
+        {
+          "StartupMs": 364.623083,
+          "HighlightMs": 364.627417,
+          "FootprintMB": 73.843648
+        },
+        {
+          "StartupMs": 334.031792,
+          "HighlightMs": 334.031792,
+          "FootprintMB": 75.006936
+        },
+        {
+          "StartupMs": 337.511292,
+          "HighlightMs": 337.511292,
+          "FootprintMB": 73.909184
+        },
+        {
+          "StartupMs": 352.637083,
+          "HighlightMs": 352.641958,
+          "FootprintMB": 73.925568
+        },
+        {
+          "StartupMs": 357.060959,
+          "HighlightMs": 357.082459,
+          "FootprintMB": 73.827288
+        },
+        {
+          "StartupMs": 373.409417,
+          "HighlightMs": 373.409417,
+          "FootprintMB": 73.941952
+        }
+      ]
+    },
+    "mygo": {
+      "big.go": [
+        {
+          "StartupMs": 302.8385,
+          "HighlightMs": 302.8385,
+          "FootprintMB": 81.904768
+        },
+        {
+          "StartupMs": 304.254792,
+          "HighlightMs": 304.254792,
+          "FootprintMB": 81.511576
+        },
+        {
+          "StartupMs": 351.429875,
+          "HighlightMs": 351.429875,
+          "FootprintMB": 81.855688
+        },
+        {
+          "StartupMs": 309.43225,
+          "HighlightMs": 309.43225,
+          "FootprintMB": 81.986736
+        },
+        {
+          "StartupMs": 329.910625,
+          "HighlightMs": 329.910625,
+          "FootprintMB": 81.970304
+        },
+        {
+          "StartupMs": 315.621667,
+          "HighlightMs": 315.621667,
+          "FootprintMB": 83.920024
+        },
+        {
+          "StartupMs": 342.344625,
+          "HighlightMs": 342.344625,
+          "FootprintMB": 81.822824
+        },
+        {
+          "StartupMs": 331.171,
+          "HighlightMs": 331.171,
+          "FootprintMB": 81.839256
+        },
+        {
+          "StartupMs": 299.07475,
+          "HighlightMs": 299.07475,
+          "FootprintMB": 82.052272
+        },
+        {
+          "StartupMs": 331.119292,
+          "HighlightMs": 331.119292,
+          "FootprintMB": 81.937536
+        }
+      ],
+      "doc.md": [
+        {
+          "StartupMs": 365.934459,
+          "HighlightMs": 365.934459,
+          "FootprintMB": 82.232544
+        },
+        {
+          "StartupMs": 368.339292,
+          "HighlightMs": 368.339292,
+          "FootprintMB": 71.7304
+        },
+        {
+          "StartupMs": 361.244625,
+          "HighlightMs": 361.244625,
+          "FootprintMB": 71.124192
+        },
+        {
+          "StartupMs": 373.289208,
+          "HighlightMs": 373.289208,
+          "FootprintMB": 71.58292
+        },
+        {
+          "StartupMs": 344.230208,
+          "HighlightMs": 344.230208,
+          "FootprintMB": 88.90076
+        },
+        {
+          "StartupMs": 358.925708,
+          "HighlightMs": 358.925708,
+          "FootprintMB": 87.835848
+        },
+        {
+          "StartupMs": 358.428917,
+          "HighlightMs": 358.428917,
+          "FootprintMB": 71.320728
+        },
+        {
+          "StartupMs": 349.975333,
+          "HighlightMs": 349.975333,
+          "FootprintMB": 82.52748
+        },
+        {
+          "StartupMs": 384.278791,
+          "HighlightMs": 384.278791,
+          "FootprintMB": 88.76976
+        },
+        {
+          "StartupMs": 354.738958,
+          "HighlightMs": 354.738958,
+          "FootprintMB": 83.248328
+        }
+      ],
+      "small.go": [
+        {
+          "StartupMs": 322.175333,
+          "HighlightMs": 322.175333,
+          "FootprintMB": 78.185552
+        },
+        {
+          "StartupMs": 292.901292,
+          "HighlightMs": 292.901292,
+          "FootprintMB": 78.169192
+        },
+        {
+          "StartupMs": 311.144834,
+          "HighlightMs": 311.144834,
+          "FootprintMB": 77.87428
+        },
+        {
+          "StartupMs": 311.938417,
+          "HighlightMs": 311.938417,
+          "FootprintMB": 78.61156
+        },
+        {
+          "StartupMs": 289.258667,
+          "HighlightMs": 289.258667,
+          "FootprintMB": 78.152856
+        },
+        {
+          "StartupMs": 288.396792,
+          "HighlightMs": 288.396792,
+          "FootprintMB": 78.251112
+        },
+        {
+          "StartupMs": 318.218084,
+          "HighlightMs": 318.218084,
+          "FootprintMB": 77.923456
+        },
+        {
+          "StartupMs": 323.04,
+          "HighlightMs": 323.04,
+          "FootprintMB": 77.9562
+        },
+        {
+          "StartupMs": 300.495709,
+          "HighlightMs": 300.495709,
+          "FootprintMB": 78.005328
+        },
+        {
+          "StartupMs": 326.917708,
+          "HighlightMs": 326.917708,
+          "FootprintMB": 77.759592
+        }
+      ]
+    },
+    "native": {
+      "big.go": [
+        {
+          "StartupMs": 287.71625,
+          "HighlightMs": 287.719667,
+          "FootprintMB": 44.516264
+        },
+        {
+          "StartupMs": 275.808291,
+          "HighlightMs": 275.811625,
+          "FootprintMB": 44.467112
+        },
+        {
+          "StartupMs": 262.820584,
+          "HighlightMs": 262.820584,
+          "FootprintMB": 44.548984
+        },
+        {
+          "StartupMs": 337.588667,
+          "HighlightMs": 337.593417,
+          "FootprintMB": 44.483472
+        },
+        {
+          "StartupMs": 316.144334,
+          "HighlightMs": 316.16275,
+          "FootprintMB": 44.5818
+        },
+        {
+          "StartupMs": 292.700209,
+          "HighlightMs": 292.705209,
+          "FootprintMB": 44.532672
+        },
+        {
+          "StartupMs": 264.818417,
+          "HighlightMs": 264.82725,
+          "FootprintMB": 44.565416
+        },
+        {
+          "StartupMs": 252.423917,
+          "HighlightMs": 252.423917,
+          "FootprintMB": 44.434296
+        },
+        {
+          "StartupMs": 297.746541,
+          "HighlightMs": 297.750666,
+          "FootprintMB": 44.59816
+        },
+        {
+          "StartupMs": 296.479292,
+          "HighlightMs": 296.482417,
+          "FootprintMB": 44.532672
+        }
+      ],
+      "doc.md": [
+        {
+          "StartupMs": 265.091292,
+          "HighlightMs": 265.098917,
+          "FootprintMB": 32.228336
+        },
+        {
+          "StartupMs": 305.918542,
+          "HighlightMs": 305.922875,
+          "FootprintMB": 31.851504
+        },
+        {
+          "StartupMs": 293.19625,
+          "HighlightMs": 293.199708,
+          "FootprintMB": 32.03168
+        },
+        {
+          "StartupMs": 321.49175,
+          "HighlightMs": 321.495458,
+          "FootprintMB": 31.835096
+        },
+        {
+          "StartupMs": 294.80325,
+          "HighlightMs": 294.808417,
+          "FootprintMB": 31.9334
+        },
+        {
+          "StartupMs": 267.403958,
+          "HighlightMs": 267.412958,
+          "FootprintMB": 31.867888
+        },
+        {
+          "StartupMs": 267.610959,
+          "HighlightMs": 267.620917,
+          "FootprintMB": 31.9334
+        },
+        {
+          "StartupMs": 263.979625,
+          "HighlightMs": 263.98325,
+          "FootprintMB": 32.01532
+        },
+        {
+          "StartupMs": 274.664834,
+          "HighlightMs": 274.677625,
+          "FootprintMB": 31.916992
+        },
+        {
+          "StartupMs": 278.691917,
+          "HighlightMs": 278.697167,
+          "FootprintMB": 31.917016
+        }
+      ],
+      "small.go": [
+        {
+          "StartupMs": 300.47675,
+          "HighlightMs": 300.480917,
+          "FootprintMB": 30.884752
+        },
+        {
+          "StartupMs": 338.845666,
+          "HighlightMs": 338.849583,
+          "FootprintMB": 31.081384
+        },
+        {
+          "StartupMs": 222.859125,
+          "HighlightMs": 222.863,
+          "FootprintMB": 31.114152
+        },
+        {
+          "StartupMs": 277.142041,
+          "HighlightMs": 277.150041,
+          "FootprintMB": 30.852008
+        },
+        {
+          "StartupMs": 275.5735,
+          "HighlightMs": 275.584583,
+          "FootprintMB": 30.90116
+        },
+        {
+          "StartupMs": 311.792042,
+          "HighlightMs": 311.800208,
+          "FootprintMB": 30.671784
+        },
+        {
+          "StartupMs": 297.308417,
+          "HighlightMs": 297.317084,
+          "FootprintMB": 30.73732
+        },
+        {
+          "StartupMs": 292.05325,
+          "HighlightMs": 292.065208,
+          "FootprintMB": 30.868368
+        },
+        {
+          "StartupMs": 276.84425,
+          "HighlightMs": 276.847875,
+          "FootprintMB": 30.737296
+        },
+        {
+          "StartupMs": 303.871834,
+          "HighlightMs": 303.875625,
+          "FootprintMB": 30.966672
+        }
+      ]
+    }
+  }
+}

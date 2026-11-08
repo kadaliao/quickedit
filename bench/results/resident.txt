@@ -1,0 +1,18 @@
+run 1 native: in-app open→first frame: small.go 81.8, small.go 33.6, big.go 51.0, doc.md 49.9
+run 2 native: in-app open→first frame: small.go 90.8, small.go 31.3, big.go 54.5, doc.md 44.4
+run 3 native: in-app open→first frame: small.go 80.4, small.go 38.6, big.go 55.3, doc.md 41.1
+run 4 native: in-app open→first frame: small.go 102.9, small.go 39.3, big.go 42.0, doc.md 42.2
+run 5 native: in-app open→first frame: small.go 83.0, small.go 32.4, big.go 44.3, doc.md 45.4
+native  cold launch via open -a: 344 (304-375) ms
+native  already running, open small.go  120 (105-128) ms
+native  already running, open big.go    135 (119-143) ms
+native  already running, open doc.md    128 (119-134) ms
+run 1 mygo: in-app open→first frame: small.go 80.9, small.go 27.6, big.go 33.1, doc.md 87.2
+run 2 mygo: in-app open→first frame: small.go 80.4, small.go 21.7, big.go 28.8, doc.md 89.6
+run 3 mygo: in-app open→first frame: small.go 89.0, small.go 26.7, big.go 30.5, doc.md 95.9
+run 4 mygo: in-app open→first frame: small.go 79.8, small.go 29.7, big.go 35.4, doc.md 88.1
+run 5 mygo: in-app open→first frame: small.go 93.2, small.go 21.0, big.go 34.6, doc.md 91.1
+mygo    cold launch via open -a: 385 (364-406) ms
+mygo    already running, open small.go  99 (96-120) ms
+mygo    already running, open big.go    112 (106-138) ms
+mygo    already running, open doc.md    173 (152-176) ms

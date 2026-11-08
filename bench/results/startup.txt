@@ -1,0 +1,18 @@
+
+median (min-max) of 10 runs
+app      file      startup ms           highlighted ms       memory MB  binary
+egui     small.go  328 (312-355)        328 (312-355)        92         11.4 MB
+egui     big.go    4060 (4041-4098)     4060 (4041-4098)     1055       11.4 MB
+egui     doc.md    400 (378-567)        400 (378-567)        122        11.4 MB
+gpui     small.go  329 (308-359)        538 (476-555)        83         14.9 MB
+gpui     big.go    354 (312-395)        859 (788-905)        198        14.9 MB
+gpui     doc.md    471 (433-491)        471 (433-491)        84         14.9 MB
+iced     small.go  349 (334-373)        349 (334-373)        74         9.0 MB
+iced     big.go    3676 (3505-3819)     3676 (3505-3819)     1154       9.0 MB
+iced     doc.md    536 (486-591)        536 (486-591)        160        9.0 MB
+mygo     small.go  312 (288-327)        312 (288-327)        78         11.2 MB
+mygo     big.go    330 (299-351)        330 (299-351)        82         11.2 MB
+mygo     doc.md    361 (344-384)        361 (344-384)        83         11.2 MB
+native   small.go  297 (223-339)        297 (223-339)        31         0.1 MB
+native   big.go    293 (252-338)        293 (252-338)        45         0.1 MB
+native   doc.md    279 (264-321)        279 (264-321)        32         0.1 MB
