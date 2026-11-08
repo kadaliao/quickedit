@@ -13,9 +13,12 @@ import (
 // settings are the app's preferences, kept across launches.
 type appSettings struct {
 	fontSize float32
-	// loginItemOffered tells that QuickEdit made itself start at login
-	// once, which the user may have turned off since.
+	// loginItemOffered tells that QuickEdit 0.1 or 0.2 made itself start
+	// at login, unasked, or the user chose it in the App menu then.
 	loginItemOffered bool
+	// loginItemChosen tells that the user chose in the App menu whether
+	// QuickEdit starts at login.
+	loginItemChosen bool
 	// markdownSource opens Markdown files in their source rather than
 	// their preview.
 	markdownSource bool
@@ -28,6 +31,7 @@ const defaultFontSize = 13
 type savedSettings struct {
 	FontSize         float32 `json:"fontSize"`
 	LoginItemOffered bool    `json:"loginItemOffered,omitempty"`
+	LoginItemChosen  bool    `json:"loginItemChosen,omitempty"`
 	MarkdownSource   bool    `json:"markdownSource,omitempty"`
 }
 
@@ -54,11 +58,12 @@ func loadSettings() {
 		settings.fontSize = s.FontSize
 	}
 	settings.loginItemOffered = s.LoginItemOffered
+	settings.loginItemChosen = s.LoginItemChosen
 	settings.markdownSource = s.MarkdownSource
 }
 
 func saveSettings() {
-	b, _ := json.MarshalIndent(savedSettings{FontSize: settings.fontSize, LoginItemOffered: settings.loginItemOffered, MarkdownSource: settings.markdownSource}, "", "  ")
+	b, _ := json.MarshalIndent(savedSettings{FontSize: settings.fontSize, LoginItemOffered: settings.loginItemOffered, LoginItemChosen: settings.loginItemChosen, MarkdownSource: settings.markdownSource}, "", "  ")
 	os.MkdirAll(filepath.Dir(settingsPath()), 0o755)
 	os.WriteFile(settingsPath(), b, 0o644)
 }
@@ -120,21 +125,23 @@ func installed() bool {
 	return strings.HasPrefix(exe, "/Applications/") || strings.HasPrefix(exe, filepath.Join(home, "Applications")+"/")
 }
 
-// offerOpenAtLogin makes the installed app start at login the first time
-// it runs, so that files open in a running app: a cold start of any app
-// costs macOS a few hundred milliseconds. The App menu turns it off.
-func offerOpenAtLogin() {
-	if settings.loginItemOffered || !installed() {
+// undoLoginItemOffer takes back, once, the start at login that QuickEdit
+// 0.1 and 0.2 chose for the user: it starts at login only when the user
+// chooses so in the App menu.
+func undoLoginItemOffer() {
+	if !settings.loginItemOffered || settings.loginItemChosen {
 		return
 	}
-	if err := mygo.App.SetOpenAtLogin(true); err != nil {
-		log.Printf("open at login: %v", err)
-		return
+	if mygo.App.OpenAtLogin() {
+		if err := mygo.App.SetOpenAtLogin(false); err != nil {
+			log.Printf("open at login: %v", err)
+			return
+		}
 	}
-	settings.loginItemOffered = true
+	settings.loginItemOffered = false
 	saveSettings()
 	if item := mygo.App.Menu().ItemByID("open-at-login"); item != nil {
-		item.SetChecked(true)
+		item.SetChecked(false)
 	}
 }
 
@@ -145,7 +152,7 @@ func toggleOpenAtLogin(item *mygo.MenuItem, _ *mygo.Window) {
 		item.SetChecked(mygo.App.OpenAtLogin())
 		return
 	}
-	settings.loginItemOffered = true
+	settings.loginItemChosen = true
 	saveSettings()
 }
 

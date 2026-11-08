@@ -6,7 +6,8 @@
 
 <p align="center">
   <b>极致快速的轻量编辑器，为灵活编辑而生。</b><br>
-  双击文件，0.1 秒级打开。看代码、改配置、读 Markdown、翻日志：打开就用，用完就走。
+  看代码、改配置、读 Markdown、翻日志：打开就用，用完就走。<br>
+  同一标准实测，三种情况下打开文件的总用时都比 Zed、Sublime Text、VS Code、CotEditor 短。
 </p>
 
 <p align="center">
@@ -21,14 +22,12 @@
 
 ## 为什么快
 
-- **后台待命，双击即开**：登录时在后台启动、不开窗口，关掉最后一个窗口也不退出，还总备着一个隐藏窗口。
-  双击 10.8 万行的 Go 文件 135 毫秒显示完毕。不想要可以在应用菜单里关掉。
-- **开着窗口时开成标签页**：不用新建窗口，同一个文件 68 毫秒。
-- **冷启动也快**：没在运行时打开同一个文件 517 毫秒，比 Zed、Sublime Text、VS Code、CotEditor 都快。
-- **文件再大也不拖慢**：只排版看得见的行，多核并行读入；60 万行、44 MB 的日志后台待命时 176 毫秒打开。
-- **轻**：原生 GPU 绘制（[MyGo](https://github.com/egoist/mygo)），没有 Electron，没有 WebView。
-  应用 12 MB，后台待命时占约 50 MB 内存。
-- **命令行直达**：`qe` 经本地 socket 把文件直接交给后台的 QuickEdit，不经过系统转发。
+- **原生，轻**：原生 GPU 绘制（[MyGo](https://github.com/egoist/mygo)），没有 Electron，没有 WebView，应用 12 MB。
+  冷启动打开 10.8 万行的 Go 文件 0.5 秒，比 Zed、Sublime Text、CotEditor、VS Code 都快。
+- **只排版看得见的行**：文件再大，第一屏也一样快；大文件多核并行读入，60 万行、44 MB 的日志冷启动 0.6 秒打开。
+- **开着窗口时开成标签页**：不用新建窗口，10.8 万行的 Go 文件 68 毫秒。
+- **提前备好窗口**：关掉所有窗口后再打开文件，直接用预先建好的窗口，同一个文件 135 毫秒。
+- **命令行直达**：`qe` 经本地 socket 把文件交给运行中的 QuickEdit，不经过系统转发。
 
 ## 速度对比
 
@@ -40,23 +39,23 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/bench-bigfile-dark.svg">
-  <img src="docs/images/bench-bigfile-light.svg" width="100%" alt="打开 10.8 万行的 Go 文件：冷启动 QuickEdit 517 毫秒，第二名 Zed 730；后台待命 QuickEdit 135 毫秒，第二名 CotEditor 438；已有窗口 QuickEdit 68 毫秒，第二名 VS Code 448">
+  <img src="docs/images/bench-bigfile-light.svg" width="100%" alt="打开 10.8 万行的 Go 文件：冷启动 QuickEdit 517 毫秒，第二名 Zed 730；运行中无窗口 QuickEdit 135 毫秒，第二名 CotEditor 438；运行中有窗口 QuickEdit 68 毫秒，第二名 VS Code 448">
 </picture>
 
-三种状态都是 QuickEdit 第一：冷启动 517 毫秒（第二名 Zed 730），后台待命 135 毫秒（第二名 CotEditor 438），
-已有窗口 68 毫秒（第二名 VS Code 448）。
+三种状态都是 QuickEdit 第一：冷启动 517 毫秒（第二名 Zed 730），运行中无窗口 135 毫秒（第二名 CotEditor 438），
+运行中有窗口 68 毫秒（第二名 VS Code 448）。
 
 **依次打开四个文件的总时间**
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/bench-files-dark.svg">
-  <img src="docs/images/bench-files-light.svg" width="100%" alt="依次打开四个文件的总时间：冷启动 QuickEdit 2,214 毫秒，Zed 2,819；后台待命 QuickEdit 625 毫秒，Zed 1,779；已有窗口 QuickEdit 321 毫秒，Zed 1,340">
+  <img src="docs/images/bench-files-light.svg" width="100%" alt="依次打开四个文件的总时间：冷启动 QuickEdit 2,214 毫秒，Zed 2,819；运行中无窗口 QuickEdit 625 毫秒，Zed 1,779；运行中有窗口 QuickEdit 321 毫秒，Zed 1,340">
 </picture>
 
-三种状态都是 QuickEdit 最短：冷启动 2.2 秒（Zed 2.8 秒），后台待命 0.6 秒（Zed 1.8 秒），已有窗口 0.3 秒（Zed 1.3 秒）。
+三种状态都是 QuickEdit 最短：冷启动 2.2 秒（Zed 2.8 秒），运行中无窗口 0.6 秒（Zed 1.8 秒），运行中有窗口 0.3 秒（Zed 1.3 秒）。
 
-逐个文件看（下表），12 项里 QuickEdit 9 项第一。另外 3 项都是 1,300 行左右的小文件：后台待命时打开小 Go 文件和 Markdown，
-Sublime Text 分别快 58 和 19 毫秒；已有窗口时打开小 Go 文件，Zed 快 13 毫秒。
+逐个文件看（下表），12 项里 QuickEdit 9 项第一。另外 3 项都是 1,300 行左右的小文件：运行中无窗口时打开小 Go 文件和 Markdown，
+Sublime Text 分别快 58 和 19 毫秒；运行中有窗口时打开小 Go 文件，Zed 快 13 毫秒。
 
 **体积和内存**
 
@@ -80,7 +79,7 @@ Sublime Text 分别快 58 和 19 毫秒；已有窗口时打开小 Go 文件，Z
 | doc.md | **565** | 685 | 698 | 1,183 | 2,232 |
 | huge.log | **601** | 1,712 | 768 | 1,558 | 2,508 |
 
-**后台待命**：编辑器在运行，没有窗口。
+**运行中，无窗口**：打开过文件，窗口已关。
 
 | | QuickEdit | Sublime Text | Zed | CotEditor | VS Code |
 |---|---:|---:|---:|---:|---:|
@@ -89,7 +88,7 @@ Sublime Text 分别快 58 和 19 毫秒；已有窗口时打开小 Go 文件，Z
 | doc.md | 134 | **115** | 188 | 313 | 1,606 |
 | huge.log | **176** | 1,166 | 231 | 865 | 1,894 |
 
-**已有窗口**：编辑器开着一个文件。
+**运行中，有窗口**：编辑器开着一个文件。
 
 | | QuickEdit | Sublime Text | Zed | CotEditor | VS Code |
 |---|---:|---:|---:|---:|---:|
@@ -102,8 +101,8 @@ Sublime Text 分别快 58 和 19 毫秒；已有窗口时打开小 Go 文件，Z
 
 测法：
 
-- **三种状态**：冷启动是编辑器没在运行；后台待命是编辑器在运行、没有窗口（每个编辑器，包括 QuickEdit，都先打开一个文件、再关掉窗口）；
-  已有窗口是编辑器开着一个文件，新文件开成标签页（CotEditor 开新窗口）。
+- **三种状态**：冷启动是编辑器没在运行；运行中无窗口是编辑器打开过一个文件、窗口已关（macOS 上的编辑器关掉最后一个窗口通常不退出），
+  每个编辑器都一样；运行中有窗口是编辑器开着一个文件，新文件开成标签页（CotEditor 开新窗口）。
 - **显示同样的内容**：Markdown 都显示源码（QuickEdit 测试时关掉了"打开 Markdown 时显示预览"）；谁都不开语言服务器。
   Zed 打开了"信任所有项目"：否则它打开每个文件都弹 Restricted Mode 对话框、压暗编辑区，语法高亮就计不进去。
 - **为了公平**：测试期间关掉系统的窗口打开动画；关掉每个编辑器恢复上次窗口的功能；VS Code 用临时数据目录、不装扩展；
@@ -142,8 +141,7 @@ sudo mkdir -p /usr/local/bin
 sudo ln -sf /Applications/QuickEdit.app/Contents/Resources/qe /usr/local/bin/qe
 ```
 
-第一次从「应用程序」打开时，QuickEdit 会把自己加入登录项，以后登录时在后台待命（macOS 会提示"已添加后台项目"）。
-不想要的话，在 QuickEdit 菜单里取消勾选"登录时在后台启动"。
+想让每天第一次打开文件也不用冷启动，可以在 QuickEdit 菜单里勾选"登录时在后台启动"（默认关闭）。
 
 ## 快捷键
 
@@ -172,7 +170,7 @@ qe notes.md main.go     # 打开文件，不存在的先建空文件
 git diff | qe -         # 打开命令的输出
 ```
 
-QuickEdit 在后台运行时，`qe` 经本地 socket 把文件交给它，比双击再快约 20 毫秒；没在运行时就用 `open` 启动它。
+QuickEdit 在运行时，`qe` 经本地 socket 把文件交给它，比双击再快约 20 毫秒；没在运行时就用 `open` 启动它。
 
 ## 构建
 

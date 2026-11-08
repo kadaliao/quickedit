@@ -76,8 +76,8 @@ func main() {
 		// open and nothing to recover, show a new document, as Sublime Text
 		// shows an empty one.
 		//
-		// Started at login, it waits in the background, without a window,
-		// for the files the user opens: they then open at once.
+		// Started at login (the App menu's choice), it waits in the
+		// background, without a window, for the files the user opens.
 		go func() {
 			mygo.RunOnMain(func() {})
 			mygo.RunOnMain(func() {
@@ -88,7 +88,7 @@ func main() {
 				time.AfterFunc(1500*time.Millisecond, func() { mygo.RunOnMain(warmText) })
 			})
 		}()
-		offerOpenAtLogin()
+		undoLoginItemOffer()
 	})
 	if err := mygo.App.Run(); err != nil {
 		log.Fatal(err)

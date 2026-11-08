@@ -18,8 +18,8 @@
 <path d="M104.0,179.0 H222.0 Q226.0,179.0 226.0,183.0 V191.0 Q226.0,195.0 222.0,195.0 H104.0 Z" fill="#6e6c66"/>
 <text x="232.0" y="191.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">8,545 ms</text>
 <line x1="104.0" y1="50" x2="104.0" y2="204" stroke="#383835" stroke-width="1"/>
-<text x="332.0" y="15.0" font-size="15" font-weight="600" fill="#f0efec" text-anchor="start" style="">后台待命</text>
-<text x="332.0" y="35.0" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="">编辑器在运行，没有窗口</text>
+<text x="332.0" y="15.0" font-size="15" font-weight="600" fill="#f0efec" text-anchor="start" style="">运行中，无窗口</text>
+<text x="332.0" y="35.0" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="">打开过文件，窗口已关</text>
 <text x="426.0" y="71.5" font-size="13" font-weight="600" fill="#f0efec" text-anchor="end" style="">QuickEdit</text>
 <path d="M436.0,59.0 H440.9 Q444.9,59.0 444.9,63.0 V71.0 Q444.9,75.0 440.9,75.0 H436.0 Z" fill="#3987e5"/>
 <text x="450.9" y="71.5" font-size="12.5" font-weight="600" fill="#f0efec" text-anchor="start" style="font-variant-numeric: tabular-nums;">625 ms</text>
@@ -36,7 +36,7 @@
 <path d="M436.0,179.0 H523.9 Q527.9,179.0 527.9,183.0 V191.0 Q527.9,195.0 523.9,195.0 H436.0 Z" fill="#6e6c66"/>
 <text x="533.9" y="191.5" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="font-variant-numeric: tabular-nums;">6,439 ms</text>
 <line x1="436.0" y1="50" x2="436.0" y2="204" stroke="#383835" stroke-width="1"/>
-<text x="664.0" y="15.0" font-size="15" font-weight="600" fill="#f0efec" text-anchor="start" style="">已有窗口</text>
+<text x="664.0" y="15.0" font-size="15" font-weight="600" fill="#f0efec" text-anchor="start" style="">运行中，有窗口</text>
 <text x="664.0" y="35.0" font-size="12.5" font-weight="400" fill="#c3c2b7" text-anchor="start" style="">编辑器开着一个文件</text>
 <text x="758.0" y="71.5" font-size="13" font-weight="600" fill="#f0efec" text-anchor="end" style="">QuickEdit</text>
 <path d="M768.0,59.0 H770.3 Q772.6,59.0 772.6,61.3 V72.7 Q772.6,75.0 770.3,75.0 H768.0 Z" fill="#3987e5"/>

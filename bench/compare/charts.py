@@ -40,7 +40,7 @@ for line in (res / "fair.jsonl").read_text().splitlines():
 fair = {k: statistics.median(v) for k, v in runs.items()}
 memory = {k: statistics.median(v) for k, v in memory_runs.items()}
 sizes = json.loads((res / "sizes.json").read_text())
-STATES = [("cold", "冷启动", "编辑器没在运行"), ("background", "后台待命", "编辑器在运行，没有窗口"), ("window", "已有窗口", "编辑器开着一个文件")]
+STATES = [("cold", "冷启动", "编辑器没在运行"), ("background", "运行中，无窗口", "打开过文件，窗口已关"), ("window", "运行中，有窗口", "编辑器开着一个文件")]
 
 
 # --- drawing ---------------------------------------------------------------
