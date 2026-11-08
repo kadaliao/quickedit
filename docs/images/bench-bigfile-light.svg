@@ -3,55 +3,55 @@
 <text x="0.0" y="15.0" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="start" style="">冷启动</text>
 <text x="0.0" y="35.0" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="">编辑器没在运行</text>
 <text x="94.0" y="71.5" font-size="13" font-weight="600" fill="#0b0b0b" text-anchor="end" style="">QuickEdit</text>
-<path d="M104.0,59.0 H126.2 Q130.2,59.0 130.2,63.0 V71.0 Q130.2,75.0 126.2,75.0 H104.0 Z" fill="#2a78d6"/>
-<text x="136.2" y="71.5" font-size="12.5" font-weight="600" fill="#0b0b0b" text-anchor="start" style="font-variant-numeric: tabular-nums;">406 ms</text>
+<path d="M104.0,59.0 H130.5 Q134.5,59.0 134.5,63.0 V71.0 Q134.5,75.0 130.5,75.0 H104.0 Z" fill="#2a78d6"/>
+<text x="140.5" y="71.5" font-size="12.5" font-weight="600" fill="#0b0b0b" text-anchor="start" style="font-variant-numeric: tabular-nums;">517 ms</text>
 <text x="94.0" y="101.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">Zed</text>
-<path d="M104.0,89.0 H135.3 Q139.3,89.0 139.3,93.0 V101.0 Q139.3,105.0 135.3,105.0 H104.0 Z" fill="#8e8c84"/>
-<text x="145.3" y="101.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">548 ms</text>
-<text x="94.0" y="131.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">CotEditor</text>
-<path d="M104.0,119.0 H163.1 Q167.1,119.0 167.1,123.0 V131.0 Q167.1,135.0 163.1,135.0 H104.0 Z" fill="#8e8c84"/>
-<text x="173.1" y="131.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">979 ms</text>
-<text x="94.0" y="161.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">Sublime Text</text>
-<path d="M104.0,149.0 H165.6 Q169.6,149.0 169.6,153.0 V161.0 Q169.6,165.0 165.6,165.0 H104.0 Z" fill="#8e8c84"/>
-<text x="175.6" y="161.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">1,018 ms</text>
+<path d="M104.0,89.0 H143.1 Q147.1,89.0 147.1,93.0 V101.0 Q147.1,105.0 143.1,105.0 H104.0 Z" fill="#8e8c84"/>
+<text x="153.1" y="101.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">730 ms</text>
+<text x="94.0" y="131.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">Sublime Text</text>
+<path d="M104.0,119.0 H160.0 Q164.0,119.0 164.0,123.0 V131.0 Q164.0,135.0 160.0,135.0 H104.0 Z" fill="#8e8c84"/>
+<text x="170.0" y="131.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">1,016 ms</text>
+<text x="94.0" y="161.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">CotEditor</text>
+<path d="M104.0,149.0 H176.1 Q180.1,149.0 180.1,153.0 V161.0 Q180.1,165.0 176.1,165.0 H104.0 Z" fill="#8e8c84"/>
+<text x="186.1" y="161.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">1,289 ms</text>
 <text x="94.0" y="191.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">VS Code</text>
-<path d="M104.0,179.0 H208.3 Q212.3,179.0 212.3,183.0 V191.0 Q212.3,195.0 208.3,195.0 H104.0 Z" fill="#8e8c84"/>
-<text x="218.3" y="191.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">1,679 ms</text>
+<path d="M104.0,179.0 H222.0 Q226.0,179.0 226.0,183.0 V191.0 Q226.0,195.0 222.0,195.0 H104.0 Z" fill="#8e8c84"/>
+<text x="232.0" y="191.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">2,066 ms</text>
 <line x1="104.0" y1="50" x2="104.0" y2="204" stroke="#d6d4cc" stroke-width="1"/>
 <text x="332.0" y="15.0" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="start" style="">后台待命</text>
 <text x="332.0" y="35.0" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="">编辑器在运行，没有窗口</text>
 <text x="426.0" y="71.5" font-size="13" font-weight="600" fill="#0b0b0b" text-anchor="end" style="">QuickEdit</text>
-<path d="M436.0,59.0 H440.7 Q444.7,59.0 444.7,63.0 V71.0 Q444.7,75.0 440.7,75.0 H436.0 Z" fill="#2a78d6"/>
-<text x="450.7" y="71.5" font-size="12.5" font-weight="600" fill="#0b0b0b" text-anchor="start" style="font-variant-numeric: tabular-nums;">135 ms</text>
-<text x="426.0" y="101.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">Zed</text>
-<path d="M436.0,89.0 H444.7 Q448.7,89.0 448.7,93.0 V101.0 Q448.7,105.0 444.7,105.0 H436.0 Z" fill="#8e8c84"/>
-<text x="454.7" y="101.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">197 ms</text>
+<path d="M436.0,59.0 H440.0 Q444.0,59.0 444.0,63.0 V71.0 Q444.0,75.0 440.0,75.0 H436.0 Z" fill="#2a78d6"/>
+<text x="450.0" y="71.5" font-size="12.5" font-weight="600" fill="#0b0b0b" text-anchor="start" style="font-variant-numeric: tabular-nums;">135 ms</text>
+<text x="426.0" y="101.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">CotEditor</text>
+<path d="M436.0,89.0 H457.9 Q461.9,89.0 461.9,93.0 V101.0 Q461.9,105.0 457.9,105.0 H436.0 Z" fill="#8e8c84"/>
+<text x="467.9" y="101.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">438 ms</text>
 <text x="426.0" y="131.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">Sublime Text</text>
-<path d="M436.0,119.0 H463.6 Q467.6,119.0 467.6,123.0 V131.0 Q467.6,135.0 463.6,135.0 H436.0 Z" fill="#8e8c84"/>
-<text x="473.6" y="131.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">490 ms</text>
-<text x="426.0" y="161.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">VS Code</text>
-<path d="M436.0,149.0 H531.3 Q535.3,149.0 535.3,153.0 V161.0 Q535.3,165.0 531.3,165.0 H436.0 Z" fill="#8e8c84"/>
-<text x="541.3" y="161.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">1,540 ms</text>
-<text x="426.0" y="191.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">CotEditor</text>
-<path d="M436.0,179.0 H547.9 Q551.9,179.0 551.9,183.0 V191.0 Q551.9,195.0 547.9,195.0 H436.0 Z" fill="#8e8c84"/>
-<text x="557.9" y="191.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">1,797 ms</text>
+<path d="M436.0,119.0 H459.4 Q463.4,119.0 463.4,123.0 V131.0 Q463.4,135.0 459.4,135.0 H436.0 Z" fill="#8e8c84"/>
+<text x="469.4" y="131.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">464 ms</text>
+<text x="426.0" y="161.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">Zed</text>
+<path d="M436.0,149.0 H500.3 Q504.3,149.0 504.3,153.0 V161.0 Q504.3,165.0 500.3,165.0 H436.0 Z" fill="#8e8c84"/>
+<text x="510.3" y="161.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">1,157 ms</text>
+<text x="426.0" y="191.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">VS Code</text>
+<path d="M436.0,179.0 H522.9 Q526.9,179.0 526.9,183.0 V191.0 Q526.9,195.0 522.9,195.0 H436.0 Z" fill="#8e8c84"/>
+<text x="532.9" y="191.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">1,539 ms</text>
 <line x1="436.0" y1="50" x2="436.0" y2="204" stroke="#d6d4cc" stroke-width="1"/>
 <text x="664.0" y="15.0" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="start" style="">已有窗口</text>
 <text x="664.0" y="35.0" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="">编辑器开着一个文件</text>
-<text x="758.0" y="71.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">Zed</text>
-<path d="M768.0,59.0 H769.8 Q771.6,59.0 771.6,60.8 V73.2 Q771.6,75.0 769.8,75.0 H768.0 Z" fill="#8e8c84"/>
-<text x="777.6" y="71.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">56 ms</text>
-<text x="758.0" y="101.5" font-size="13" font-weight="600" fill="#0b0b0b" text-anchor="end" style="">QuickEdit</text>
-<path d="M768.0,89.0 H770.5 Q773.0,89.0 773.0,91.5 V102.5 Q773.0,105.0 770.5,105.0 H768.0 Z" fill="#2a78d6"/>
-<text x="779.0" y="101.5" font-size="12.5" font-weight="600" fill="#0b0b0b" text-anchor="start" style="font-variant-numeric: tabular-nums;">77 ms</text>
-<text x="758.0" y="131.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">VS Code</text>
-<path d="M768.0,119.0 H789.4 Q793.4,119.0 793.4,123.0 V131.0 Q793.4,135.0 789.4,135.0 H768.0 Z" fill="#8e8c84"/>
-<text x="799.4" y="131.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">394 ms</text>
+<text x="758.0" y="71.5" font-size="13" font-weight="600" fill="#0b0b0b" text-anchor="end" style="">QuickEdit</text>
+<path d="M768.0,59.0 H770.0 Q772.0,59.0 772.0,61.0 V73.0 Q772.0,75.0 770.0,75.0 H768.0 Z" fill="#2a78d6"/>
+<text x="778.0" y="71.5" font-size="12.5" font-weight="600" fill="#0b0b0b" text-anchor="start" style="font-variant-numeric: tabular-nums;">68 ms</text>
+<text x="758.0" y="101.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">VS Code</text>
+<path d="M768.0,89.0 H790.5 Q794.5,89.0 794.5,93.0 V101.0 Q794.5,105.0 790.5,105.0 H768.0 Z" fill="#8e8c84"/>
+<text x="800.5" y="101.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">448 ms</text>
+<text x="758.0" y="131.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">CotEditor</text>
+<path d="M768.0,119.0 H791.0 Q795.0,119.0 795.0,123.0 V131.0 Q795.0,135.0 791.0,135.0 H768.0 Z" fill="#8e8c84"/>
+<text x="801.0" y="131.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">457 ms</text>
 <text x="758.0" y="161.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">Sublime Text</text>
-<path d="M768.0,149.0 H795.7 Q799.7,149.0 799.7,153.0 V161.0 Q799.7,165.0 795.7,165.0 H768.0 Z" fill="#8e8c84"/>
-<text x="805.7" y="161.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">492 ms</text>
-<text x="758.0" y="191.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">CotEditor</text>
-<path d="M768.0,179.0 H886.0 Q890.0,179.0 890.0,183.0 V191.0 Q890.0,195.0 886.0,195.0 H768.0 Z" fill="#8e8c84"/>
-<text x="896.0" y="191.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">1,892 ms</text>
+<path d="M768.0,149.0 H792.2 Q796.2,149.0 796.2,153.0 V161.0 Q796.2,165.0 792.2,165.0 H768.0 Z" fill="#8e8c84"/>
+<text x="802.2" y="161.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">478 ms</text>
+<text x="758.0" y="191.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">Zed</text>
+<path d="M768.0,179.0 H827.4 Q831.4,179.0 831.4,183.0 V191.0 Q831.4,195.0 827.4,195.0 H768.0 Z" fill="#8e8c84"/>
+<text x="837.4" y="191.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">1,074 ms</text>
 <line x1="768.0" y1="50" x2="768.0" y2="204" stroke="#d6d4cc" stroke-width="1"/>
 </svg>

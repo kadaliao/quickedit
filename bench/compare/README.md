@@ -3,6 +3,25 @@
 同一批文件，分别用 QuickEdit、TextEdit、Sublime Text、CotEditor、Zed、VS Code 打开
 （Markdown 另加 Typora），测从"请求打开"到"文件内容稳定显示在窗口里"要多久。
 
+## 统一标准（README 用的）
+
+`fair.sh` 在一次测试里让每个编辑器依次在同样的三种状态下打开同样的四个文件，各 3 次：
+
+- **冷启动**：编辑器没在运行。
+- **后台待命**：编辑器在运行、没有窗口：先打开一个文件，再关掉它的窗口。
+- **已有窗口**：编辑器开着一个文件，再打开新文件。
+
+大家显示同样的内容：Markdown 都显示源码（QuickEdit 测试时关掉"打开 Markdown 时显示预览"），谁都不开语言服务器；
+Zed 打开"信任所有项目"，否则它每次都弹 Restricted Mode 对话框、压暗编辑区，语法高亮计不进去。
+TextEdit 不参加：它不做语法高亮。结果在 `results/fair.jsonl`，`python3 charts.py` 画 README 的图，并写出 `results/FAIR.md` 的表格。
+
+```sh
+APPS_DIR=下载的编辑器所在目录 ./fair.sh 3
+python3 charts.py
+```
+
+下面是更早的测法和结果，留作记录。
+
 ## 场景
 
 - **冷启动**：编辑器没在运行，像在 Finder 里双击文件那样打开它。

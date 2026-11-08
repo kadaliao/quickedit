@@ -22,88 +22,94 @@
 ## 为什么快
 
 - **后台待命，双击即开**：登录时在后台启动、不开窗口，关掉最后一个窗口也不退出，还总备着一个隐藏窗口。
-  双击文件时只需把内容放进窗口：10.8 万行的 Go 文件 135 毫秒显示完毕。不想要可以在应用菜单里关掉。
-- **开着窗口时开成标签页**：不用新建窗口，10.8 万行的 Go 文件 77 毫秒，用 `qe` 打开 54 毫秒。
-- **冷启动也快**：没在运行时打开同一个文件 406 毫秒，比 Zed、Sublime Text、VS Code 都快。
-- **文件再大也不拖慢**：只排版看得见的行，60 万行、44 MB 的日志 0.3 秒打开。
+  双击 10.8 万行的 Go 文件 135 毫秒显示完毕。不想要可以在应用菜单里关掉。
+- **开着窗口时开成标签页**：不用新建窗口，同一个文件 68 毫秒。
+- **冷启动也快**：没在运行时打开同一个文件 517 毫秒，比 Zed、Sublime Text、VS Code、CotEditor 都快。
+- **文件再大也不拖慢**：只排版看得见的行，多核并行读入；60 万行、44 MB 的日志后台待命时 176 毫秒打开。
 - **轻**：原生 GPU 绘制（[MyGo](https://github.com/egoist/mygo)），没有 Electron，没有 WebView。
-  应用 12 MB，后台待命时占约 45 MB 内存。
+  应用 12 MB，后台待命时占约 50 MB 内存。
 - **命令行直达**：`qe` 经本地 socket 把文件直接交给后台的 QuickEdit，不经过系统转发。
 
 ## 速度对比
 
-同一台 Mac（Apple M2，macOS 26），各编辑器在**同样的状态**下打开同样的文件。计时从请求打开（与在 Finder 里双击走同一条路），
-到内容（含语法高亮、Markdown 渲染）显示稳定、窗口到了最前面为止，越短越好。
+同一台 Mac（Apple M2，macOS 26），一次测完：QuickEdit、Sublime Text、Zed、CotEditor、VS Code 依次在**同样的三种状态**下，
+打开**同样的四个文件**，各测 3 次取中位数。计时从请求打开（与在 Finder 里双击走同一条路），到内容（含语法高亮）显示稳定、
+窗口到了最前面为止，越短越好。Markdown 大家都显示带高亮的源码。
 
 **打开 10.8 万行的 Go 文件（3.1 MB）**
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/bench-bigfile-dark.svg">
-  <img src="docs/images/bench-bigfile-light.svg" width="100%" alt="打开 10.8 万行的 Go 文件：冷启动 QuickEdit 406 毫秒最快；后台待命 QuickEdit 135 毫秒最快；已有窗口时 Zed 56 毫秒最快，QuickEdit 77 毫秒第二">
+  <img src="docs/images/bench-bigfile-light.svg" width="100%" alt="打开 10.8 万行的 Go 文件：冷启动 QuickEdit 517 毫秒，第二名 Zed 730；后台待命 QuickEdit 135 毫秒，第二名 CotEditor 438；已有窗口 QuickEdit 68 毫秒，第二名 VS Code 448">
 </picture>
 
-- 冷启动和后台待命，QuickEdit 都最快。
-- 编辑器已经开着窗口时，新文件都开成标签页：Zed 56 毫秒最快，QuickEdit 77 毫秒排第二；用 `qe` 命令打开是 54 毫秒。
+三种状态都是 QuickEdit 第一：冷启动 517 毫秒（第二名 Zed 730），后台待命 135 毫秒（第二名 CotEditor 438），
+已有窗口 68 毫秒（第二名 VS Code 448）。
 
-**各种文件**（各编辑器都在后台待命、没有窗口）
+**依次打开四个文件的总时间**
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/bench-files-dark.svg">
-  <img src="docs/images/bench-files-light.svg" width="100%" alt="编辑器都在后台待命时打开四种文件：大 Go 文件和 Markdown QuickEdit 最快；1,300 行的 Go 文件 Sublime Text 最快，QuickEdit 第二；44 MB 日志 Zed 最快，QuickEdit 第二">
+  <img src="docs/images/bench-files-light.svg" width="100%" alt="依次打开四个文件的总时间：冷启动 QuickEdit 2,214 毫秒，Zed 2,819；后台待命 QuickEdit 625 毫秒，Zed 1,779；已有窗口 QuickEdit 321 毫秒，Zed 1,340">
 </picture>
 
-大文件和 Markdown，QuickEdit 最快。1,300 行的小文件，Sublime Text 快 21 毫秒；44 MB 的日志，Zed 快 70 毫秒。
-四个文件加起来 QuickEdit 用时最短：721 毫秒，第二的 Zed 是 855 毫秒。
+三种状态都是 QuickEdit 最短：冷启动 2.2 秒（Zed 2.8 秒），后台待命 0.6 秒（Zed 1.8 秒），已有窗口 0.3 秒（Zed 1.3 秒）。
+
+逐个文件看（下表），12 项里 QuickEdit 9 项第一。另外 3 项都是 1,300 行左右的小文件：后台待命时打开小 Go 文件和 Markdown，
+Sublime Text 分别快 58 和 19 毫秒；已有窗口时打开小 Go 文件，Zed 快 13 毫秒。
 
 **体积和内存**
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/bench-footprint-dark.svg">
-  <img src="docs/images/bench-footprint-light.svg" width="100%" alt="应用体积：QuickEdit 12 MB，其他 129 到 963 MB；打开大文件后的内存：QuickEdit 123 MB 最少，其他 203 到 1,349 MB">
+  <img src="docs/images/bench-footprint-light.svg" width="100%" alt="应用体积：QuickEdit 12 MB，其他 129 到 963 MB；冷启动打开 10.8 万行 Go 文件后的内存：QuickEdit 124 MB 最少，其他 197 到 1,370 MB">
 </picture>
 
 <details>
-<summary>全部数据（毫秒，粗体为每行最快）</summary>
+<summary>全部数据（毫秒，3 次中位数，粗体为每行最快）</summary>
 
 文件：`small.go` 为 1,300 行的 Go 源码；`big.go` 为 10.8 万行、3.1 MB 的 Go 源码；`doc.md` 为 1,332 行中英混排的 Markdown；
 `huge.log` 为 60 万行、44 MB 的日志。
 
-**冷启动**：编辑器没在运行。5 次中位数。
+**冷启动**：编辑器没在运行。
 
-|  | QuickEdit | Sublime Text | Zed | CotEditor | VS Code |
+| | QuickEdit | Sublime Text | Zed | CotEditor | VS Code |
 |---|---:|---:|---:|---:|---:|
-| small.go | **403** | 558 | 635 | 944 | 1,573 |
-| big.go | **406** | 1,018 | 548 | 979 | 1,679 |
-| doc.md | **476** | 598 | 560 | 898 | 1,837 |
-| huge.log | **531** | 1,699 | 620 | 1,391 | 1,905 |
+| small.go | **531** | 616 | 623 | 1,115 | 1,739 |
+| big.go | **517** | 1,016 | 730 | 1,289 | 2,066 |
+| doc.md | **565** | 685 | 698 | 1,183 | 2,232 |
+| huge.log | **601** | 1,712 | 768 | 1,558 | 2,508 |
 
-**后台待命**：编辑器在运行，没有窗口。3 次中位数。
+**后台待命**：编辑器在运行，没有窗口。
 
-|  | QuickEdit | Sublime Text | Zed | CotEditor | VS Code |
+| | QuickEdit | Sublime Text | Zed | CotEditor | VS Code |
 |---|---:|---:|---:|---:|---:|
-| small.go | 135 | **114** | 202 | 304 | 1,326 |
-| big.go | **135** | 490 | 197 | 1,797 | 1,540 |
-| doc.md | **137** | 196 | 212 | 379 | 1,848 |
-| huge.log | 314 | 1,211 | **244** | 803 | 1,890 |
+| small.go | 180 | **122** | 203 | 344 | 1,400 |
+| big.go | **135** | 464 | 1,157 | 438 | 1,539 |
+| doc.md | 134 | **115** | 188 | 313 | 1,606 |
+| huge.log | **176** | 1,166 | 231 | 865 | 1,894 |
 
-**已有窗口**：编辑器开着一个文件，再打开另一个。5 次中位数。
+**已有窗口**：编辑器开着一个文件。
 
-|  | QuickEdit | Sublime Text | Zed | CotEditor | VS Code |
+| | QuickEdit | Sublime Text | Zed | CotEditor | VS Code |
 |---|---:|---:|---:|---:|---:|
-| small.go | 67 | 120 | **53** | 352 | 246 |
-| big.go | 77 | 492 | **56** | 1,892 | 394 |
-| doc.md | 145 | 161 | **52** | 361 | 417 |
-| huge.log | 229 | 1,202 | **57** | 838 | 925 |
-
-QuickEdit、Sublime Text、Zed、VS Code 在原窗口里开标签页，CotEditor 每个文件开一个新窗口。QuickEdit 这一列是加了标签页后重测的。
-QuickEdit 打开 Markdown 时显示渲染后的预览，其他编辑器显示源码。
+| small.go | 70 | 148 | **57** | 429 | 1,264 |
+| big.go | **68** | 478 | 1,074 | 457 | 448 |
+| doc.md | **67** | 182 | 72 | 494 | 425 |
+| huge.log | **116** | 1,209 | 137 | 901 | 1,058 |
 
 </details>
 
-为了公平：测试期间关掉系统的窗口打开动画；每个编辑器都关掉恢复上次窗口的功能；VS Code 用临时数据目录、不装扩展；
-每个编辑器先启动一次不计时；后台待命时，每个编辑器（包括 QuickEdit）都先打开一个文件、再关掉窗口。
-版本：Sublime Text 4（build 4215）、CotEditor 7.1.3、Zed 1.27.0、VS Code 1.145.2。
-测法、脚本和原始数据见 [bench/compare/](bench/compare/)。
+测法：
+
+- **三种状态**：冷启动是编辑器没在运行；后台待命是编辑器在运行、没有窗口（每个编辑器，包括 QuickEdit，都先打开一个文件、再关掉窗口）；
+  已有窗口是编辑器开着一个文件，新文件开成标签页（CotEditor 开新窗口）。
+- **显示同样的内容**：Markdown 都显示源码（QuickEdit 测试时关掉了"打开 Markdown 时显示预览"）；谁都不开语言服务器。
+  Zed 打开了"信任所有项目"：否则它打开每个文件都弹 Restricted Mode 对话框、压暗编辑区，语法高亮就计不进去。
+- **为了公平**：测试期间关掉系统的窗口打开动画；关掉每个编辑器恢复上次窗口的功能；VS Code 用临时数据目录、不装扩展；
+  每个编辑器先启动一次不计时。TextEdit 不参加：它不做语法高亮。
+- 版本：Sublime Text 4（build 4215）、CotEditor 7.1.3、Zed 1.27.0、VS Code 1.145.2。2026-11-08 测试，脚本 `bench/compare/fair.sh`，
+  原始数据 `bench/compare/results/fair.jsonl`，见 [bench/compare/](bench/compare/)。
 
 ## 按文件自适应
 

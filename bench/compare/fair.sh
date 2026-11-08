@@ -40,7 +40,10 @@ for f in small.go big.go doc.md; do cp "$root/bench/files/$f" "$src/$f"; done
 st="$HOME/Library/Application Support/Sublime Text/Packages/User"
 mkdir -p "$st" "$HOME/.config/zed" "$vscode_data/user/User"
 printf '{ "hot_exit": "disabled", "remember_open_files": false, "update_check": false }\n' > "$st/Preferences.sublime-settings"
-printf '{ "restore_on_startup": "none", "auto_update": false, "telemetry": { "diagnostics": false, "metrics": false } }\n' > "$HOME/.config/zed/settings.json"
+# Zed asks about every file outside a trusted project, over the dimmed
+# editor, which then shows no highlighting: trusted, as after the user's
+# first answer, it shows the file as usual.
+printf '{ "restore_on_startup": "none", "auto_update": false, "session": { "trust_all_worktrees": true }, "enable_language_server": false, "telemetry": { "diagnostics": false, "metrics": false } }\n' > "$HOME/.config/zed/settings.json"
 printf '{ "window.restoreWindows": "none", "workbench.startupEditor": "none", "update.mode": "none", "telemetry.telemetryLevel": "off", "security.workspace.trust.enabled": false, "workbench.tips.enabled": false }\n' > "$vscode_data/user/User/settings.json"
 defaults write com.coteditor.CotEditor ApplePersistenceIgnoreState -bool YES
 
