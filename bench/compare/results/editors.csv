@@ -1,0 +1,51 @@
+editor,file,file_label,mode,visual_ms,window_ms,visual_min_ms,visual_max_ms,memory_mb,runs
+CotEditor,big.go,10.8 万行 Go,cold,979,952,949,2367,225,5
+CotEditor,big.go,10.8 万行 Go,warm,1892,412,413,1918,276,5
+CotEditor,doc.md,Markdown,cold,898,897,861,934,78,5
+CotEditor,doc.md,Markdown,warm,361,361,349,375,302,5
+CotEditor,huge.log,44 MB 日志,cold,1391,1390,1331,1411,472,5
+CotEditor,huge.log,44 MB 日志,warm,838,836,811,931,718,5
+CotEditor,small.go,"1,300 行 Go",cold,944,943,859,1018,75,5
+CotEditor,small.go,"1,300 行 Go",warm,352,351,317,374,98,5
+QuickEdit,big.go,10.8 万行 Go,cold,406,406,402,478,123,5
+QuickEdit,big.go,10.8 万行 Go,warm,135,134,122,172,165,5
+QuickEdit,doc.md,Markdown,cold,476,475,433,490,98,5
+QuickEdit,doc.md,Markdown,warm,168,167,164,187,161,5
+QuickEdit,huge.log,44 MB 日志,cold,531,530,512,579,267,5
+QuickEdit,huge.log,44 MB 日志,warm,251,251,219,307,369,5
+QuickEdit,small.go,"1,300 行 Go",cold,403,402,391,433,116,5
+QuickEdit,small.go,"1,300 行 Go",warm,130,130,115,148,137,5
+Sublime Text,big.go,10.8 万行 Go,cold,1018,609,980,1208,203,5
+Sublime Text,big.go,10.8 万行 Go,warm,492,107,477,523,184,5
+Sublime Text,doc.md,Markdown,cold,598,581,555,1077,212,5
+Sublime Text,doc.md,Markdown,warm,161,102,121,184,229,5
+Sublime Text,huge.log,44 MB 日志,cold,1699,556,1648,1744,345,5
+Sublime Text,huge.log,44 MB 日志,warm,1202,109,1128,1344,430,5
+Sublime Text,small.go,"1,300 行 Go",cold,558,557,536,578,179,5
+Sublime Text,small.go,"1,300 行 Go",warm,120,119,107,179,152,5
+TextEdit,big.go,10.8 万行 Go,cold,458,458,452,538,45,5
+TextEdit,big.go,10.8 万行 Go,warm,182,181,177,185,54,5
+TextEdit,doc.md,Markdown,cold,454,453,429,482,30,5
+TextEdit,doc.md,Markdown,warm,167,167,165,188,59,5
+TextEdit,huge.log,44 MB 日志,cold,776,775,736,794,244,5
+TextEdit,huge.log,44 MB 日志,warm,496,495,488,518,278,5
+TextEdit,small.go,"1,300 行 Go",cold,449,448,438,489,29,5
+TextEdit,small.go,"1,300 行 Go",warm,166,165,155,176,34,5
+Typora,doc.md,Markdown,cold,1107,535,1005,1171,46,5
+Typora,doc.md,Markdown,warm,582,140,528,647,57,5
+VS Code,big.go,10.8 万行 Go,cold,1679,1050,1650,1730,1349,5
+VS Code,big.go,10.8 万行 Go,warm,394,393,386,407,1278,5
+VS Code,doc.md,Markdown,cold,1837,1065,1714,1856,1437,5
+VS Code,doc.md,Markdown,warm,417,207,356,456,1513,5
+VS Code,huge.log,44 MB 日志,cold,1905,1072,1814,2299,1778,5
+VS Code,huge.log,44 MB 日志,warm,925,890,880,1055,1982,5
+VS Code,small.go,"1,300 行 Go",cold,1573,1107,1461,1589,1186,5
+VS Code,small.go,"1,300 行 Go",warm,246,231,220,328,1191,5
+Zed,big.go,10.8 万行 Go,cold,548,547,537,596,269,5
+Zed,big.go,10.8 万行 Go,warm,56,55,43,60,432,5
+Zed,doc.md,Markdown,cold,560,559,520,604,176,5
+Zed,doc.md,Markdown,warm,52,51,47,92,433,5
+Zed,huge.log,44 MB 日志,cold,620,619,572,647,285,5
+Zed,huge.log,44 MB 日志,warm,57,57,42,125,434,5
+Zed,small.go,"1,300 行 Go",cold,635,634,498,655,155,5
+Zed,small.go,"1,300 行 Go",warm,53,53,44,77,432,5

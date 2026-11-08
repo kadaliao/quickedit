@@ -6,3 +6,4 @@ bench/run/run
 bench/tools/winshot
 build/
 .mygo/
+bench/compare/measure

@@ -1,0 +1,245 @@
+<meta name="dash-one-writer">
+<style>
+  .qe-page { display: flex; flex-direction: column; gap: var(--cds-gap-xl); max-width: 72rem; margin-inline: auto; font-family: var(--font-anthropic-sans); }
+  .qe-head { display: flex; flex-direction: column; gap: var(--cds-gap-sm); }
+  .qe-head h1 { margin: 0; font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); text-wrap: balance; }
+  .qe-lede { margin: 0; max-width: 46rem; font-size: var(--cds-font-size-body); line-height: 1.7; }
+  .qe-page .qe-num { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .qe-section { display: flex; flex-direction: column; gap: var(--cds-gap-md); }
+  .qe-section h2 { margin: 0; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); text-wrap: balance; }
+  .qe-section > p, .qe-card > p { margin: 0; max-width: 46rem; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.6; }
+  .qe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: var(--cds-gap-md); }
+  .qe-card { display: flex; flex-direction: column; gap: var(--cds-gap-sm); min-width: 0; padding: var(--cds-pad-lg); background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); }
+  .qe-card h3 { margin: 0; font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); }
+  .qe-card h3 span { color: var(--color-fg-muted); font-weight: 400; }
+  .qe-chart { position: relative; min-height: 13rem; }
+  .qe-chart.qe-short { min-height: 9.5rem; }
+  .qe-chart svg { display: block; overflow: visible; }
+  .qe-chart text { font-size: var(--cds-font-size-caption); fill: var(--color-fg-muted); font-variant-numeric: tabular-nums; }
+  .qe-chart text.qe-me { fill: var(--color-fg); font-weight: 600; }
+  .qe-tip { position: absolute; z-index: 2; pointer-events: none; max-width: 16rem; padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); line-height: 1.5; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); }
+  .qe-tip strong { display: block; color: var(--cds-text-secondary); font-weight: 400; }
+  .qe-tip span { display: block; font-variant-numeric: tabular-nums; }
+  .qe-method { max-width: 46rem; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.7; }
+  .qe-method summary { cursor: pointer; color: var(--color-fg); font-size: var(--cds-font-size-body); }
+  .qe-method dl { margin: var(--cds-gap-sm) 0 0; display: grid; gap: var(--cds-gap-xs); }
+  .qe-method dt { color: var(--color-fg); font-weight: var(--cds-font-weight-medium); margin-top: var(--cds-gap-sm); }
+  .qe-method dd { margin: 0; }
+  [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+  [data-dash-source-state=empty] { color: transparent; }
+</style>
+
+<div class="qe-page">
+  <header class="qe-head" id="summary">
+    <h1>QuickEdit 打开速度对比</h1>
+    <p class="qe-lede">
+      编辑器没在运行时，双击打开一个 10.8 万行的 Go 文件：QuickEdit
+      <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=QuickEdit&amp;file=big.go&amp;mode=cold">—</b> 毫秒，TextEdit
+      <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=TextEdit&amp;file=big.go&amp;mode=cold">—</b>，Zed
+      <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=Zed&amp;file=big.go&amp;mode=cold">—</b>，Sublime Text
+      <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=Sublime Text&amp;file=big.go&amp;mode=cold">—</b>，VS Code
+      <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=VS Code&amp;file=big.go&amp;mode=cold">—</b>。TextEdit 和它接近，但不做语法高亮。
+      编辑器已经开着时，Zed 把文件开成标签页最快，
+      <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=Zed&amp;file=big.go&amp;mode=warm">—</b> 毫秒；QuickEdit 每个文件开一个新窗口，
+      <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=QuickEdit&amp;file=big.go&amp;mode=warm">—</b> 毫秒。
+    </p>
+  </header>
+
+  <section class="qe-section" id="cold">
+    <h2>冷启动：编辑器没在运行，双击文件</h2>
+    <p>从请求打开到文件内容（包括语法高亮和 Markdown 渲染）在窗口里稳定下来的毫秒数，5 次的中位数，越短越好。四张图用同一个刻度。</p>
+    <div class="qe-grid">
+      <article class="qe-card">
+        <h3>small.go <span>Go 源码，1,300 行</span></h3>
+        <div class="qe-chart dash-skeleton" id="cold-small" data-draw="bars" data-source="editors" data-mode="cold" data-file="small.go" data-metric="visual_ms" data-scale="mode"></div>
+      </article>
+      <article class="qe-card">
+        <h3>big.go <span>Go 源码，10.8 万行，3.1 MB</span></h3>
+        <div class="qe-chart dash-skeleton" id="cold-big" data-draw="bars" data-source="editors" data-mode="cold" data-file="big.go" data-metric="visual_ms" data-scale="mode"></div>
+      </article>
+      <article class="qe-card">
+        <h3>doc.md <span>中英混排 Markdown，1,332 行</span></h3>
+        <div class="qe-chart dash-skeleton" id="cold-doc" data-draw="bars" data-source="editors" data-mode="cold" data-file="doc.md" data-metric="visual_ms" data-scale="mode"></div>
+      </article>
+      <article class="qe-card">
+        <h3>huge.log <span>日志，60 万行，44 MB</span></h3>
+        <div class="qe-chart dash-skeleton" id="cold-huge" data-draw="bars" data-source="editors" data-mode="cold" data-file="huge.log" data-metric="visual_ms" data-scale="mode"></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="qe-section" id="warm">
+    <h2>已运行：编辑器开着，再打开一个文件</h2>
+    <p>Sublime Text、Zed 和 VS Code 在原来的窗口里开标签页，不用新建窗口；TextEdit、CotEditor、Typora 和 QuickEdit 每个文件开一个新窗口。在 macOS 上，新建窗口本身就占了打开时间的大头。</p>
+    <div class="qe-grid">
+      <article class="qe-card">
+        <h3>small.go <span>Go 源码，1,300 行</span></h3>
+        <div class="qe-chart dash-skeleton" id="warm-small" data-draw="bars" data-source="editors" data-mode="warm" data-file="small.go" data-metric="visual_ms" data-scale="mode"></div>
+      </article>
+      <article class="qe-card">
+        <h3>big.go <span>Go 源码，10.8 万行，3.1 MB</span></h3>
+        <div class="qe-chart dash-skeleton" id="warm-big" data-draw="bars" data-source="editors" data-mode="warm" data-file="big.go" data-metric="visual_ms" data-scale="mode"></div>
+      </article>
+      <article class="qe-card">
+        <h3>doc.md <span>中英混排 Markdown，1,332 行</span></h3>
+        <div class="qe-chart dash-skeleton" id="warm-doc" data-draw="bars" data-source="editors" data-mode="warm" data-file="doc.md" data-metric="visual_ms" data-scale="mode"></div>
+      </article>
+      <article class="qe-card">
+        <h3>huge.log <span>日志，60 万行，44 MB</span></h3>
+        <div class="qe-chart dash-skeleton" id="warm-huge" data-draw="bars" data-source="editors" data-mode="warm" data-file="huge.log" data-metric="visual_ms" data-scale="mode"></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="qe-section" id="memory-frameworks">
+    <h2>内存和框架选型</h2>
+    <div class="qe-grid">
+      <article class="qe-card">
+        <h3>内存 <span>冷启动打开 big.go 之后</span></h3>
+        <p>编辑器全部进程的物理内存之和，包括 VS Code 和 Zed 的辅助进程。Typora 只测了 Markdown，不在此列。</p>
+        <div class="qe-chart dash-skeleton" id="memory" data-draw="bars" data-source="editors" data-mode="cold" data-file="big.go" data-metric="memory_mb" data-unit="MB"></div>
+      </article>
+      <article class="qe-card">
+        <h3>为什么用 MyGo <span>五种 UI 框架写同一个最小编辑器</span></h3>
+        <p>打开 big.go，到带语法高亮的内容出现的毫秒数，10 次的中位数。iced 和 egui 一次排版整个文件；GPUI 先显示白字，再在后台上色；原生 AppKit 版不做高亮，是速度下限。</p>
+        <div class="qe-chart qe-short dash-skeleton" id="frameworks" data-draw="fwbars" data-source="frameworks" data-file="big.go"></div>
+      </article>
+    </div>
+  </section>
+
+  <details class="qe-method" id="method">
+    <summary>测试方法</summary>
+    <dl>
+      <dt>机器</dt>
+      <dd>Mac mini（Apple M2，16 GB），macOS 26，2026 年 11 月 8 日。</dd>
+      <dt>编辑器</dt>
+      <dd>QuickEdit 0.1.0（MyGo 0.8.3），TextEdit（系统自带），Sublime Text 4（build 4215），CotEditor 7.1.3，Zed 1.27.0，VS Code 1.145.2，Typora（本机已装）。</dd>
+      <dt>怎么打开</dt>
+      <dd>用 NSWorkspace 让编辑器打开文件，和在 Finder 里双击走同一条路。冷启动前先退出编辑器，并删掉它保存的窗口状态。</dd>
+      <dt>怎么计时</dt>
+      <dd>窗口服务器里出现标题含文件名的窗口后，不断截取这个窗口，取最后一次有超过 1% 像素变化的时刻，此后 1.5 秒不再变化。光标闪烁和滚动条淡出变化太小，不计入；文字出现、语法高亮上色、Markdown 渲染都计入。</dd>
+      <dt>为了公平</dt>
+      <dd>测试期间关闭系统的窗口打开动画；每个编辑器都关掉恢复上次窗口的功能；VS Code 用临时数据目录启动，不装扩展；每个编辑器先启动一次不计时，排除系统第一次运行程序时的检查。</dd>
+      <dt>没有测的</dt>
+      <dd>滚动和输入的流畅度、搜索速度、插件生态。CotEditor 和 TextEdit 是原生 AppKit 应用，打开大文件时会在后台继续排版，这里只计到画面稳定为止。</dd>
+    </dl>
+  </details>
+</div>
+
+<script>
+  const fmt = d3.format(',');
+
+  // The rows a mark's data-where names: col=value pairs joined by &.
+  const where = (el) => {
+    const out = {};
+    for (const part of (el.dataset.where || '').split('&')) {
+      if (!part) continue;
+      const [k, v = ''] = part.split('=');
+      out[decodeURIComponent(k)] = decodeURIComponent(v);
+    }
+    return out;
+  };
+
+  dash.draw('cell', (el) => {
+    const d = dash.data(el.dataset.source);
+    if (d.status !== 'ok') { el.textContent = '—'; return; }
+    const w = where(el);
+    const row = d.data.find((r) => Object.entries(w).every(([k, v]) => String(r[k]) === v));
+    el.textContent = row ? fmt(Number(row[el.dataset.field])) : '—';
+  });
+
+  // bars draws a horizontal bar per item, sorted as given, QuickEdit's (or
+  // MyGo's) in the accent color, with a tooltip.
+  function bars(el, items, max, unit) {
+    const W = Math.max(240, el.clientWidth);
+    const pitch = 30, bh = 16;
+    el.replaceChildren();
+    el.classList.remove('dash-skeleton');
+    const svg = d3.select(el).append('svg').attr('width', '100%');
+    const probe = svg.append('text');
+    let lw = 0;
+    for (const it of items) { probe.text(it.label); lw = Math.max(lw, probe.node().getComputedTextLength()); }
+    probe.text(`${fmt(max)} ${unit}`);
+    const vw = probe.node().getComputedTextLength() + 10;
+    probe.remove();
+    const x0 = lw + 10;
+    const x = d3.scaleLinear([0, max], [0, Math.max(30, W - x0 - vw)]);
+    const H = items.length * pitch;
+    svg.attr('viewBox', `0 0 ${W} ${H}`).attr('height', H);
+    const g = svg.selectAll('g').data(items).join('g').attr('transform', (d, i) => `translate(0,${i * pitch})`);
+    g.append('text').attr('class', (d) => (d.me ? 'qe-me' : null))
+      .attr('x', lw).attr('y', pitch / 2).attr('dy', '0.35em').attr('text-anchor', 'end').text((d) => d.label);
+    g.append('rect').attr('x', x0).attr('y', (pitch - bh) / 2).attr('height', bh).attr('rx', 3)
+      .attr('width', (d) => Math.max(2, x(d.value)))
+      .style('fill', (d) => (d.me ? dash.colors[0] : 'var(--cds-chart-muted)'));
+    g.append('text').attr('class', (d) => (d.me ? 'qe-me' : null))
+      .attr('x', (d) => x0 + Math.max(2, x(d.value)) + 6).attr('y', pitch / 2).attr('dy', '0.35em')
+      .text((d) => `${fmt(d.value)} ${unit}`);
+
+    const tip = document.createElement('div');
+    tip.className = 'qe-tip';
+    tip.hidden = true;
+    el.appendChild(tip);
+    g.append('rect').attr('width', W).attr('height', pitch).style('fill', 'transparent')
+      .on('pointerenter pointermove', (ev, d) => {
+        const head = document.createElement('strong');
+        head.textContent = d.label;
+        tip.replaceChildren(head, ...d.tip.map((line) => { const s = document.createElement('span'); s.textContent = line; return s; }));
+        tip.hidden = false;
+        const [px, py] = d3.pointer(ev, el);
+        const left = Math.min(px + 12, el.clientWidth - tip.offsetWidth);
+        tip.style.left = `${Math.max(0, left)}px`;
+        tip.style.top = `${py + 14}px`;
+      })
+      .on('pointerleave', () => { tip.hidden = true; });
+  }
+
+  dash.draw('bars', (el) => {
+    const d = dash.data('editors');
+    if (d.status !== 'ok') {
+      el.replaceChildren();
+      el.classList.toggle('dash-skeleton', d.status === 'loading');
+      return;
+    }
+    const { mode, file, metric } = el.dataset;
+    const unit = el.dataset.unit || 'ms';
+    const rows = d.data.filter((r) => r.mode === mode && r.file === file);
+    const scaleRows = el.dataset.scale === 'mode' ? d.data.filter((r) => r.mode === mode) : rows;
+    const max = d3.max(scaleRows, (r) => Number(r[metric]));
+    const items = rows.map((r) => ({
+      label: r.editor,
+      value: Number(r[metric]),
+      me: r.editor === 'QuickEdit',
+      tip: metric === 'memory_mb'
+        ? [`${fmt(Number(r.memory_mb))} MB，${r.runs} 次中位数`]
+        : [
+            `画面稳定 ${fmt(Number(r.visual_ms))} ms（${r.runs} 次中位数）`,
+            `最快 ${fmt(Number(r.visual_min_ms))} ms，最慢 ${fmt(Number(r.visual_max_ms))} ms`,
+            `窗口出现 ${fmt(Number(r.window_ms))} ms`,
+          ],
+    })).sort((a, b) => a.value - b.value);
+    bars(el, items, max, unit);
+  });
+
+  dash.draw('fwbars', (el) => {
+    const d = dash.data('frameworks');
+    if (d.status !== 'ok') {
+      el.replaceChildren();
+      el.classList.toggle('dash-skeleton', d.status === 'loading');
+      return;
+    }
+    const rows = d.data.filter((r) => r.file === el.dataset.file);
+    const max = d3.max(rows, (r) => Number(r.highlighted_ms));
+    const items = rows.map((r) => ({
+      label: r.framework === '原生 AppKit' ? '原生 AppKit（不高亮）' : r.framework,
+      value: Number(r.highlighted_ms),
+      me: r.framework === 'MyGo',
+      tip: [
+        `到语法高亮 ${fmt(Number(r.highlighted_ms))} ms`,
+        `第一帧 ${fmt(Number(r.startup_ms))} ms`,
+        `内存 ${fmt(Number(r.memory_mb))} MB，程序 ${r.binary_mb} MB`,
+      ],
+    })).sort((a, b) => a.value - b.value);
+    bars(el, items, max, 'ms');
+  });
+</script>

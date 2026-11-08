@@ -1,0 +1,250 @@
+{"app":"QuickEdit","file":"small.go","memoryMB":117,"mode":"cold","procs":1,"visualMs":433,"windowMs":432,"name":"QuickEdit","run":1}
+{"app":"QuickEdit","file":"big.go","memoryMB":121,"mode":"cold","procs":1,"visualMs":478,"windowMs":477,"name":"QuickEdit","run":1}
+{"app":"QuickEdit","file":"doc.md","memoryMB":98,"mode":"cold","procs":1,"visualMs":476,"windowMs":475,"name":"QuickEdit","run":1}
+{"app":"QuickEdit","file":"huge.log","memoryMB":265,"mode":"cold","procs":1,"visualMs":579,"windowMs":578,"name":"QuickEdit","run":1}
+{"app":"QuickEdit","file":"w-small.go","memoryMB":136,"mode":"warm","procs":1,"visualMs":148,"windowMs":148,"name":"QuickEdit","run":1}
+{"app":"QuickEdit","file":"w-big.go","memoryMB":165,"mode":"warm","procs":1,"visualMs":172,"windowMs":172,"name":"QuickEdit","run":1}
+{"app":"QuickEdit","file":"w-doc.md","memoryMB":161,"mode":"warm","procs":1,"visualMs":187,"windowMs":186,"name":"QuickEdit","run":1}
+{"app":"QuickEdit","file":"w-huge.log","memoryMB":374,"mode":"warm","procs":1,"visualMs":269,"windowMs":269,"name":"QuickEdit","run":1}
+{"app":"QuickEdit","file":"small.go","memoryMB":116,"mode":"cold","procs":1,"visualMs":409,"windowMs":409,"name":"QuickEdit","run":2}
+{"app":"QuickEdit","file":"big.go","memoryMB":123,"mode":"cold","procs":1,"visualMs":406,"windowMs":406,"name":"QuickEdit","run":2}
+{"app":"QuickEdit","file":"doc.md","memoryMB":98,"mode":"cold","procs":1,"visualMs":490,"windowMs":489,"name":"QuickEdit","run":2}
+{"app":"QuickEdit","file":"huge.log","memoryMB":267,"mode":"cold","procs":1,"visualMs":531,"windowMs":530,"name":"QuickEdit","run":2}
+{"app":"QuickEdit","file":"w-small.go","memoryMB":138,"mode":"warm","procs":1,"visualMs":130,"windowMs":130,"name":"QuickEdit","run":2}
+{"app":"QuickEdit","file":"w-big.go","memoryMB":168,"mode":"warm","procs":1,"visualMs":137,"windowMs":137,"name":"QuickEdit","run":2}
+{"app":"QuickEdit","file":"w-doc.md","memoryMB":164,"mode":"warm","procs":1,"visualMs":184,"windowMs":183,"name":"QuickEdit","run":2}
+{"app":"QuickEdit","file":"w-huge.log","memoryMB":357,"mode":"warm","procs":1,"visualMs":307,"windowMs":304,"name":"QuickEdit","run":2}
+{"app":"QuickEdit","file":"small.go","memoryMB":116,"mode":"cold","procs":1,"visualMs":403,"windowMs":402,"name":"QuickEdit","run":3}
+{"app":"QuickEdit","file":"big.go","memoryMB":123,"mode":"cold","procs":1,"visualMs":447,"windowMs":446,"name":"QuickEdit","run":3}
+{"app":"QuickEdit","file":"doc.md","memoryMB":97,"mode":"cold","procs":1,"visualMs":486,"windowMs":485,"name":"QuickEdit","run":3}
+{"app":"QuickEdit","file":"huge.log","memoryMB":267,"mode":"cold","procs":1,"visualMs":575,"windowMs":574,"name":"QuickEdit","run":3}
+{"app":"QuickEdit","file":"w-small.go","memoryMB":137,"mode":"warm","procs":1,"visualMs":115,"windowMs":115,"name":"QuickEdit","run":3}
+{"app":"QuickEdit","file":"w-big.go","memoryMB":164,"mode":"warm","procs":1,"visualMs":135,"windowMs":134,"name":"QuickEdit","run":3}
+{"app":"QuickEdit","file":"w-doc.md","memoryMB":161,"mode":"warm","procs":1,"visualMs":168,"windowMs":167,"name":"QuickEdit","run":3}
+{"app":"QuickEdit","file":"w-huge.log","memoryMB":378,"mode":"warm","procs":1,"visualMs":223,"windowMs":222,"name":"QuickEdit","run":3}
+{"app":"QuickEdit","file":"small.go","memoryMB":116,"mode":"cold","procs":1,"visualMs":398,"windowMs":397,"name":"QuickEdit","run":4}
+{"app":"QuickEdit","file":"big.go","memoryMB":122,"mode":"cold","procs":1,"visualMs":402,"windowMs":401,"name":"QuickEdit","run":4}
+{"app":"QuickEdit","file":"doc.md","memoryMB":98,"mode":"cold","procs":1,"visualMs":433,"windowMs":432,"name":"QuickEdit","run":4}
+{"app":"QuickEdit","file":"huge.log","memoryMB":267,"mode":"cold","procs":1,"visualMs":512,"windowMs":511,"name":"QuickEdit","run":4}
+{"app":"QuickEdit","file":"w-small.go","memoryMB":137,"mode":"warm","procs":1,"visualMs":118,"windowMs":118,"name":"QuickEdit","run":4}
+{"app":"QuickEdit","file":"w-big.go","memoryMB":164,"mode":"warm","procs":1,"visualMs":122,"windowMs":122,"name":"QuickEdit","run":4}
+{"app":"QuickEdit","file":"w-doc.md","memoryMB":161,"mode":"warm","procs":1,"visualMs":168,"windowMs":166,"name":"QuickEdit","run":4}
+{"app":"QuickEdit","file":"w-huge.log","memoryMB":363,"mode":"warm","procs":1,"visualMs":219,"windowMs":219,"name":"QuickEdit","run":4}
+{"app":"QuickEdit","file":"small.go","memoryMB":116,"mode":"cold","procs":1,"visualMs":391,"windowMs":390,"name":"QuickEdit","run":5}
+{"app":"QuickEdit","file":"big.go","memoryMB":123,"mode":"cold","procs":1,"visualMs":403,"windowMs":403,"name":"QuickEdit","run":5}
+{"app":"QuickEdit","file":"doc.md","memoryMB":97,"mode":"cold","procs":1,"visualMs":466,"windowMs":465,"name":"QuickEdit","run":5}
+{"app":"QuickEdit","file":"huge.log","memoryMB":267,"mode":"cold","procs":1,"visualMs":523,"windowMs":521,"name":"QuickEdit","run":5}
+{"app":"QuickEdit","file":"w-small.go","memoryMB":137,"mode":"warm","procs":1,"visualMs":134,"windowMs":133,"name":"QuickEdit","run":5}
+{"app":"QuickEdit","file":"w-big.go","memoryMB":167,"mode":"warm","procs":1,"visualMs":127,"windowMs":127,"name":"QuickEdit","run":5}
+{"app":"QuickEdit","file":"w-doc.md","memoryMB":161,"mode":"warm","procs":1,"visualMs":164,"windowMs":163,"name":"QuickEdit","run":5}
+{"app":"QuickEdit","file":"w-huge.log","memoryMB":369,"mode":"warm","procs":1,"visualMs":251,"windowMs":251,"name":"QuickEdit","run":5}
+{"app":"TextEdit","file":"small.go","memoryMB":29,"mode":"cold","procs":1,"visualMs":449,"windowMs":448,"name":"TextEdit","run":1}
+{"app":"TextEdit","file":"big.go","memoryMB":45,"mode":"cold","procs":1,"visualMs":458,"windowMs":458,"name":"TextEdit","run":1}
+{"app":"TextEdit","file":"doc.md","memoryMB":30,"mode":"cold","procs":1,"visualMs":454,"windowMs":453,"name":"TextEdit","run":1}
+{"app":"TextEdit","file":"huge.log","memoryMB":244,"mode":"cold","procs":1,"visualMs":785,"windowMs":784,"name":"TextEdit","run":1}
+{"app":"TextEdit","file":"w-small.go","memoryMB":33,"mode":"warm","procs":1,"visualMs":158,"windowMs":158,"name":"TextEdit","run":1}
+{"app":"TextEdit","file":"w-big.go","memoryMB":54,"mode":"warm","procs":1,"visualMs":185,"windowMs":185,"name":"TextEdit","run":1}
+{"app":"TextEdit","file":"w-doc.md","memoryMB":59,"mode":"warm","procs":1,"visualMs":165,"windowMs":165,"name":"TextEdit","run":1}
+{"app":"TextEdit","file":"w-huge.log","memoryMB":278,"mode":"warm","procs":1,"visualMs":492,"windowMs":492,"name":"TextEdit","run":1}
+{"app":"TextEdit","file":"small.go","memoryMB":29,"mode":"cold","procs":1,"visualMs":462,"windowMs":462,"name":"TextEdit","run":2}
+{"app":"TextEdit","file":"big.go","memoryMB":45,"mode":"cold","procs":1,"visualMs":452,"windowMs":452,"name":"TextEdit","run":2}
+{"app":"TextEdit","file":"doc.md","memoryMB":30,"mode":"cold","procs":1,"visualMs":453,"windowMs":453,"name":"TextEdit","run":2}
+{"app":"TextEdit","file":"huge.log","memoryMB":244,"mode":"cold","procs":1,"visualMs":776,"windowMs":775,"name":"TextEdit","run":2}
+{"app":"TextEdit","file":"w-small.go","memoryMB":48,"mode":"warm","procs":1,"visualMs":173,"windowMs":172,"name":"TextEdit","run":2}
+{"app":"TextEdit","file":"w-big.go","memoryMB":68,"mode":"warm","procs":1,"visualMs":177,"windowMs":177,"name":"TextEdit","run":2}
+{"app":"TextEdit","file":"w-doc.md","memoryMB":73,"mode":"warm","procs":1,"visualMs":188,"windowMs":188,"name":"TextEdit","run":2}
+{"app":"TextEdit","file":"w-huge.log","memoryMB":291,"mode":"warm","procs":1,"visualMs":514,"windowMs":513,"name":"TextEdit","run":2}
+{"app":"TextEdit","file":"small.go","memoryMB":29,"mode":"cold","procs":1,"visualMs":489,"windowMs":488,"name":"TextEdit","run":3}
+{"app":"TextEdit","file":"big.go","memoryMB":45,"mode":"cold","procs":1,"visualMs":538,"windowMs":538,"name":"TextEdit","run":3}
+{"app":"TextEdit","file":"doc.md","memoryMB":30,"mode":"cold","procs":1,"visualMs":460,"windowMs":460,"name":"TextEdit","run":3}
+{"app":"TextEdit","file":"huge.log","memoryMB":244,"mode":"cold","procs":1,"visualMs":736,"windowMs":736,"name":"TextEdit","run":3}
+{"app":"TextEdit","file":"w-small.go","memoryMB":33,"mode":"warm","procs":1,"visualMs":166,"windowMs":165,"name":"TextEdit","run":3}
+{"app":"TextEdit","file":"w-big.go","memoryMB":54,"mode":"warm","procs":1,"visualMs":181,"windowMs":181,"name":"TextEdit","run":3}
+{"app":"TextEdit","file":"w-doc.md","memoryMB":59,"mode":"warm","procs":1,"visualMs":167,"windowMs":167,"name":"TextEdit","run":3}
+{"app":"TextEdit","file":"w-huge.log","memoryMB":277,"mode":"warm","procs":1,"visualMs":496,"windowMs":495,"name":"TextEdit","run":3}
+{"app":"TextEdit","file":"small.go","memoryMB":29,"mode":"cold","procs":1,"visualMs":447,"windowMs":447,"name":"TextEdit","run":4}
+{"app":"TextEdit","file":"big.go","memoryMB":45,"mode":"cold","procs":1,"visualMs":460,"windowMs":459,"name":"TextEdit","run":4}
+{"app":"TextEdit","file":"doc.md","memoryMB":30,"mode":"cold","procs":1,"visualMs":429,"windowMs":429,"name":"TextEdit","run":4}
+{"app":"TextEdit","file":"huge.log","memoryMB":244,"mode":"cold","procs":1,"visualMs":759,"windowMs":759,"name":"TextEdit","run":4}
+{"app":"TextEdit","file":"w-small.go","memoryMB":34,"mode":"warm","procs":1,"visualMs":155,"windowMs":154,"name":"TextEdit","run":4}
+{"app":"TextEdit","file":"w-big.go","memoryMB":54,"mode":"warm","procs":1,"visualMs":182,"windowMs":182,"name":"TextEdit","run":4}
+{"app":"TextEdit","file":"w-doc.md","memoryMB":59,"mode":"warm","procs":1,"visualMs":166,"windowMs":166,"name":"TextEdit","run":4}
+{"app":"TextEdit","file":"w-huge.log","memoryMB":278,"mode":"warm","procs":1,"visualMs":518,"windowMs":518,"name":"TextEdit","run":4}
+{"app":"TextEdit","file":"small.go","memoryMB":29,"mode":"cold","procs":1,"visualMs":438,"windowMs":438,"name":"TextEdit","run":5}
+{"app":"TextEdit","file":"big.go","memoryMB":45,"mode":"cold","procs":1,"visualMs":454,"windowMs":453,"name":"TextEdit","run":5}
+{"app":"TextEdit","file":"doc.md","memoryMB":30,"mode":"cold","procs":1,"visualMs":482,"windowMs":482,"name":"TextEdit","run":5}
+{"app":"TextEdit","file":"huge.log","memoryMB":244,"mode":"cold","procs":1,"visualMs":794,"windowMs":794,"name":"TextEdit","run":5}
+{"app":"TextEdit","file":"w-small.go","memoryMB":34,"mode":"warm","procs":1,"visualMs":176,"windowMs":176,"name":"TextEdit","run":5}
+{"app":"TextEdit","file":"w-big.go","memoryMB":54,"mode":"warm","procs":1,"visualMs":182,"windowMs":181,"name":"TextEdit","run":5}
+{"app":"TextEdit","file":"w-doc.md","memoryMB":59,"mode":"warm","procs":1,"visualMs":182,"windowMs":181,"name":"TextEdit","run":5}
+{"app":"TextEdit","file":"w-huge.log","memoryMB":278,"mode":"warm","procs":1,"visualMs":488,"windowMs":487,"name":"TextEdit","run":5}
+{"app":"Sublime Text","file":"small.go","memoryMB":186,"mode":"cold","procs":3,"visualMs":536,"windowMs":535,"name":"Sublime Text","run":1}
+{"app":"Sublime Text","file":"big.go","memoryMB":196,"mode":"cold","procs":3,"visualMs":1018,"windowMs":611,"name":"Sublime Text","run":1}
+{"app":"Sublime Text","file":"doc.md","memoryMB":197,"mode":"cold","procs":3,"visualMs":1077,"windowMs":522,"name":"Sublime Text","run":1}
+{"app":"Sublime Text","file":"huge.log","memoryMB":307,"mode":"cold","procs":3,"visualMs":1711,"windowMs":570,"name":"Sublime Text","run":1}
+{"app":"Sublime Text","file":"w-small.go","memoryMB":152,"mode":"warm","procs":3,"visualMs":110,"windowMs":110,"name":"Sublime Text","run":1}
+{"app":"Sublime Text","file":"w-big.go","memoryMB":184,"mode":"warm","procs":3,"visualMs":513,"windowMs":112,"name":"Sublime Text","run":1}
+{"app":"Sublime Text","file":"w-doc.md","memoryMB":229,"mode":"warm","procs":3,"visualMs":161,"windowMs":101,"name":"Sublime Text","run":1}
+{"app":"Sublime Text","file":"w-huge.log","memoryMB":430,"mode":"warm","procs":3,"visualMs":1202,"windowMs":111,"name":"Sublime Text","run":1}
+{"app":"Sublime Text","file":"small.go","memoryMB":131,"mode":"cold","procs":3,"visualMs":553,"windowMs":552,"name":"Sublime Text","run":2}
+{"app":"Sublime Text","file":"big.go","memoryMB":204,"mode":"cold","procs":3,"visualMs":1016,"windowMs":609,"name":"Sublime Text","run":2}
+{"app":"Sublime Text","file":"doc.md","memoryMB":213,"mode":"cold","procs":3,"visualMs":582,"windowMs":581,"name":"Sublime Text","run":2}
+{"app":"Sublime Text","file":"huge.log","memoryMB":330,"mode":"cold","procs":3,"visualMs":1691,"windowMs":546,"name":"Sublime Text","run":2}
+{"app":"Sublime Text","file":"w-small.go","memoryMB":200,"mode":"warm","procs":3,"visualMs":123,"windowMs":123,"name":"Sublime Text","run":2}
+{"app":"Sublime Text","file":"w-big.go","memoryMB":233,"mode":"warm","procs":3,"visualMs":491,"windowMs":107,"name":"Sublime Text","run":2}
+{"app":"Sublime Text","file":"w-doc.md","memoryMB":278,"mode":"warm","procs":3,"visualMs":184,"windowMs":91,"name":"Sublime Text","run":2}
+{"app":"Sublime Text","file":"w-huge.log","memoryMB":461,"mode":"warm","procs":3,"visualMs":1190,"windowMs":124,"name":"Sublime Text","run":2}
+{"app":"Sublime Text","file":"small.go","memoryMB":180,"mode":"cold","procs":3,"visualMs":565,"windowMs":564,"name":"Sublime Text","run":3}
+{"app":"Sublime Text","file":"big.go","memoryMB":197,"mode":"cold","procs":3,"visualMs":1081,"windowMs":554,"name":"Sublime Text","run":3}
+{"app":"Sublime Text","file":"doc.md","memoryMB":214,"mode":"cold","procs":3,"visualMs":555,"windowMs":554,"name":"Sublime Text","run":3}
+{"app":"Sublime Text","file":"huge.log","memoryMB":354,"mode":"cold","procs":3,"visualMs":1648,"windowMs":530,"name":"Sublime Text","run":3}
+{"app":"Sublime Text","file":"w-small.go","memoryMB":151,"mode":"warm","procs":3,"visualMs":120,"windowMs":119,"name":"Sublime Text","run":3}
+{"app":"Sublime Text","file":"w-big.go","memoryMB":184,"mode":"warm","procs":3,"visualMs":523,"windowMs":111,"name":"Sublime Text","run":3}
+{"app":"Sublime Text","file":"w-doc.md","memoryMB":229,"mode":"warm","procs":3,"visualMs":161,"windowMs":102,"name":"Sublime Text","run":3}
+{"app":"Sublime Text","file":"w-huge.log","memoryMB":429,"mode":"warm","procs":3,"visualMs":1344,"windowMs":97,"name":"Sublime Text","run":3}
+{"app":"Sublime Text","file":"small.go","memoryMB":139,"mode":"cold","procs":3,"visualMs":578,"windowMs":577,"name":"Sublime Text","run":4}
+{"app":"Sublime Text","file":"big.go","memoryMB":212,"mode":"cold","procs":3,"visualMs":1208,"windowMs":614,"name":"Sublime Text","run":4}
+{"app":"Sublime Text","file":"doc.md","memoryMB":212,"mode":"cold","procs":3,"visualMs":692,"windowMs":633,"name":"Sublime Text","run":4}
+{"app":"Sublime Text","file":"huge.log","memoryMB":353,"mode":"cold","procs":3,"visualMs":1699,"windowMs":556,"name":"Sublime Text","run":4}
+{"app":"Sublime Text","file":"w-small.go","memoryMB":199,"mode":"warm","procs":3,"visualMs":107,"windowMs":104,"name":"Sublime Text","run":4}
+{"app":"Sublime Text","file":"w-big.go","memoryMB":230,"mode":"warm","procs":3,"visualMs":492,"windowMs":98,"name":"Sublime Text","run":4}
+{"app":"Sublime Text","file":"w-doc.md","memoryMB":276,"mode":"warm","procs":3,"visualMs":121,"windowMs":120,"name":"Sublime Text","run":4}
+{"app":"Sublime Text","file":"w-huge.log","memoryMB":459,"mode":"warm","procs":3,"visualMs":1234,"windowMs":109,"name":"Sublime Text","run":4}
+{"app":"Sublime Text","file":"small.go","memoryMB":179,"mode":"cold","procs":3,"visualMs":558,"windowMs":557,"name":"Sublime Text","run":5}
+{"app":"Sublime Text","file":"big.go","memoryMB":203,"mode":"cold","procs":3,"visualMs":980,"windowMs":572,"name":"Sublime Text","run":5}
+{"app":"Sublime Text","file":"doc.md","memoryMB":205,"mode":"cold","procs":3,"visualMs":598,"windowMs":597,"name":"Sublime Text","run":5}
+{"app":"Sublime Text","file":"huge.log","memoryMB":345,"mode":"cold","procs":3,"visualMs":1744,"windowMs":557,"name":"Sublime Text","run":5}
+{"app":"Sublime Text","file":"w-small.go","memoryMB":151,"mode":"warm","procs":3,"visualMs":179,"windowMs":178,"name":"Sublime Text","run":5}
+{"app":"Sublime Text","file":"w-big.go","memoryMB":182,"mode":"warm","procs":3,"visualMs":477,"windowMs":103,"name":"Sublime Text","run":5}
+{"app":"Sublime Text","file":"w-doc.md","memoryMB":226,"mode":"warm","procs":3,"visualMs":168,"windowMs":102,"name":"Sublime Text","run":5}
+{"app":"Sublime Text","file":"w-huge.log","memoryMB":429,"mode":"warm","procs":3,"visualMs":1128,"windowMs":96,"name":"Sublime Text","run":5}
+{"app":"Zed","file":"small.go","memoryMB":155,"mode":"cold","procs":2,"visualMs":498,"windowMs":497,"name":"Zed","run":1}
+{"app":"Zed","file":"big.go","memoryMB":269,"mode":"cold","procs":2,"visualMs":537,"windowMs":536,"name":"Zed","run":1}
+{"app":"Zed","file":"doc.md","memoryMB":175,"mode":"cold","procs":2,"visualMs":520,"windowMs":519,"name":"Zed","run":1}
+{"app":"Zed","file":"huge.log","memoryMB":284,"mode":"cold","procs":2,"visualMs":572,"windowMs":571,"name":"Zed","run":1}
+{"app":"Zed","file":"w-small.go","memoryMB":165,"mode":"warm","procs":2,"visualMs":44,"windowMs":44,"name":"Zed","run":1}
+{"app":"Zed","file":"w-big.go","memoryMB":282,"mode":"warm","procs":2,"visualMs":56,"windowMs":56,"name":"Zed","run":1}
+{"app":"Zed","file":"w-doc.md","memoryMB":317,"mode":"warm","procs":2,"visualMs":82,"windowMs":82,"name":"Zed","run":1}
+{"app":"Zed","file":"w-huge.log","memoryMB":448,"mode":"warm","procs":2,"visualMs":125,"windowMs":125,"name":"Zed","run":1}
+{"app":"Zed","file":"small.go","memoryMB":155,"mode":"cold","procs":2,"visualMs":655,"windowMs":654,"name":"Zed","run":2}
+{"app":"Zed","file":"big.go","memoryMB":270,"mode":"cold","procs":2,"visualMs":548,"windowMs":547,"name":"Zed","run":2}
+{"app":"Zed","file":"doc.md","memoryMB":176,"mode":"cold","procs":2,"visualMs":548,"windowMs":547,"name":"Zed","run":2}
+{"app":"Zed","file":"huge.log","memoryMB":285,"mode":"cold","procs":2,"visualMs":635,"windowMs":634,"name":"Zed","run":2}
+{"app":"Zed","file":"w-small.go","memoryMB":432,"mode":"warm","procs":2,"visualMs":57,"windowMs":56,"name":"Zed","run":2}
+{"app":"Zed","file":"w-big.go","memoryMB":432,"mode":"warm","procs":2,"visualMs":43,"windowMs":43,"name":"Zed","run":2}
+{"app":"Zed","file":"w-doc.md","memoryMB":432,"mode":"warm","procs":2,"visualMs":52,"windowMs":51,"name":"Zed","run":2}
+{"app":"Zed","file":"w-huge.log","memoryMB":433,"mode":"warm","procs":2,"visualMs":42,"windowMs":42,"name":"Zed","run":2}
+{"app":"Zed","file":"small.go","memoryMB":155,"mode":"cold","procs":2,"visualMs":635,"windowMs":634,"name":"Zed","run":3}
+{"app":"Zed","file":"big.go","memoryMB":269,"mode":"cold","procs":2,"visualMs":580,"windowMs":579,"name":"Zed","run":3}
+{"app":"Zed","file":"doc.md","memoryMB":176,"mode":"cold","procs":2,"visualMs":560,"windowMs":559,"name":"Zed","run":3}
+{"app":"Zed","file":"huge.log","memoryMB":284,"mode":"cold","procs":2,"visualMs":620,"windowMs":619,"name":"Zed","run":3}
+{"app":"Zed","file":"w-small.go","memoryMB":433,"mode":"warm","procs":2,"visualMs":53,"windowMs":53,"name":"Zed","run":3}
+{"app":"Zed","file":"w-big.go","memoryMB":433,"mode":"warm","procs":2,"visualMs":56,"windowMs":55,"name":"Zed","run":3}
+{"app":"Zed","file":"w-doc.md","memoryMB":434,"mode":"warm","procs":2,"visualMs":92,"windowMs":92,"name":"Zed","run":3}
+{"app":"Zed","file":"w-huge.log","memoryMB":434,"mode":"warm","procs":2,"visualMs":57,"windowMs":57,"name":"Zed","run":3}
+{"app":"Zed","file":"small.go","memoryMB":154,"mode":"cold","procs":2,"visualMs":647,"windowMs":647,"name":"Zed","run":4}
+{"app":"Zed","file":"big.go","memoryMB":269,"mode":"cold","procs":2,"visualMs":596,"windowMs":596,"name":"Zed","run":4}
+{"app":"Zed","file":"doc.md","memoryMB":179,"mode":"cold","procs":2,"visualMs":604,"windowMs":604,"name":"Zed","run":4}
+{"app":"Zed","file":"huge.log","memoryMB":285,"mode":"cold","procs":2,"visualMs":647,"windowMs":647,"name":"Zed","run":4}
+{"app":"Zed","file":"w-small.go","memoryMB":433,"mode":"warm","procs":2,"visualMs":52,"windowMs":52,"name":"Zed","run":4}
+{"app":"Zed","file":"w-big.go","memoryMB":433,"mode":"warm","procs":2,"visualMs":55,"windowMs":54,"name":"Zed","run":4}
+{"app":"Zed","file":"w-doc.md","memoryMB":434,"mode":"warm","procs":2,"visualMs":48,"windowMs":47,"name":"Zed","run":4}
+{"app":"Zed","file":"w-huge.log","memoryMB":434,"mode":"warm","procs":2,"visualMs":49,"windowMs":49,"name":"Zed","run":4}
+{"app":"Zed","file":"small.go","memoryMB":155,"mode":"cold","procs":2,"visualMs":600,"windowMs":599,"name":"Zed","run":5}
+{"app":"Zed","file":"big.go","memoryMB":268,"mode":"cold","procs":2,"visualMs":548,"windowMs":547,"name":"Zed","run":5}
+{"app":"Zed","file":"doc.md","memoryMB":178,"mode":"cold","procs":2,"visualMs":574,"windowMs":574,"name":"Zed","run":5}
+{"app":"Zed","file":"huge.log","memoryMB":285,"mode":"cold","procs":2,"visualMs":611,"windowMs":611,"name":"Zed","run":5}
+{"app":"Zed","file":"w-small.go","memoryMB":432,"mode":"warm","procs":2,"visualMs":77,"windowMs":77,"name":"Zed","run":5}
+{"app":"Zed","file":"w-big.go","memoryMB":432,"mode":"warm","procs":2,"visualMs":60,"windowMs":60,"name":"Zed","run":5}
+{"app":"Zed","file":"w-doc.md","memoryMB":433,"mode":"warm","procs":2,"visualMs":47,"windowMs":47,"name":"Zed","run":5}
+{"app":"Zed","file":"w-huge.log","memoryMB":433,"mode":"warm","procs":2,"visualMs":61,"windowMs":61,"name":"Zed","run":5}
+{"app":"Typora","file":"doc.md","memoryMB":45,"mode":"cold","procs":1,"visualMs":1107,"windowMs":573,"name":"Typora","run":1}
+{"app":"Typora","file":"w-doc.md","memoryMB":56,"mode":"warm","procs":1,"visualMs":621,"windowMs":168,"name":"Typora","run":1}
+{"app":"Typora","file":"doc.md","memoryMB":46,"mode":"cold","procs":1,"visualMs":1095,"windowMs":527,"name":"Typora","run":2}
+{"app":"Typora","file":"w-doc.md","memoryMB":56,"mode":"warm","procs":1,"visualMs":647,"windowMs":157,"name":"Typora","run":2}
+{"app":"Typora","file":"doc.md","memoryMB":45,"mode":"cold","procs":1,"visualMs":1171,"windowMs":561,"name":"Typora","run":3}
+{"app":"Typora","file":"w-doc.md","memoryMB":57,"mode":"warm","procs":1,"visualMs":528,"windowMs":136,"name":"Typora","run":3}
+{"app":"Typora","file":"doc.md","memoryMB":46,"mode":"cold","procs":1,"visualMs":1134,"windowMs":535,"name":"Typora","run":4}
+{"app":"Typora","file":"w-doc.md","memoryMB":57,"mode":"warm","procs":1,"visualMs":571,"windowMs":129,"name":"Typora","run":4}
+{"app":"Typora","file":"doc.md","memoryMB":46,"mode":"cold","procs":1,"visualMs":1005,"windowMs":494,"name":"Typora","run":5}
+{"app":"Typora","file":"w-doc.md","memoryMB":57,"mode":"warm","procs":1,"visualMs":582,"windowMs":140,"name":"Typora","run":5}
+{"app":"CotEditor","file":"small.go","memoryMB":75,"mode":"cold","procs":1,"visualMs":887,"windowMs":886,"name":"CotEditor","run":1}
+{"app":"CotEditor","file":"big.go","memoryMB":224,"mode":"cold","procs":1,"visualMs":979,"windowMs":978,"name":"CotEditor","run":1}
+{"app":"CotEditor","file":"doc.md","memoryMB":78,"mode":"cold","procs":1,"visualMs":934,"windowMs":933,"name":"CotEditor","run":1}
+{"app":"CotEditor","file":"huge.log","memoryMB":472,"mode":"cold","procs":1,"visualMs":1404,"windowMs":1403,"name":"CotEditor","run":1}
+{"app":"CotEditor","file":"w-small.go","memoryMB":98,"mode":"warm","procs":1,"visualMs":374,"windowMs":373,"name":"CotEditor","run":1}
+{"app":"CotEditor","file":"w-big.go","memoryMB":276,"mode":"warm","procs":1,"visualMs":1887,"windowMs":393,"name":"CotEditor","run":1}
+{"app":"CotEditor","file":"w-doc.md","memoryMB":302,"mode":"warm","procs":1,"visualMs":375,"windowMs":374,"name":"CotEditor","run":1}
+{"app":"CotEditor","file":"w-huge.log","memoryMB":718,"mode":"warm","procs":1,"visualMs":895,"windowMs":894,"name":"CotEditor","run":1}
+{"app":"CotEditor","file":"small.go","memoryMB":75,"mode":"cold","procs":1,"visualMs":1018,"windowMs":1017,"name":"CotEditor","run":2}
+{"app":"CotEditor","file":"big.go","memoryMB":225,"mode":"cold","procs":1,"visualMs":949,"windowMs":947,"name":"CotEditor","run":2}
+{"app":"CotEditor","file":"doc.md","memoryMB":78,"mode":"cold","procs":1,"visualMs":898,"windowMs":897,"name":"CotEditor","run":2}
+{"app":"CotEditor","file":"huge.log","memoryMB":472,"mode":"cold","procs":1,"visualMs":1378,"windowMs":1377,"name":"CotEditor","run":2}
+{"app":"CotEditor","file":"w-small.go","memoryMB":99,"mode":"warm","procs":1,"visualMs":367,"windowMs":366,"name":"CotEditor","run":2}
+{"app":"CotEditor","file":"w-big.go","memoryMB":277,"mode":"warm","procs":1,"visualMs":1892,"windowMs":415,"name":"CotEditor","run":2}
+{"app":"CotEditor","file":"w-doc.md","memoryMB":303,"mode":"warm","procs":1,"visualMs":354,"windowMs":353,"name":"CotEditor","run":2}
+{"app":"CotEditor","file":"w-huge.log","memoryMB":719,"mode":"warm","procs":1,"visualMs":838,"windowMs":836,"name":"CotEditor","run":2}
+{"app":"CotEditor","file":"small.go","memoryMB":75,"mode":"cold","procs":1,"visualMs":960,"windowMs":959,"name":"CotEditor","run":3}
+{"app":"CotEditor","file":"big.go","memoryMB":231,"mode":"cold","procs":1,"visualMs":2360,"windowMs":952,"name":"CotEditor","run":3}
+{"app":"CotEditor","file":"doc.md","memoryMB":77,"mode":"cold","procs":1,"visualMs":880,"windowMs":879,"name":"CotEditor","run":3}
+{"app":"CotEditor","file":"huge.log","memoryMB":472,"mode":"cold","procs":1,"visualMs":1411,"windowMs":1409,"name":"CotEditor","run":3}
+{"app":"CotEditor","file":"w-small.go","memoryMB":99,"mode":"warm","procs":1,"visualMs":352,"windowMs":351,"name":"CotEditor","run":3}
+{"app":"CotEditor","file":"w-big.go","memoryMB":276,"mode":"warm","procs":1,"visualMs":1918,"windowMs":431,"name":"CotEditor","run":3}
+{"app":"CotEditor","file":"w-doc.md","memoryMB":302,"mode":"warm","procs":1,"visualMs":349,"windowMs":348,"name":"CotEditor","run":3}
+{"app":"CotEditor","file":"w-huge.log","memoryMB":718,"mode":"warm","procs":1,"visualMs":811,"windowMs":811,"name":"CotEditor","run":3}
+{"app":"CotEditor","file":"small.go","memoryMB":75,"mode":"cold","procs":1,"visualMs":859,"windowMs":859,"name":"CotEditor","run":4}
+{"app":"CotEditor","file":"big.go","memoryMB":231,"mode":"cold","procs":1,"visualMs":2367,"windowMs":917,"name":"CotEditor","run":4}
+{"app":"CotEditor","file":"doc.md","memoryMB":77,"mode":"cold","procs":1,"visualMs":861,"windowMs":860,"name":"CotEditor","run":4}
+{"app":"CotEditor","file":"huge.log","memoryMB":472,"mode":"cold","procs":1,"visualMs":1331,"windowMs":1330,"name":"CotEditor","run":4}
+{"app":"CotEditor","file":"w-small.go","memoryMB":98,"mode":"warm","procs":1,"visualMs":317,"windowMs":316,"name":"CotEditor","run":4}
+{"app":"CotEditor","file":"w-big.go","memoryMB":276,"mode":"warm","procs":1,"visualMs":413,"windowMs":412,"name":"CotEditor","run":4}
+{"app":"CotEditor","file":"w-doc.md","memoryMB":300,"mode":"warm","procs":1,"visualMs":361,"windowMs":361,"name":"CotEditor","run":4}
+{"app":"CotEditor","file":"w-huge.log","memoryMB":716,"mode":"warm","procs":1,"visualMs":823,"windowMs":822,"name":"CotEditor","run":4}
+{"app":"CotEditor","file":"small.go","memoryMB":75,"mode":"cold","procs":1,"visualMs":944,"windowMs":943,"name":"CotEditor","run":5}
+{"app":"CotEditor","file":"big.go","memoryMB":223,"mode":"cold","procs":1,"visualMs":966,"windowMs":965,"name":"CotEditor","run":5}
+{"app":"CotEditor","file":"doc.md","memoryMB":78,"mode":"cold","procs":1,"visualMs":911,"windowMs":910,"name":"CotEditor","run":5}
+{"app":"CotEditor","file":"huge.log","memoryMB":473,"mode":"cold","procs":1,"visualMs":1391,"windowMs":1390,"name":"CotEditor","run":5}
+{"app":"CotEditor","file":"w-small.go","memoryMB":98,"mode":"warm","procs":1,"visualMs":338,"windowMs":337,"name":"CotEditor","run":5}
+{"app":"CotEditor","file":"w-big.go","memoryMB":276,"mode":"warm","procs":1,"visualMs":1897,"windowMs":395,"name":"CotEditor","run":5}
+{"app":"CotEditor","file":"w-doc.md","memoryMB":302,"mode":"warm","procs":1,"visualMs":369,"windowMs":368,"name":"CotEditor","run":5}
+{"app":"CotEditor","file":"w-huge.log","memoryMB":718,"mode":"warm","procs":1,"visualMs":931,"windowMs":930,"name":"CotEditor","run":5}
+{"app":"Visual Studio Code","file":"small.go","memoryMB":1186,"mode":"cold","procs":9,"visualMs":1573,"windowMs":1117,"name":"VS Code","run":1}
+{"app":"Visual Studio Code","file":"big.go","memoryMB":1432,"mode":"cold","procs":9,"visualMs":1663,"windowMs":1047,"name":"VS Code","run":1}
+{"app":"Visual Studio Code","file":"doc.md","memoryMB":1437,"mode":"cold","procs":10,"visualMs":1856,"windowMs":1202,"name":"VS Code","run":1}
+{"app":"Visual Studio Code","file":"huge.log","memoryMB":1763,"mode":"cold","procs":9,"visualMs":2191,"windowMs":1132,"name":"VS Code","run":1}
+{"app":"Visual Studio Code","file":"w-small.go","memoryMB":1169,"mode":"warm","procs":9,"visualMs":328,"windowMs":231,"name":"VS Code","run":1}
+{"app":"Visual Studio Code","file":"w-big.go","memoryMB":1270,"mode":"warm","procs":9,"visualMs":389,"windowMs":387,"name":"VS Code","run":1}
+{"app":"Visual Studio Code","file":"w-doc.md","memoryMB":1498,"mode":"warm","procs":10,"visualMs":430,"windowMs":213,"name":"VS Code","run":1}
+{"app":"Visual Studio Code","file":"w-huge.log","memoryMB":1893,"mode":"warm","procs":10,"visualMs":1053,"windowMs":936,"name":"VS Code","run":1}
+{"app":"Visual Studio Code","file":"small.go","memoryMB":1203,"mode":"cold","procs":9,"visualMs":1589,"windowMs":1106,"name":"VS Code","run":2}
+{"app":"Visual Studio Code","file":"big.go","memoryMB":1323,"mode":"cold","procs":9,"visualMs":1650,"windowMs":1085,"name":"VS Code","run":2}
+{"app":"Visual Studio Code","file":"doc.md","memoryMB":1429,"mode":"cold","procs":10,"visualMs":1837,"windowMs":1059,"name":"VS Code","run":2}
+{"app":"Visual Studio Code","file":"huge.log","memoryMB":1807,"mode":"cold","procs":9,"visualMs":1814,"windowMs":1072,"name":"VS Code","run":2}
+{"app":"Visual Studio Code","file":"w-small.go","memoryMB":1217,"mode":"warm","procs":9,"visualMs":307,"windowMs":208,"name":"VS Code","run":2}
+{"app":"Visual Studio Code","file":"w-big.go","memoryMB":1314,"mode":"warm","procs":9,"visualMs":386,"windowMs":385,"name":"VS Code","run":2}
+{"app":"Visual Studio Code","file":"w-doc.md","memoryMB":1556,"mode":"warm","procs":10,"visualMs":412,"windowMs":200,"name":"VS Code","run":2}
+{"app":"Visual Studio Code","file":"w-huge.log","memoryMB":1966,"mode":"warm","procs":10,"visualMs":880,"windowMs":821,"name":"VS Code","run":2}
+{"app":"Visual Studio Code","file":"small.go","memoryMB":1160,"mode":"cold","procs":9,"visualMs":1461,"windowMs":1107,"name":"VS Code","run":3}
+{"app":"Visual Studio Code","file":"big.go","memoryMB":1349,"mode":"cold","procs":9,"visualMs":1710,"windowMs":1050,"name":"VS Code","run":3}
+{"app":"Visual Studio Code","file":"doc.md","memoryMB":1453,"mode":"cold","procs":10,"visualMs":1856,"windowMs":1040,"name":"VS Code","run":3}
+{"app":"Visual Studio Code","file":"huge.log","memoryMB":1778,"mode":"cold","procs":9,"visualMs":1905,"windowMs":1116,"name":"VS Code","run":3}
+{"app":"Visual Studio Code","file":"w-small.go","memoryMB":1176,"mode":"warm","procs":9,"visualMs":246,"windowMs":245,"name":"VS Code","run":3}
+{"app":"Visual Studio Code","file":"w-big.go","memoryMB":1272,"mode":"warm","procs":9,"visualMs":398,"windowMs":397,"name":"VS Code","run":3}
+{"app":"Visual Studio Code","file":"w-doc.md","memoryMB":1518,"mode":"warm","procs":10,"visualMs":356,"windowMs":201,"name":"VS Code","run":3}
+{"app":"Visual Studio Code","file":"w-huge.log","memoryMB":2019,"mode":"warm","procs":10,"visualMs":894,"windowMs":890,"name":"VS Code","run":3}
+{"app":"Visual Studio Code","file":"small.go","memoryMB":1191,"mode":"cold","procs":9,"visualMs":1584,"windowMs":1178,"name":"VS Code","run":4}
+{"app":"Visual Studio Code","file":"big.go","memoryMB":1370,"mode":"cold","procs":9,"visualMs":1679,"windowMs":1076,"name":"VS Code","run":4}
+{"app":"Visual Studio Code","file":"doc.md","memoryMB":1440,"mode":"cold","procs":10,"visualMs":1715,"windowMs":1065,"name":"VS Code","run":4}
+{"app":"Visual Studio Code","file":"huge.log","memoryMB":1845,"mode":"cold","procs":9,"visualMs":1817,"windowMs":1069,"name":"VS Code","run":4}
+{"app":"Visual Studio Code","file":"w-small.go","memoryMB":1191,"mode":"warm","procs":9,"visualMs":233,"windowMs":232,"name":"VS Code","run":4}
+{"app":"Visual Studio Code","file":"w-big.go","memoryMB":1278,"mode":"warm","procs":9,"visualMs":407,"windowMs":406,"name":"VS Code","run":4}
+{"app":"Visual Studio Code","file":"w-doc.md","memoryMB":1513,"mode":"warm","procs":10,"visualMs":417,"windowMs":207,"name":"VS Code","run":4}
+{"app":"Visual Studio Code","file":"w-huge.log","memoryMB":2058,"mode":"warm","procs":10,"visualMs":1055,"windowMs":921,"name":"VS Code","run":4}
+{"app":"Visual Studio Code","file":"small.go","memoryMB":1152,"mode":"cold","procs":9,"visualMs":1524,"windowMs":1088,"name":"VS Code","run":5}
+{"app":"Visual Studio Code","file":"big.go","memoryMB":1337,"mode":"cold","procs":9,"visualMs":1730,"windowMs":1025,"name":"VS Code","run":5}
+{"app":"Visual Studio Code","file":"doc.md","memoryMB":1426,"mode":"cold","procs":10,"visualMs":1714,"windowMs":1092,"name":"VS Code","run":5}
+{"app":"Visual Studio Code","file":"huge.log","memoryMB":1749,"mode":"cold","procs":9,"visualMs":2299,"windowMs":1021,"name":"VS Code","run":5}
+{"app":"Visual Studio Code","file":"w-small.go","memoryMB":1235,"mode":"warm","procs":9,"visualMs":220,"windowMs":219,"name":"VS Code","run":5}
+{"app":"Visual Studio Code","file":"w-big.go","memoryMB":1290,"mode":"warm","procs":9,"visualMs":394,"windowMs":393,"name":"VS Code","run":5}
+{"app":"Visual Studio Code","file":"w-doc.md","memoryMB":1431,"mode":"warm","procs":10,"visualMs":456,"windowMs":207,"name":"VS Code","run":5}
+{"app":"Visual Studio Code","file":"w-huge.log","memoryMB":1982,"mode":"warm","procs":10,"visualMs":925,"windowMs":751,"name":"VS Code","run":5}

@@ -53,5 +53,18 @@ QuickEdit 用的是打了补丁的 MyGo：`scripts/patch-mygo.sh` 把 MyGo v0.8.
 
 ## 性能对比
 
+和 TextEdit、Sublime Text、CotEditor、Zed、VS Code、Typora 打开同样的文件（Mac mini M2，5 次中位数，毫秒，
+到内容含高亮或渲染稳定显示为止）：
+
+| | QuickEdit | TextEdit | Sublime Text | Zed | VS Code | CotEditor |
+|---|---:|---:|---:|---:|---:|---:|
+| 冷启动打开 10.8 万行 Go | **406** | 458 | 1,018 | 548 | 1,679 | 979 |
+| 冷启动打开 44 MB 日志 | **531** | 776 | 1,699 | 620 | 1,905 | 1,391 |
+| 已运行时打开 10.8 万行 Go | 135 | 182 | 492 | **56** | 394 | 1,892 |
+| 内存（冷启动打开 10.8 万行后） | 123 MB | 45 MB | 203 MB | 269 MB | 1,349 MB | 225 MB |
+
+冷启动它最快；已经开着时，Zed、Sublime、VS Code 在原窗口开标签页，Zed 最快，QuickEdit 每个文件开新窗口。
+测法和全部数据见 [bench/compare/](bench/compare/)。
+
 框架选型时的对比测试在 [bench/](bench/)：同一个"打开文件"的小程序分别用 MyGo、GPUI、iced、egui 和原生 AppKit 实现，
 结果见 [bench/RESULTS.md](bench/RESULTS.md)。

@@ -1,0 +1,16 @@
+framework,file,startup_ms,highlighted_ms,memory_mb,binary_mb
+egui,big.go,4056,4056,1054,11.4
+egui,doc.md,399,399,122,11.4
+egui,small.go,321,321,92,11.4
+GPUI,big.go,353,847,198,14.9
+GPUI,doc.md,464,464,84,14.9
+GPUI,small.go,327,537,83,14.9
+iced,big.go,3668,3668,1154,9.0
+iced,doc.md,534,534,160,9.0
+iced,small.go,345,345,74,9.0
+MyGo,big.go,323,323,82,11.2
+MyGo,doc.md,360,360,82,11.2
+MyGo,small.go,312,312,78,11.2
+原生 AppKit,big.go,290,290,45,0.06
+原生 AppKit,doc.md,277,277,32,0.06
+原生 AppKit,small.go,295,295,31,0.06
