@@ -34,7 +34,8 @@
     <h1>QuickEdit 打开速度对比</h1>
     <p class="qe-lede">
       双击打开一个 10.8 万行的 Go 文件，而编辑器还没有打开任何窗口时：登录后就在后台待命的 QuickEdit 用
-      <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=QuickEdit 常驻&amp;file=big.go&amp;mode=cold">—</b> 毫秒；别的编辑器要先冷启动，TextEdit
+      <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=QuickEdit 常驻&amp;file=big.go&amp;mode=cold">—</b> 毫秒，在终端里用 qe 命令打开是
+      <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=QuickEdit 常驻 · qe&amp;file=big.go&amp;mode=cold">—</b> 毫秒；别的编辑器要先冷启动，TextEdit
       <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=TextEdit&amp;file=big.go&amp;mode=cold">—</b>，Zed
       <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=Zed&amp;file=big.go&amp;mode=cold">—</b>，Sublime Text
       <b class="qe-num" data-draw="cell" data-source="editors" data-field="visual_ms" data-where="editor=Sublime Text&amp;file=big.go&amp;mode=cold">—</b>，VS Code
@@ -48,8 +49,8 @@
 
   <section class="qe-section" id="cold">
     <h2>双击文件：编辑器没有打开的窗口</h2>
-    <p>别的编辑器这时要冷启动。“QuickEdit 常驻”是登录时已在后台启动、没有窗口的 QuickEdit：这是它的默认设置，可以在应用菜单里关掉；别的编辑器默认不会这样做，不过也能手动加进登录项。“QuickEdit”是它没在运行时的冷启动。</p>
-    <p>数字是从请求打开到文件内容（包括语法高亮和 Markdown 渲染）在窗口里稳定下来的毫秒数，5 次的中位数，越短越好。四张图用同一个刻度。</p>
+    <p>别的编辑器这时要冷启动。“QuickEdit 常驻”是登录时已在后台启动、没有窗口的 QuickEdit：这是它的默认设置，可以在应用菜单里关掉；别的编辑器默认不会这样做，不过也能手动加进登录项。“QuickEdit 常驻 · qe”是同样待命的 QuickEdit，改用 qe 命令打开：文件经本地 socket 直接交给它，不经过 macOS 转发。“QuickEdit”是它没在运行时的冷启动。</p>
+    <p>数字是从请求打开，到文件内容（包括语法高亮和 Markdown 渲染）在窗口里稳定下来、窗口也到了最前面的毫秒数，5 次的中位数，越短越好。四张图用同一个刻度。</p>
     <div class="qe-grid">
       <article class="qe-card">
         <h3>small.go <span>Go 源码，1,300 行</span></h3>
@@ -117,11 +118,11 @@
       <dt>编辑器</dt>
       <dd>QuickEdit 0.1.0（MyGo 0.8.3），TextEdit（系统自带），Sublime Text 4（build 4215），CotEditor 7.1.3，Zed 1.27.0，VS Code 1.145.2，Typora（本机已装）。</dd>
       <dt>QuickEdit 常驻</dt>
-      <dd>以登录项的方式在后台启动（不开窗口），等 3 秒后再打开文件；每次测量前都重新启动一次。</dd>
+      <dd>以登录项的方式在后台启动（不开窗口），等 3 秒后再打开文件；每次测量前都重新启动一次。“QuickEdit 常驻 · qe”用 qe 命令打开同样的文件。这两行是之后单独重测的：重测时机器较忙（平均负载约 4），QuickEdit 的窗口也比之前大（1199×874），所以 big.go、doc.md、huge.log 比第一次测的慢 5 到 58 毫秒；两行在同样条件下先后测完，可以直接比较。</dd>
       <dt>怎么打开</dt>
       <dd>用 NSWorkspace 让编辑器打开文件，和在 Finder 里双击走同一条路。冷启动前先退出编辑器，并删掉它保存的窗口状态。</dd>
       <dt>怎么计时</dt>
-      <dd>窗口服务器里出现标题含文件名的窗口后，不断截取这个窗口，取最后一次有超过 1% 像素变化的时刻，此后 1.5 秒不再变化。光标闪烁和滚动条淡出变化太小，不计入；文字出现、语法高亮上色、Markdown 渲染都计入。</dd>
+      <dd>窗口服务器里出现标题含文件名的窗口后，不断截取这个窗口，取最后一次有超过 1% 像素变化的时刻，此后 1.5 秒不再变化；如果窗口这时还没到屏幕最前面，就计到它到最前面为止。光标闪烁和滚动条淡出变化太小，不计入；文字出现、语法高亮上色、Markdown 渲染都计入。</dd>
       <dt>为了公平</dt>
       <dd>测试期间关闭系统的窗口打开动画；每个编辑器都关掉恢复上次窗口的功能；VS Code 用临时数据目录启动，不装扩展；每个编辑器先启动一次不计时，排除系统第一次运行程序时的检查。</dd>
       <dt>没有测的</dt>

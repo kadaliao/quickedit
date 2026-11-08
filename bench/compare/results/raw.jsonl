@@ -248,23 +248,43 @@
 {"app":"Visual Studio Code","file":"w-big.go","memoryMB":1290,"mode":"warm","procs":9,"visualMs":394,"windowMs":393,"name":"VS Code","run":5}
 {"app":"Visual Studio Code","file":"w-doc.md","memoryMB":1431,"mode":"warm","procs":10,"visualMs":456,"windowMs":207,"name":"VS Code","run":5}
 {"app":"Visual Studio Code","file":"w-huge.log","memoryMB":1982,"mode":"warm","procs":10,"visualMs":925,"windowMs":751,"name":"VS Code","run":5}
-{"app":"QuickEdit","file":"small.go","memoryMB":70,"mode":"cold","procs":1,"visualMs":139,"windowMs":139,"name":"QuickEdit 常驻","run":1}
-{"app":"QuickEdit","file":"big.go","memoryMB":79,"mode":"cold","procs":1,"visualMs":161,"windowMs":161,"name":"QuickEdit 常驻","run":1}
-{"app":"QuickEdit","file":"doc.md","memoryMB":94,"mode":"cold","procs":1,"visualMs":207,"windowMs":206,"name":"QuickEdit 常驻","run":1}
-{"app":"QuickEdit","file":"huge.log","memoryMB":224,"mode":"cold","procs":1,"visualMs":265,"windowMs":264,"name":"QuickEdit 常驻","run":1}
-{"app":"QuickEdit","file":"small.go","memoryMB":68,"mode":"cold","procs":1,"visualMs":94,"windowMs":94,"name":"QuickEdit 常驻","run":2}
-{"app":"QuickEdit","file":"big.go","memoryMB":80,"mode":"cold","procs":1,"visualMs":123,"windowMs":123,"name":"QuickEdit 常驻","run":2}
-{"app":"QuickEdit","file":"doc.md","memoryMB":70,"mode":"cold","procs":1,"visualMs":111,"windowMs":110,"name":"QuickEdit 常驻","run":2}
-{"app":"QuickEdit","file":"huge.log","memoryMB":206,"mode":"cold","procs":1,"visualMs":223,"windowMs":223,"name":"QuickEdit 常驻","run":2}
-{"app":"QuickEdit","file":"small.go","memoryMB":70,"mode":"cold","procs":1,"visualMs":133,"windowMs":133,"name":"QuickEdit 常驻","run":3}
-{"app":"QuickEdit","file":"big.go","memoryMB":79,"mode":"cold","procs":1,"visualMs":115,"windowMs":114,"name":"QuickEdit 常驻","run":3}
-{"app":"QuickEdit","file":"doc.md","memoryMB":70,"mode":"cold","procs":1,"visualMs":107,"windowMs":107,"name":"QuickEdit 常驻","run":3}
-{"app":"QuickEdit","file":"huge.log","memoryMB":165,"mode":"cold","procs":1,"visualMs":219,"windowMs":219,"name":"QuickEdit 常驻","run":3}
-{"app":"QuickEdit","file":"small.go","memoryMB":70,"mode":"cold","procs":1,"visualMs":137,"windowMs":136,"name":"QuickEdit 常驻","run":4}
-{"app":"QuickEdit","file":"big.go","memoryMB":79,"mode":"cold","procs":1,"visualMs":126,"windowMs":125,"name":"QuickEdit 常驻","run":4}
-{"app":"QuickEdit","file":"doc.md","memoryMB":69,"mode":"cold","procs":1,"visualMs":113,"windowMs":112,"name":"QuickEdit 常驻","run":4}
-{"app":"QuickEdit","file":"huge.log","memoryMB":204,"mode":"cold","procs":1,"visualMs":208,"windowMs":208,"name":"QuickEdit 常驻","run":4}
-{"app":"QuickEdit","file":"small.go","memoryMB":69,"mode":"cold","procs":1,"visualMs":113,"windowMs":112,"name":"QuickEdit 常驻","run":5}
-{"app":"QuickEdit","file":"big.go","memoryMB":79,"mode":"cold","procs":1,"visualMs":89,"windowMs":89,"name":"QuickEdit 常驻","run":5}
-{"app":"QuickEdit","file":"doc.md","memoryMB":67,"mode":"cold","procs":1,"visualMs":109,"windowMs":108,"name":"QuickEdit 常驻","run":5}
-{"app":"QuickEdit","file":"huge.log","memoryMB":206,"mode":"cold","procs":1,"visualMs":207,"windowMs":207,"name":"QuickEdit 常驻","run":5}
+{"app":"QuickEdit","file":"small.go","frontMs":124,"memoryMB":116,"mode":"cold","procs":1,"visualMs":124,"windowMs":117,"name":"QuickEdit 常驻","run":1}
+{"app":"QuickEdit","file":"big.go","frontMs":126,"memoryMB":121,"mode":"cold","procs":1,"visualMs":126,"windowMs":109,"name":"QuickEdit 常驻","run":1}
+{"app":"QuickEdit","file":"doc.md","frontMs":169,"memoryMB":96,"mode":"cold","procs":1,"visualMs":169,"windowMs":153,"name":"QuickEdit 常驻","run":1}
+{"app":"QuickEdit","file":"huge.log","frontMs":272,"memoryMB":268,"mode":"cold","procs":1,"visualMs":272,"windowMs":256,"name":"QuickEdit 常驻","run":1}
+{"app":"QuickEdit","file":"small.go","frontMs":123,"memoryMB":116,"mode":"cold","procs":1,"visualMs":123,"windowMs":116,"name":"QuickEdit 常驻","run":2}
+{"app":"QuickEdit","file":"big.go","frontMs":130,"memoryMB":119,"mode":"cold","procs":1,"visualMs":130,"windowMs":118,"name":"QuickEdit 常驻","run":2}
+{"app":"QuickEdit","file":"doc.md","frontMs":191,"memoryMB":97,"mode":"cold","procs":1,"visualMs":191,"windowMs":180,"name":"QuickEdit 常驻","run":2}
+{"app":"QuickEdit","file":"huge.log","frontMs":250,"memoryMB":267,"mode":"cold","procs":1,"visualMs":250,"windowMs":233,"name":"QuickEdit 常驻","run":2}
+{"app":"QuickEdit","file":"small.go","frontMs":157,"memoryMB":116,"mode":"cold","procs":1,"visualMs":157,"windowMs":139,"name":"QuickEdit 常驻","run":3}
+{"app":"QuickEdit","file":"big.go","frontMs":140,"memoryMB":121,"mode":"cold","procs":1,"visualMs":140,"windowMs":126,"name":"QuickEdit 常驻","run":3}
+{"app":"QuickEdit","file":"doc.md","frontMs":186,"memoryMB":97,"mode":"cold","procs":1,"visualMs":186,"windowMs":169,"name":"QuickEdit 常驻","run":3}
+{"app":"QuickEdit","file":"huge.log","frontMs":253,"memoryMB":265,"mode":"cold","procs":1,"visualMs":253,"windowMs":239,"name":"QuickEdit 常驻","run":3}
+{"app":"QuickEdit","file":"small.go","frontMs":115,"memoryMB":116,"mode":"cold","procs":1,"visualMs":115,"windowMs":101,"name":"QuickEdit 常驻","run":4}
+{"app":"QuickEdit","file":"big.go","frontMs":123,"memoryMB":121,"mode":"cold","procs":1,"visualMs":123,"windowMs":106,"name":"QuickEdit 常驻","run":4}
+{"app":"QuickEdit","file":"doc.md","frontMs":164,"memoryMB":96,"mode":"cold","procs":1,"visualMs":164,"windowMs":159,"name":"QuickEdit 常驻","run":4}
+{"app":"QuickEdit","file":"huge.log","frontMs":253,"memoryMB":269,"mode":"cold","procs":1,"visualMs":253,"windowMs":241,"name":"QuickEdit 常驻","run":4}
+{"app":"QuickEdit","file":"small.go","frontMs":129,"memoryMB":116,"mode":"cold","procs":1,"visualMs":129,"windowMs":113,"name":"QuickEdit 常驻","run":5}
+{"app":"QuickEdit","file":"big.go","frontMs":128,"memoryMB":121,"mode":"cold","procs":1,"visualMs":128,"windowMs":124,"name":"QuickEdit 常驻","run":5}
+{"app":"QuickEdit","file":"doc.md","frontMs":168,"memoryMB":97,"mode":"cold","procs":1,"visualMs":168,"windowMs":161,"name":"QuickEdit 常驻","run":5}
+{"app":"QuickEdit","file":"huge.log","frontMs":254,"memoryMB":268,"mode":"cold","procs":1,"visualMs":254,"windowMs":241,"name":"QuickEdit 常驻","run":5}
+{"app":"QuickEdit","file":"small.go","frontMs":107,"memoryMB":117,"mode":"cold","procs":1,"visualMs":107,"windowMs":96,"name":"QuickEdit 常驻 · qe","run":1}
+{"app":"QuickEdit","file":"big.go","frontMs":157,"memoryMB":122,"mode":"cold","procs":1,"visualMs":157,"windowMs":154,"name":"QuickEdit 常驻 · qe","run":1}
+{"app":"QuickEdit","file":"doc.md","frontMs":150,"memoryMB":97,"mode":"cold","procs":1,"visualMs":150,"windowMs":133,"name":"QuickEdit 常驻 · qe","run":1}
+{"app":"QuickEdit","file":"huge.log","frontMs":215,"memoryMB":268,"mode":"cold","procs":1,"visualMs":215,"windowMs":214,"name":"QuickEdit 常驻 · qe","run":1}
+{"app":"QuickEdit","file":"small.go","frontMs":126,"memoryMB":116,"mode":"cold","procs":1,"visualMs":126,"windowMs":108,"name":"QuickEdit 常驻 · qe","run":2}
+{"app":"QuickEdit","file":"big.go","frontMs":99,"memoryMB":120,"mode":"cold","procs":1,"visualMs":99,"windowMs":95,"name":"QuickEdit 常驻 · qe","run":2}
+{"app":"QuickEdit","file":"doc.md","frontMs":152,"memoryMB":97,"mode":"cold","procs":1,"visualMs":152,"windowMs":138,"name":"QuickEdit 常驻 · qe","run":2}
+{"app":"QuickEdit","file":"huge.log","frontMs":229,"memoryMB":269,"mode":"cold","procs":1,"visualMs":229,"windowMs":221,"name":"QuickEdit 常驻 · qe","run":2}
+{"app":"QuickEdit","file":"small.go","frontMs":93,"memoryMB":116,"mode":"cold","procs":1,"visualMs":93,"windowMs":81,"name":"QuickEdit 常驻 · qe","run":3}
+{"app":"QuickEdit","file":"big.go","frontMs":98,"memoryMB":120,"mode":"cold","procs":1,"visualMs":98,"windowMs":85,"name":"QuickEdit 常驻 · qe","run":3}
+{"app":"QuickEdit","file":"doc.md","frontMs":150,"memoryMB":96,"mode":"cold","procs":1,"visualMs":150,"windowMs":141,"name":"QuickEdit 常驻 · qe","run":3}
+{"app":"QuickEdit","file":"huge.log","frontMs":220,"memoryMB":268,"mode":"cold","procs":1,"visualMs":220,"windowMs":211,"name":"QuickEdit 常驻 · qe","run":3}
+{"app":"QuickEdit","file":"small.go","frontMs":96,"memoryMB":116,"mode":"cold","procs":1,"visualMs":96,"windowMs":80,"name":"QuickEdit 常驻 · qe","run":4}
+{"app":"QuickEdit","file":"big.go","frontMs":123,"memoryMB":120,"mode":"cold","procs":1,"visualMs":123,"windowMs":119,"name":"QuickEdit 常驻 · qe","run":4}
+{"app":"QuickEdit","file":"doc.md","frontMs":146,"memoryMB":97,"mode":"cold","procs":1,"visualMs":146,"windowMs":142,"name":"QuickEdit 常驻 · qe","run":4}
+{"app":"QuickEdit","file":"huge.log","frontMs":226,"memoryMB":267,"mode":"cold","procs":1,"visualMs":226,"windowMs":213,"name":"QuickEdit 常驻 · qe","run":4}
+{"app":"QuickEdit","file":"small.go","frontMs":102,"memoryMB":117,"mode":"cold","procs":1,"visualMs":102,"windowMs":84,"name":"QuickEdit 常驻 · qe","run":5}
+{"app":"QuickEdit","file":"big.go","frontMs":114,"memoryMB":120,"mode":"cold","procs":1,"visualMs":114,"windowMs":100,"name":"QuickEdit 常驻 · qe","run":5}
+{"app":"QuickEdit","file":"doc.md","frontMs":150,"memoryMB":97,"mode":"cold","procs":1,"visualMs":150,"windowMs":145,"name":"QuickEdit 常驻 · qe","run":5}
+{"app":"QuickEdit","file":"huge.log","frontMs":287,"memoryMB":268,"mode":"cold","procs":1,"visualMs":287,"windowMs":272,"name":"QuickEdit 常驻 · qe","run":5}

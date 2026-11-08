@@ -3,7 +3,11 @@
 #   qe                 open QuickEdit
 #   qe FILE...         open the files; a file that doesn't exist is created empty
 #   cmd | qe -         open what cmd prints, in a temporary file
+#
+# A running QuickEdit gets the files through its socket, which is faster
+# than open -a (see ipc.go).
 app=QuickEdit
+sock="$HOME/Library/Application Support/QuickEdit/qe.sock"
 [ -d /Applications/QuickEdit.app ] || [ -d "$HOME/Applications/QuickEdit.app" ] || {
   echo "qe: QuickEdit.app is not installed" >&2; exit 1; }
 [ $# -eq 0 ] && exec open -a "$app"
@@ -17,6 +21,12 @@ for f do
   elif [ ! -e "$f" ]; then
     mkdir -p "$(dirname "$f")" && : > "$f"
   fi
+  case $f in /*) ;; *) f=$PWD/$f ;; esac
   set -- "$@" "$f"
 done
+if [ -S "$sock" ]; then
+  ok=$({ printf '%s\0' "$@"; printf '\0'; } | nc -U -w 2 "$sock" 2>/dev/null)
+  # Only LaunchServices may bring QuickEdit to the front.
+  [ "$ok" = ok ] && exec open -b com.kadaliao.quickedit
+fi
 exec open -a "$app" "$@"

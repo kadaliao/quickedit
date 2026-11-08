@@ -4,8 +4,14 @@
 # click does on a Mac where QuickEdit starts at login. Appends to
 # results/raw.jsonl as editor "QuickEdit 常驻", mode "cold", since for the
 # user no editor window is open, as in a cold start.
+#
+# VIA=qe opens the files with scripts/qe, through QuickEdit's socket, as
+# editor "QuickEdit 常驻 · qe".
 set -u
 here=$(cd "$(dirname "$0")" && pwd)
+root=$(cd "$here/../.." && pwd)
+name="QuickEdit 常驻" via=()
+[ "${VIA:-}" = qe ] && name="QuickEdit 常驻 · qe" via=(--exec "$root/scripts/qe")
 runs=${1:-5}
 app=${APP:-/Applications/QuickEdit.app}
 work=${WORK_DIR:-$here/work}
@@ -29,7 +35,7 @@ for run in $(seq "$runs"); do
     open -a "$app" --args --mygo-opened-at-login; sleep 3
     cp "$work/$f" "$work/r-$f"
     timeout=30; [[ $f == *huge* ]] && timeout=90
-    line=$("$here/measure" --app "$app" --file "$work/r-$f" --warm --timeout $timeout)
-    echo "${line%\}},\"name\":\"QuickEdit 常驻\",\"run\":$run}" | sed 's/"mode":"warm"/"mode":"cold"/; s/"file":"r-/"file":"/' | tee -a "$out"
+    line=$("$here/measure" --app "$app" --file "$work/r-$f" --warm --timeout $timeout ${via[@]+"${via[@]}"})
+    echo "${line%\}},\"name\":\"$name\",\"run\":$run}" | sed 's/"mode":"warm"/"mode":"cold"/; s/"file":"r-/"file":"/' | tee -a "$out"
   done
 done

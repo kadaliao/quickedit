@@ -16,6 +16,8 @@ for line in (res / "raw.jsonl").read_text().splitlines():
     r = json.loads(line)
     if "error" in r:
         continue
+    # Open means settled and in front (frontMs, in the runs that record it).
+    r["visualMs"] = max(r["visualMs"], r.get("frontMs", 0))
     groups[(r["name"], r["file"].removeprefix("w-"), r["mode"])].append(r)
 
 with open(res / "editors.csv", "w", newline="") as f:

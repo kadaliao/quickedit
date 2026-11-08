@@ -9,6 +9,10 @@ from pathlib import Path
 here = Path(__file__).parent
 raw = here / "results" / "raw.jsonl"
 rows = [json.loads(l) for l in raw.read_text().splitlines() if l.strip()]
+# Open means settled and in front (frontMs, in the runs that record it).
+for r in rows:
+    if "visualMs" in r:
+        r["visualMs"] = max(r["visualMs"], r.get("frontMs", 0))
 
 groups = defaultdict(list)
 errors = defaultdict(list)

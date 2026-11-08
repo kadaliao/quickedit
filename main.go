@@ -61,12 +61,13 @@ func main() {
 	}
 	// The Dock icon of an app without windows makes a new document.
 	mygo.App.OnActivate(func(visible bool) {
-		if !visible && len(docs.Documents()) == 0 {
+		if !visible && len(docs.Documents()) == 0 && pending.Load() == 0 {
 			go docs.New()
 		}
 	})
 	mygo.App.WhenReady(func() {
 		mygo.App.SetMenu(buildMenu())
+		listen()
 		// The files of the command line arrive once this returns, through
 		// the main thread's queue: look after them. Started with nothing to
 		// open and nothing to recover, show a new document, as Sublime Text

@@ -1,7 +1,9 @@
 // measure: opens a file in an app, as a double click in Finder does, and
 // times its window coming on screen and its content settling.
 //
-//   measure --app X.app --file F [--warm] [--arg A]... [--timeout 30] [--settle 1500]
+//   measure --app X.app --file F [--warm] [--arg A]... [--exec CMD] [--timeout 30] [--settle 1500]
+//
+// --exec runs CMD F instead, as a command such as qe does.
 //
 // Prints one line of JSON:
 //   windowMs  a window of the app titled with the file's name is on screen
@@ -9,6 +11,7 @@
 //             the same for settle ms (a blinking caret and fading scroll
 //             bars change too few pixels to count): text, highlighting and
 //             rendered Markdown included
+//   frontMs   that window is the frontmost one on screen
 //   memoryMB  the physical footprint of every process of the app, 2 s later
 import AppKit
 import CoreGraphics
@@ -16,7 +19,7 @@ import Darwin
 import ImageIO
 
 setvbuf(stdout, nil, _IOLBF, 0)
-var appPath = "", filePath = "", warm = false, extraArgs: [String] = []
+var appPath = "", filePath = "", warm = false, extraArgs: [String] = [], execPath = ""
 var timeout = 30.0, settle = 1.5
 var it = CommandLine.arguments.dropFirst().makeIterator()
 while let a = it.next() {
@@ -25,6 +28,7 @@ while let a = it.next() {
     case "--file": filePath = it.next()!
     case "--warm": warm = true
     case "--arg": extraArgs.append(it.next()!)
+    case "--exec": execPath = it.next()!
     case "--timeout": timeout = Double(it.next()!)!
     case "--settle": settle = Double(it.next()!)! / 1000
     default: fatalError("unknown argument \(a)")
@@ -62,6 +66,13 @@ func findWindow(_ owners: Set<pid_t>) -> CGWindowID? {
         return id
     }
     return nil
+}
+
+// isFront reports whether id is the frontmost window of the screen.
+func isFront(_ id: CGWindowID) -> Bool {
+    guard let list = CGWindowListCopyWindowInfo([.optionOnScreenOnly, .excludeDesktopElements], kCGNullWindowID) as? [[String: Any]] else { return false }
+    let first = list.first { ($0[kCGWindowLayer as String] as? Int) == 0 }
+    return (first?[kCGWindowNumber as String] as? CGWindowID) == id
 }
 
 // CGWindowListCreateImage is unavailable to Swift since macOS 15, but
@@ -135,17 +146,24 @@ cfg.activates = true
 cfg.arguments = extraArgs
 t0 = now()
 if debug { print(String(format: "t0 unix %.1f", Date().timeIntervalSince1970 * 1000)) }
-NSWorkspace.shared.open([fileURL], withApplicationAt: appURL, configuration: cfg) { _, err in
-    if let err { emit(["error": "open: \(err.localizedDescription)"]); exit(1) }
+if execPath != "" {
+    let p = Process()
+    p.executableURL = URL(fileURLWithPath: execPath)
+    p.arguments = [filePath]
+    do { try p.run() } catch { emit(["error": "exec: \(error)"]); exit(1) }
+} else {
+    NSWorkspace.shared.open([fileURL], withApplicationAt: appURL, configuration: cfg) { _, err in
+        if let err { emit(["error": "open: \(err.localizedDescription)"]); exit(1) }
+    }
 }
 
-var windowAt = 0.0, lastChange = 0.0
+var windowAt = 0.0, lastChange = 0.0, frontAt = 0.0
 var window: CGWindowID = 0
 var last: Shot?
 while true {
     let t = now()
     if t - t0 > timeout {
-        emit(["error": window == 0 ? "no window within \(Int(timeout)) s" : "never settled", "windowMs": windowAt > 0 ? (windowAt - t0) * 1000 : -1])
+        emit(["error": window == 0 ? "no window within \(Int(timeout)) s" : (frontAt == 0 ? "never in front" : "never settled"), "windowMs": windowAt > 0 ? (windowAt - t0) * 1000 : -1])
         exit(1)
     }
     if window == 0 {
@@ -165,6 +183,7 @@ while true {
             continue
         }
     }
+    if frontAt == 0 && isFront(window) { frontAt = now() }
     let c0 = now()
     let maybeShot = capture(window)
     if debug { print(String(format: "capture at %.0f took %.1f ms: %@", (c0 - t0) * 1000, (now() - c0) * 1000, maybeShot == nil ? "nil" : "ok")) }
@@ -181,9 +200,9 @@ while true {
             }
         }
     }
-    if now() - lastChange > settle { break }
+    if now() - lastChange > settle && frontAt > 0 { break }
     RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.005))
 }
 Thread.sleep(forTimeInterval: 2)
 let (mem, procs) = footprint()
-emit(["windowMs": ((windowAt - t0) * 1000).rounded(), "visualMs": ((lastChange - t0) * 1000).rounded(), "memoryMB": mem.rounded(), "procs": procs])
+emit(["windowMs": ((windowAt - t0) * 1000).rounded(), "visualMs": ((lastChange - t0) * 1000).rounded(), "frontMs": ((frontAt - t0) * 1000).rounded(), "memoryMB": mem.rounded(), "procs": procs])

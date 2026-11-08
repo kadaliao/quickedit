@@ -8,6 +8,7 @@
 - **冷启动**：编辑器没在运行，像在 Finder 里双击文件那样打开它。
 - **QuickEdit 常驻**：QuickEdit 以登录项的方式在后台启动、没有窗口，再打开文件（`resident.sh`）。
   对用户来说这和冷启动是同一个场景：双击文件时没有打开的编辑器窗口。别的编辑器默认不在登录时启动。
+  `VIA=qe ./resident.sh` 改用 `qe` 命令打开（"QuickEdit 常驻 · qe"），文件经 QuickEdit 的 socket 交给它，不经过 LaunchServices。
 - **已运行**：编辑器开着（打开过一个别的文件），再打开一个文件。Sublime、Zed、VS Code 会在原窗口里开新标签页，
   TextEdit、CotEditor、Typora、QuickEdit 会开新窗口。
 
@@ -26,7 +27,8 @@
 2. **窗口出现**：窗口服务器里出现了这个应用、标题里带文件名的窗口。
 3. **画面稳定**：之后不断截这个窗口（缩成 320×224 的缩略图比较），取最后一次有超过 1% 像素变化的时间，
    之后 1.5 秒不再变化。闪烁的光标、淡出的滚动条变化太小，不算；文字出现、语法高亮上色、Markdown 渲染都算。
-   表里的数字都是这一项。
+   表里的数字都是这一项，而且要等窗口到了屏幕最前面（`frontMs`）才算：`qe` 交出文件后，
+   窗口要等 macOS 把 QuickEdit 切到前台才会到最前面。
 4. **内存**：画面稳定 2 秒后，这个应用所有进程（含 Electron 的辅助进程）的 physical footprint 之和。
 
 为了公平：
@@ -43,6 +45,7 @@
 swiftc -O measure.swift -o measure
 APPS_DIR=下载的编辑器所在目录 ./run.sh 5          # 全部；或 ./run.sh 5 QuickEdit Zed
 ./resident.sh 5                                   # 后台常驻的 /Applications/QuickEdit.app
+VIA=qe ./resident.sh 5                            # 同上，用 qe 打开
 python3 summarize.py                              # 中位数表格，results/summary.json
 ```
 

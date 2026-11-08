@@ -197,11 +197,11 @@
   "mode": "cold",
   "n": 5,
   "errors": [],
-  "windowMs": 123,
-  "visualMs": 123,
-  "visualMin": 89,
-  "visualMax": 161,
-  "memoryMB": 79
+  "windowMs": 118,
+  "visualMs": 128,
+  "visualMin": 123,
+  "visualMax": 140,
+  "memoryMB": 121
  },
  {
   "editor": "QuickEdit 常驻",
@@ -209,11 +209,11 @@
   "mode": "cold",
   "n": 5,
   "errors": [],
-  "windowMs": 110,
-  "visualMs": 111,
-  "visualMin": 107,
-  "visualMax": 207,
-  "memoryMB": 70
+  "windowMs": 161,
+  "visualMs": 169,
+  "visualMin": 164,
+  "visualMax": 191,
+  "memoryMB": 97
  },
  {
   "editor": "QuickEdit 常驻",
@@ -221,11 +221,11 @@
   "mode": "cold",
   "n": 5,
   "errors": [],
-  "windowMs": 219,
-  "visualMs": 219,
-  "visualMin": 207,
-  "visualMax": 265,
-  "memoryMB": 206
+  "windowMs": 241,
+  "visualMs": 253,
+  "visualMin": 250,
+  "visualMax": 272,
+  "memoryMB": 268
  },
  {
   "editor": "QuickEdit 常驻",
@@ -233,11 +233,59 @@
   "mode": "cold",
   "n": 5,
   "errors": [],
-  "windowMs": 133,
-  "visualMs": 133,
-  "visualMin": 94,
-  "visualMax": 139,
-  "memoryMB": 70
+  "windowMs": 116,
+  "visualMs": 124,
+  "visualMin": 115,
+  "visualMax": 157,
+  "memoryMB": 116
+ },
+ {
+  "editor": "QuickEdit 常驻 · qe",
+  "file": "big.go",
+  "mode": "cold",
+  "n": 5,
+  "errors": [],
+  "windowMs": 100,
+  "visualMs": 114,
+  "visualMin": 98,
+  "visualMax": 157,
+  "memoryMB": 120
+ },
+ {
+  "editor": "QuickEdit 常驻 · qe",
+  "file": "doc.md",
+  "mode": "cold",
+  "n": 5,
+  "errors": [],
+  "windowMs": 141,
+  "visualMs": 150,
+  "visualMin": 146,
+  "visualMax": 152,
+  "memoryMB": 97
+ },
+ {
+  "editor": "QuickEdit 常驻 · qe",
+  "file": "huge.log",
+  "mode": "cold",
+  "n": 5,
+  "errors": [],
+  "windowMs": 214,
+  "visualMs": 226,
+  "visualMin": 215,
+  "visualMax": 287,
+  "memoryMB": 268
+ },
+ {
+  "editor": "QuickEdit 常驻 · qe",
+  "file": "small.go",
+  "mode": "cold",
+  "n": 5,
+  "errors": [],
+  "windowMs": 84,
+  "visualMs": 102,
+  "visualMin": 93,
+  "visualMax": 126,
+  "memoryMB": 116
  },
  {
   "editor": "Sublime Text",
