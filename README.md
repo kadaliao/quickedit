@@ -23,6 +23,7 @@
 
 - **后台待命，双击即开**：登录时在后台启动、不开窗口，关掉最后一个窗口也不退出，还总备着一个隐藏窗口。
   双击文件时只需把内容放进窗口：10.8 万行的 Go 文件 135 毫秒显示完毕。不想要可以在应用菜单里关掉。
+- **开着窗口时开成标签页**：不用新建窗口，10.8 万行的 Go 文件 77 毫秒，用 `qe` 打开 54 毫秒。
 - **冷启动也快**：没在运行时打开同一个文件 406 毫秒，比 Zed、Sublime Text、VS Code 都快。
 - **文件再大也不拖慢**：只排版看得见的行，60 万行、44 MB 的日志 0.3 秒打开。
 - **轻**：原生 GPU 绘制（[MyGo](https://github.com/egoist/mygo)），没有 Electron，没有 WebView。
@@ -38,11 +39,11 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/bench-bigfile-dark.svg">
-  <img src="docs/images/bench-bigfile-light.svg" width="100%" alt="打开 10.8 万行的 Go 文件：冷启动 QuickEdit 406 毫秒最快；后台待命 QuickEdit 135 毫秒最快；已有窗口时 Zed 56 毫秒最快，QuickEdit 135 毫秒第二">
+  <img src="docs/images/bench-bigfile-light.svg" width="100%" alt="打开 10.8 万行的 Go 文件：冷启动 QuickEdit 406 毫秒最快；后台待命 QuickEdit 135 毫秒最快；已有窗口时 Zed 56 毫秒最快，QuickEdit 77 毫秒第二">
 </picture>
 
 - 冷启动和后台待命，QuickEdit 都最快。
-- 编辑器已经开着窗口时，Zed 把新文件开成标签页，56 毫秒，最快。QuickEdit 每个文件开一个新窗口，135 毫秒，排第二。
+- 编辑器已经开着窗口时，新文件都开成标签页：Zed 56 毫秒最快，QuickEdit 77 毫秒排第二；用 `qe` 命令打开是 54 毫秒。
 
 **各种文件**（各编辑器都在后台待命、没有窗口）
 
@@ -89,12 +90,13 @@
 
 |  | QuickEdit | Sublime Text | Zed | CotEditor | VS Code |
 |---|---:|---:|---:|---:|---:|
-| small.go | 130 | 120 | **53** | 352 | 246 |
-| big.go | 135 | 492 | **56** | 1,892 | 394 |
-| doc.md | 168 | 161 | **52** | 361 | 417 |
-| huge.log | 251 | 1,202 | **57** | 838 | 925 |
+| small.go | 67 | 120 | **53** | 352 | 246 |
+| big.go | 77 | 492 | **56** | 1,892 | 394 |
+| doc.md | 145 | 161 | **52** | 361 | 417 |
+| huge.log | 229 | 1,202 | **57** | 838 | 925 |
 
-Sublime Text、Zed、VS Code 在原窗口里开标签页，CotEditor、QuickEdit 每个文件开一个新窗口。
+QuickEdit、Sublime Text、Zed、VS Code 在原窗口里开标签页，CotEditor 每个文件开一个新窗口。QuickEdit 这一列是加了标签页后重测的。
+QuickEdit 打开 Markdown 时显示渲染后的预览，其他编辑器显示源码。
 
 </details>
 
@@ -111,6 +113,7 @@ Sublime Text、Zed、VS Code 在原窗口里开标签页，CotEditor、QuickEdit
 
 - **代码**按语言高亮，30 多种语言；没有扩展名的脚本按 `#!` 行识别。
 - **Markdown** 默认显示渲染结果，可以切到源码或并排显示。
+- **标签页**：窗口开着时，新打开的文件成为它的标签页；两个以上才显示标签栏。
 - **二进制文件**以十六进制只读显示。
 - **编码**：自动识别 UTF-8、UTF-8 BOM、UTF-16、GBK/GB18030，保存时按原编码、原换行符写回。
 - **像 Mac 应用一样保存**：自动保存、崩溃后恢复、外部修改提示，文件菜单有复制、重命名、移动、还原。
@@ -141,6 +144,8 @@ sudo ln -sf /Applications/QuickEdit.app/Contents/Resources/qe /usr/local/bin/qe
 | 键 | 作用 |
 |---|---|
 | ⌘N / ⌘O / ⌘S | 新建 / 打开（任何文件）/ 保存 |
+| ⌘W / ⇧⌘W | 关闭标签页 / 关闭窗口 |
+| ⇧⌘[ / ⇧⌘] | 上一个 / 下一个标签页 |
 | ⌘E | Markdown：切换预览 / 源码 |
 | ⌥⌘E | Markdown：并排预览 |
 | ⌥Z | 自动换行 |
@@ -176,8 +181,10 @@ make install   # 复制到 /Applications，qe 装到 ~/.local/bin
 
 QuickEdit 用的是打了补丁的 MyGo：`scripts/patch-mygo.sh` 把 MyGo v0.8.3 复制到 `.mygo/`，
 应用 `patches/mygo/` 下的补丁，`go.mod` 用 `replace` 指向它（`make` 会自动做这一步）。
-目前只有一个补丁：中文标点单独测量时会被排成半宽，导致中文行自动换行时超出窗口
-（`cjk-wrap.patch`）。上游修复后可以去掉。
+两个补丁：
+
+- `cjk-wrap.patch`：中文标点单独测量时会被排成半宽，导致中文行自动换行时超出窗口。上游修复后可以去掉。
+- `document-tabs.patch`：让多个文档共用一个窗口（标签页）：文档可以挂到窗口上、从窗口上取下，关闭时可以不关窗口。
 
 框架选型时的对比测试在 [bench/](bench/)：同一个"打开文件"的小程序分别用 MyGo、GPUI、iced、egui 和原生 AppKit 实现，
 结果见 [bench/RESULTS.md](bench/RESULTS.md)。

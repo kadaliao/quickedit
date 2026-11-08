@@ -4,6 +4,8 @@
 
 "QuickEdit 常驻"是登录时已在后台启动、没有窗口的 QuickEdit，像双击一样打开文件（`resident.sh`）；"QuickEdit 常驻 · qe"改用 `qe` 命令打开（`VIA=qe ./resident.sh`）。这两行是之后单独重测的：重测时机器较忙（平均负载约 4），QuickEdit 的窗口也比之前大（1199×874），所以 big.go、doc.md、huge.log 比第一次测的慢 5 到 58 毫秒（第一次：133、123、111、219），内存也多一些。两行在同样条件下先后测完，可以直接比较。
 
+QuickEdit "应用已运行时打开"一行是加了标签页之后重测的（2026-11-08 23:30）：文件开在已有窗口的新标签页里。用 `qe` 打开的结果在 `tabs-qe.jsonl`。
+
 ### 冷启动打开（应用未运行）：到画面稳定的毫秒数，5 轮中位数
 
 | 编辑器 | small.go | big.go | doc.md | huge.log | 内存 (big.go) |
@@ -23,7 +25,7 @@
 | 编辑器 | small.go | big.go | doc.md | huge.log |
 |---|---:|---:|---:|---:|
 | CotEditor | 352 | 1892 | 361 | 838 |
-| QuickEdit | 130 | 135 | 168 | 251 |
+| QuickEdit | 67 | 77 | 145 | 229 |
 | QuickEdit 常驻 | — | — | — | — |
 | QuickEdit 常驻 · qe | — | — | — | — |
 | Sublime Text | 120 | 492 | 161 | 1202 |

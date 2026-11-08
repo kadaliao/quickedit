@@ -113,10 +113,10 @@
   "mode": "warm",
   "n": 5,
   "errors": [],
-  "windowMs": 134,
-  "visualMs": 135,
-  "visualMin": 122,
-  "visualMax": 172,
+  "windowMs": 76,
+  "visualMs": 77,
+  "visualMin": 72,
+  "visualMax": 125,
   "memoryMB": null
  },
  {
@@ -137,10 +137,10 @@
   "mode": "warm",
   "n": 5,
   "errors": [],
-  "windowMs": 167,
-  "visualMs": 168,
-  "visualMin": 164,
-  "visualMax": 187,
+  "windowMs": 79,
+  "visualMs": 145,
+  "visualMin": 143,
+  "visualMax": 189,
   "memoryMB": null
  },
  {
@@ -161,10 +161,10 @@
   "mode": "warm",
   "n": 5,
   "errors": [],
-  "windowMs": 251,
-  "visualMs": 251,
-  "visualMin": 219,
-  "visualMax": 307,
+  "windowMs": 221,
+  "visualMs": 229,
+  "visualMin": 210,
+  "visualMax": 244,
   "memoryMB": null
  },
  {
@@ -185,10 +185,10 @@
   "mode": "warm",
   "n": 5,
   "errors": [],
-  "windowMs": 130,
-  "visualMs": 130,
-  "visualMin": 115,
-  "visualMax": 148,
+  "windowMs": 66,
+  "visualMs": 67,
+  "visualMin": 63,
+  "visualMax": 191,
   "memoryMB": null
  },
  {

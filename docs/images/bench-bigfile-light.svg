@@ -42,8 +42,8 @@
 <path d="M768.0,59.0 H769.8 Q771.6,59.0 771.6,60.8 V73.2 Q771.6,75.0 769.8,75.0 H768.0 Z" fill="#8e8c84"/>
 <text x="777.6" y="71.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">56 ms</text>
 <text x="758.0" y="101.5" font-size="13" font-weight="600" fill="#0b0b0b" text-anchor="end" style="">QuickEdit</text>
-<path d="M768.0,89.0 H772.7 Q776.7,89.0 776.7,93.0 V101.0 Q776.7,105.0 772.7,105.0 H768.0 Z" fill="#2a78d6"/>
-<text x="782.7" y="101.5" font-size="12.5" font-weight="600" fill="#0b0b0b" text-anchor="start" style="font-variant-numeric: tabular-nums;">135 ms</text>
+<path d="M768.0,89.0 H770.5 Q773.0,89.0 773.0,91.5 V102.5 Q773.0,105.0 770.5,105.0 H768.0 Z" fill="#2a78d6"/>
+<text x="779.0" y="101.5" font-size="12.5" font-weight="600" fill="#0b0b0b" text-anchor="start" style="font-variant-numeric: tabular-nums;">77 ms</text>
 <text x="758.0" y="131.5" font-size="13" font-weight="400" fill="#52514e" text-anchor="end" style="">VS Code</text>
 <path d="M768.0,119.0 H789.4 Q793.4,119.0 793.4,123.0 V131.0 Q793.4,135.0 789.4,135.0 H768.0 Z" fill="#8e8c84"/>
 <text x="799.4" y="131.5" font-size="12.5" font-weight="400" fill="#52514e" text-anchor="start" style="font-variant-numeric: tabular-nums;">394 ms</text>
