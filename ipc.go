@@ -23,7 +23,7 @@ import (
 // open -b, while the files load: the windows show in front once both are
 // done, about 50 ms sooner than when open hands over the files.
 
-// socketPath is where QuickEdit listens; scripts/qe knows it too.
+// socketPath is where QuickEdit listens; resources/darwin/qe knows it too.
 func socketPath() string { return filepath.Join(userData(), "qe.sock") }
 
 // listen serves qe while the app runs. A second copy of QuickEdit leaves

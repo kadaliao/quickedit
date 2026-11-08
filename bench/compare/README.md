@@ -6,6 +6,8 @@
 ## 场景
 
 - **冷启动**：编辑器没在运行，像在 Finder 里双击文件那样打开它。
+- **后台待命**：每个编辑器（包括 QuickEdit）都先打开一个文件、再关掉窗口，在运行、没有窗口时再打开文件（`background.sh`）。
+  这是同样状态下的比较，README 的图表用的就是它。
 - **QuickEdit 常驻**：QuickEdit 以登录项的方式在后台启动、没有窗口，再打开文件（`resident.sh`）。
   对用户来说这和冷启动是同一个场景：双击文件时没有打开的编辑器窗口。别的编辑器默认不在登录时启动。
   `VIA=qe ./resident.sh` 改用 `qe` 命令打开（"QuickEdit 常驻 · qe"），文件经 QuickEdit 的 socket 交给它，不经过 LaunchServices。
@@ -46,6 +48,8 @@ swiftc -O measure.swift -o measure
 APPS_DIR=下载的编辑器所在目录 ./run.sh 5          # 全部；或 ./run.sh 5 QuickEdit Zed
 ./resident.sh 5                                   # 后台常驻的 /Applications/QuickEdit.app
 VIA=qe ./resident.sh 5                            # 同上，用 qe 打开
+APPS_DIR=... ./background.sh 3                    # 所有编辑器都在后台待命，results/background.jsonl
+python3 charts.py                                 # README 的图表，docs/images/bench-*.svg
 python3 summarize.py                              # 中位数表格，results/summary.json
 ```
 

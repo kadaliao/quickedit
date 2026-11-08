@@ -5,13 +5,13 @@
 # results/raw.jsonl as editor "QuickEdit 常驻", mode "cold", since for the
 # user no editor window is open, as in a cold start.
 #
-# VIA=qe opens the files with scripts/qe, through QuickEdit's socket, as
+# VIA=qe opens the files with resources/darwin/qe, through QuickEdit's socket, as
 # editor "QuickEdit 常驻 · qe".
 set -u
 here=$(cd "$(dirname "$0")" && pwd)
 root=$(cd "$here/../.." && pwd)
 name="QuickEdit 常驻" via=()
-[ "${VIA:-}" = qe ] && name="QuickEdit 常驻 · qe" via=(--exec "$root/scripts/qe")
+[ "${VIA:-}" = qe ] && name="QuickEdit 常驻 · qe" via=(--exec "$root/resources/darwin/qe")
 runs=${1:-5}
 app=${APP:-/Applications/QuickEdit.app}
 work=${WORK_DIR:-$here/work}

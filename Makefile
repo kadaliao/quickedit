@@ -28,7 +28,7 @@ install: build
 	rm -rf /Applications/QuickEdit.app
 	cp -R $(APP) /Applications/
 	mkdir -p $(HOME)/.local/bin
-	install -m 755 scripts/qe $(HOME)/.local/bin/qe
+	install -m 755 resources/darwin/qe $(HOME)/.local/bin/qe
 
 clean:
 	rm -rf build .mygo

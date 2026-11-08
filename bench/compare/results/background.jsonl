@@ -1,0 +1,72 @@
+{"app":"QuickEdit","file":"1-small.go","frontMs":135,"memoryMB":0,"mode":"warm","procs":0,"visualMs":135,"windowMs":116,"name":"QuickEdit","run":1,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"QuickEdit","file":"1-big.go","frontMs":135,"memoryMB":0,"mode":"warm","procs":0,"visualMs":135,"windowMs":126,"name":"QuickEdit","run":1,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"QuickEdit","file":"1-doc.md","frontMs":225,"memoryMB":0,"mode":"warm","procs":0,"visualMs":225,"windowMs":204,"name":"QuickEdit","run":1,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"QuickEdit","file":"1-huge.log","frontMs":314,"memoryMB":0,"mode":"warm","procs":0,"visualMs":314,"windowMs":264,"name":"QuickEdit","run":1,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"QuickEdit","file":"2-small.go","frontMs":112,"memoryMB":0,"mode":"warm","procs":0,"visualMs":112,"windowMs":91,"name":"QuickEdit","run":2,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"QuickEdit","file":"2-big.go","frontMs":153,"memoryMB":0,"mode":"warm","procs":0,"visualMs":153,"windowMs":130,"name":"QuickEdit","run":2,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"QuickEdit","file":"2-doc.md","frontMs":137,"memoryMB":0,"mode":"warm","procs":0,"visualMs":137,"windowMs":128,"name":"QuickEdit","run":2,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"QuickEdit","file":"2-huge.log","frontMs":271,"memoryMB":0,"mode":"warm","procs":0,"visualMs":271,"windowMs":258,"name":"QuickEdit","run":2,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"QuickEdit","file":"3-small.go","frontMs":138,"memoryMB":0,"mode":"warm","procs":0,"visualMs":138,"windowMs":125,"name":"QuickEdit","run":3,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"QuickEdit","file":"3-big.go","frontMs":135,"memoryMB":0,"mode":"warm","procs":0,"visualMs":135,"windowMs":125,"name":"QuickEdit","run":3,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"QuickEdit","file":"3-doc.md","frontMs":125,"memoryMB":0,"mode":"warm","procs":0,"visualMs":125,"windowMs":110,"name":"QuickEdit","run":3,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"QuickEdit","file":"3-huge.log","frontMs":333,"memoryMB":0,"mode":"warm","procs":0,"visualMs":333,"windowMs":311,"name":"QuickEdit","run":3,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"TextEdit","file":"1-small.go","frontMs":177,"memoryMB":0,"mode":"warm","procs":0,"visualMs":177,"windowMs":175,"name":"TextEdit","run":1,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"TextEdit","file":"1-big.go","frontMs":196,"memoryMB":0,"mode":"warm","procs":0,"visualMs":196,"windowMs":192,"name":"TextEdit","run":1,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"TextEdit","file":"1-doc.md","frontMs":198,"memoryMB":0,"mode":"warm","procs":0,"visualMs":198,"windowMs":196,"name":"TextEdit","run":1,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"TextEdit","file":"1-huge.log","frontMs":529,"memoryMB":0,"mode":"warm","procs":0,"visualMs":529,"windowMs":514,"name":"TextEdit","run":1,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"TextEdit","file":"2-small.go","frontMs":173,"memoryMB":0,"mode":"warm","procs":0,"visualMs":173,"windowMs":158,"name":"TextEdit","run":2,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"TextEdit","file":"2-big.go","frontMs":193,"memoryMB":0,"mode":"warm","procs":0,"visualMs":193,"windowMs":192,"name":"TextEdit","run":2,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"TextEdit","file":"2-doc.md","frontMs":178,"memoryMB":0,"mode":"warm","procs":0,"visualMs":178,"windowMs":174,"name":"TextEdit","run":2,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"TextEdit","file":"2-huge.log","frontMs":489,"memoryMB":0,"mode":"warm","procs":0,"visualMs":489,"windowMs":473,"name":"TextEdit","run":2,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"TextEdit","file":"3-small.go","frontMs":171,"memoryMB":0,"mode":"warm","procs":0,"visualMs":171,"windowMs":157,"name":"TextEdit","run":3,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"TextEdit","file":"3-big.go","frontMs":221,"memoryMB":0,"mode":"warm","procs":0,"visualMs":221,"windowMs":206,"name":"TextEdit","run":3,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"TextEdit","file":"3-doc.md","frontMs":275,"memoryMB":0,"mode":"warm","procs":0,"visualMs":275,"windowMs":267,"name":"TextEdit","run":3,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"TextEdit","file":"3-huge.log","frontMs":504,"memoryMB":0,"mode":"warm","procs":0,"visualMs":504,"windowMs":492,"name":"TextEdit","run":3,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"Sublime Text","file":"1-small.go","frontMs":112,"memoryMB":0,"mode":"warm","procs":0,"visualMs":112,"windowMs":111,"name":"Sublime Text","run":1,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"Sublime Text","file":"1-big.go","frontMs":107,"memoryMB":0,"mode":"warm","procs":0,"visualMs":490,"windowMs":104,"name":"Sublime Text","run":1,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"Sublime Text","file":"1-doc.md","frontMs":117,"memoryMB":0,"mode":"warm","procs":0,"visualMs":594,"windowMs":115,"name":"Sublime Text","run":1,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"Sublime Text","file":"1-huge.log","frontMs":141,"memoryMB":0,"mode":"warm","procs":0,"visualMs":1304,"windowMs":109,"name":"Sublime Text","run":1,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"Sublime Text","file":"2-small.go","frontMs":114,"memoryMB":0,"mode":"warm","procs":0,"visualMs":114,"windowMs":113,"name":"Sublime Text","run":2,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"Sublime Text","file":"2-big.go","frontMs":109,"memoryMB":0,"mode":"warm","procs":0,"visualMs":489,"windowMs":107,"name":"Sublime Text","run":2,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"Sublime Text","file":"2-doc.md","frontMs":113,"memoryMB":0,"mode":"warm","procs":0,"visualMs":113,"windowMs":110,"name":"Sublime Text","run":2,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"Sublime Text","file":"2-huge.log","frontMs":100,"memoryMB":0,"mode":"warm","procs":0,"visualMs":1211,"windowMs":98,"name":"Sublime Text","run":2,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"Sublime Text","file":"3-small.go","frontMs":298,"memoryMB":0,"mode":"warm","procs":0,"visualMs":298,"windowMs":246,"name":"Sublime Text","run":3,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"Sublime Text","file":"3-big.go","frontMs":134,"memoryMB":0,"mode":"warm","procs":0,"visualMs":818,"windowMs":117,"name":"Sublime Text","run":3,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"Sublime Text","file":"3-doc.md","frontMs":196,"memoryMB":0,"mode":"warm","procs":0,"visualMs":196,"windowMs":166,"name":"Sublime Text","run":3,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"Sublime Text","file":"3-huge.log","frontMs":159,"memoryMB":0,"mode":"warm","procs":0,"visualMs":159,"windowMs":128,"name":"Sublime Text","run":3,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"CotEditor","file":"1-small.go","frontMs":330,"memoryMB":0,"mode":"warm","procs":0,"visualMs":330,"windowMs":313,"name":"CotEditor","run":1,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"CotEditor","file":"1-big.go","frontMs":382,"memoryMB":0,"mode":"warm","procs":0,"visualMs":1797,"windowMs":367,"name":"CotEditor","run":1,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"CotEditor","file":"1-doc.md","frontMs":454,"memoryMB":0,"mode":"warm","procs":0,"visualMs":454,"windowMs":450,"name":"CotEditor","run":1,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"CotEditor","file":"1-huge.log","frontMs":966,"memoryMB":0,"mode":"warm","procs":0,"visualMs":966,"windowMs":942,"name":"CotEditor","run":1,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"CotEditor","file":"2-small.go","frontMs":304,"memoryMB":0,"mode":"warm","procs":0,"visualMs":304,"windowMs":288,"name":"CotEditor","run":2,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"CotEditor","file":"2-big.go","frontMs":399,"memoryMB":0,"mode":"warm","procs":0,"visualMs":1855,"windowMs":384,"name":"CotEditor","run":2,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"CotEditor","file":"2-doc.md","frontMs":328,"memoryMB":0,"mode":"warm","procs":0,"visualMs":328,"windowMs":309,"name":"CotEditor","run":2,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"CotEditor","file":"2-huge.log","frontMs":803,"memoryMB":0,"mode":"warm","procs":0,"visualMs":803,"windowMs":786,"name":"CotEditor","run":2,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"CotEditor","file":"3-small.go","frontMs":304,"memoryMB":0,"mode":"warm","procs":0,"visualMs":304,"windowMs":288,"name":"CotEditor","run":3,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"CotEditor","file":"3-big.go","frontMs":488,"memoryMB":0,"mode":"warm","procs":0,"visualMs":488,"windowMs":483,"name":"CotEditor","run":3,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"CotEditor","file":"3-doc.md","frontMs":379,"memoryMB":0,"mode":"warm","procs":0,"visualMs":379,"windowMs":365,"name":"CotEditor","run":3,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"CotEditor","file":"3-huge.log","frontMs":784,"memoryMB":0,"mode":"warm","procs":0,"visualMs":784,"windowMs":766,"name":"CotEditor","run":3,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"Zed","file":"1-small.go","frontMs":182,"memoryMB":0,"mode":"warm","procs":0,"visualMs":182,"windowMs":180,"name":"Zed","run":1,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"Zed","file":"1-big.go","frontMs":197,"memoryMB":0,"mode":"warm","procs":0,"visualMs":197,"windowMs":185,"name":"Zed","run":1,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"Zed","file":"1-doc.md","frontMs":155,"memoryMB":0,"mode":"warm","procs":0,"visualMs":155,"windowMs":153,"name":"Zed","run":1,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"Zed","file":"1-huge.log","frontMs":251,"memoryMB":0,"mode":"warm","procs":0,"visualMs":251,"windowMs":239,"name":"Zed","run":1,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"Zed","file":"2-small.go","frontMs":204,"memoryMB":0,"mode":"warm","procs":0,"visualMs":204,"windowMs":185,"name":"Zed","run":2,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"Zed","file":"2-big.go","frontMs":187,"memoryMB":0,"mode":"warm","procs":0,"visualMs":187,"windowMs":171,"name":"Zed","run":2,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"Zed","file":"2-doc.md","frontMs":212,"memoryMB":0,"mode":"warm","procs":0,"visualMs":212,"windowMs":201,"name":"Zed","run":2,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"Zed","file":"2-huge.log","frontMs":244,"memoryMB":0,"mode":"warm","procs":0,"visualMs":244,"windowMs":230,"name":"Zed","run":2,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"Zed","file":"3-small.go","frontMs":202,"memoryMB":0,"mode":"warm","procs":0,"visualMs":202,"windowMs":184,"name":"Zed","run":3,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"Zed","file":"3-big.go","frontMs":212,"memoryMB":0,"mode":"warm","procs":0,"visualMs":212,"windowMs":196,"name":"Zed","run":3,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"Zed","file":"3-doc.md","frontMs":314,"memoryMB":0,"mode":"warm","procs":0,"visualMs":314,"windowMs":306,"name":"Zed","run":3,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"Zed","file":"3-huge.log","frontMs":240,"memoryMB":0,"mode":"warm","procs":0,"visualMs":240,"windowMs":227,"name":"Zed","run":3,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"Visual Studio Code","file":"1-small.go","frontMs":872,"memoryMB":0,"mode":"warm","procs":0,"visualMs":1580,"windowMs":866,"name":"VS Code","run":1,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"Visual Studio Code","file":"1-big.go","frontMs":765,"memoryMB":0,"mode":"warm","procs":0,"visualMs":1569,"windowMs":764,"name":"VS Code","run":1,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"Visual Studio Code","file":"1-doc.md","frontMs":847,"memoryMB":0,"mode":"warm","procs":0,"visualMs":1850,"windowMs":842,"name":"VS Code","run":1,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"Visual Studio Code","file":"1-huge.log","frontMs":687,"memoryMB":0,"mode":"warm","procs":0,"visualMs":2167,"windowMs":686,"name":"VS Code","run":1,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"Visual Studio Code","file":"2-small.go","frontMs":669,"memoryMB":0,"mode":"warm","procs":0,"visualMs":1109,"windowMs":664,"name":"VS Code","run":2,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"Visual Studio Code","file":"2-big.go","frontMs":749,"memoryMB":0,"mode":"warm","procs":0,"visualMs":1540,"windowMs":748,"name":"VS Code","run":2,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"Visual Studio Code","file":"2-doc.md","frontMs":930,"memoryMB":0,"mode":"warm","procs":0,"visualMs":1731,"windowMs":929,"name":"VS Code","run":2,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"Visual Studio Code","file":"2-huge.log","frontMs":690,"memoryMB":0,"mode":"warm","procs":0,"visualMs":1890,"windowMs":684,"name":"VS Code","run":2,"running":true,"windowsBefore":0,"file":"huge.log"}
+{"app":"Visual Studio Code","file":"3-small.go","frontMs":747,"memoryMB":0,"mode":"warm","procs":0,"visualMs":1326,"windowMs":746,"name":"VS Code","run":3,"running":true,"windowsBefore":0,"file":"small.go"}
+{"app":"Visual Studio Code","file":"3-big.go","frontMs":699,"memoryMB":0,"mode":"warm","procs":0,"visualMs":1313,"windowMs":697,"name":"VS Code","run":3,"running":true,"windowsBefore":0,"file":"big.go"}
+{"app":"Visual Studio Code","file":"3-doc.md","frontMs":853,"memoryMB":0,"mode":"warm","procs":0,"visualMs":1848,"windowMs":851,"name":"VS Code","run":3,"running":true,"windowsBefore":0,"file":"doc.md"}
+{"app":"Visual Studio Code","file":"3-huge.log","frontMs":727,"memoryMB":0,"mode":"warm","procs":0,"visualMs":1500,"windowMs":717,"name":"VS Code","run":3,"running":true,"windowsBefore":0,"file":"huge.log"}
