@@ -1,0 +1,30 @@
+{"app":"QuickEdit","file":"view.go","frontMs":158,"memoryMB":0,"mode":"warm","procs":0,"visualMs":158,"windowMs":156,"name":"QuickEdit 常驻"}
+{"app":"QuickEdit","file":"README.md","frontMs":174,"memoryMB":0,"mode":"warm","procs":0,"visualMs":174,"windowMs":162,"name":"QuickEdit 常驻"}
+{"app":"QuickEdit","file":"summary.json","frontMs":169,"memoryMB":0,"mode":"warm","procs":0,"visualMs":169,"windowMs":156,"name":"QuickEdit 常驻"}
+{"app":"QuickEdit","file":"index.html","frontMs":174,"memoryMB":0,"mode":"warm","procs":0,"visualMs":174,"windowMs":158,"name":"QuickEdit 常驻"}
+{"app":"QuickEdit","file":"Makefile","frontMs":154,"memoryMB":0,"mode":"warm","procs":0,"visualMs":154,"windowMs":142,"name":"QuickEdit 常驻"}
+{"app":"TextEdit","file":"view.go","frontMs":503,"memoryMB":0,"mode":"cold","procs":0,"visualMs":503,"windowMs":501,"name":"TextEdit"}
+{"app":"TextEdit","file":"README.md","frontMs":521,"memoryMB":0,"mode":"cold","procs":0,"visualMs":521,"windowMs":518,"name":"TextEdit"}
+{"app":"TextEdit","file":"summary.json","frontMs":544,"memoryMB":0,"mode":"cold","procs":0,"visualMs":544,"windowMs":534,"name":"TextEdit"}
+{"app":"TextEdit","file":"index.html","frontMs":1339,"memoryMB":0,"mode":"cold","procs":0,"visualMs":1339,"windowMs":1330,"name":"TextEdit"}
+{"app":"TextEdit","file":"Makefile","frontMs":508,"memoryMB":0,"mode":"cold","procs":0,"visualMs":508,"windowMs":507,"name":"TextEdit"}
+{"app":"Sublime Text","file":"view.go","frontMs":626,"memoryMB":0,"mode":"cold","procs":0,"visualMs":703,"windowMs":615,"name":"Sublime Text"}
+{"app":"Sublime Text","file":"README.md","frontMs":577,"memoryMB":0,"mode":"cold","procs":0,"visualMs":577,"windowMs":576,"name":"Sublime Text"}
+{"app":"Sublime Text","file":"summary.json","frontMs":679,"memoryMB":0,"mode":"cold","procs":0,"visualMs":679,"windowMs":677,"name":"Sublime Text"}
+{"app":"Sublime Text","file":"index.html","frontMs":593,"memoryMB":0,"mode":"cold","procs":0,"visualMs":866,"windowMs":585,"name":"Sublime Text"}
+{"app":"Sublime Text","file":"Makefile","frontMs":711,"memoryMB":0,"mode":"cold","procs":0,"visualMs":711,"windowMs":709,"name":"Sublime Text"}
+{"app":"CotEditor","file":"view.go","frontMs":923,"memoryMB":0,"mode":"cold","procs":0,"visualMs":923,"windowMs":915,"name":"CotEditor"}
+{"app":"CotEditor","file":"README.md","frontMs":916,"memoryMB":0,"mode":"cold","procs":0,"visualMs":916,"windowMs":907,"name":"CotEditor"}
+{"app":"CotEditor","file":"summary.json","frontMs":909,"memoryMB":0,"mode":"cold","procs":0,"visualMs":909,"windowMs":905,"name":"CotEditor"}
+{"app":"CotEditor","file":"index.html","frontMs":942,"memoryMB":0,"mode":"cold","procs":0,"visualMs":942,"windowMs":938,"name":"CotEditor"}
+{"app":"CotEditor","file":"Makefile","frontMs":891,"memoryMB":0,"mode":"cold","procs":0,"visualMs":891,"windowMs":883,"name":"CotEditor"}
+{"app":"Zed","file":"view.go","frontMs":608,"memoryMB":0,"mode":"cold","procs":0,"visualMs":608,"windowMs":605,"name":"Zed"}
+{"app":"Zed","file":"README.md","frontMs":575,"memoryMB":0,"mode":"cold","procs":0,"visualMs":575,"windowMs":573,"name":"Zed"}
+{"app":"Zed","file":"summary.json","frontMs":567,"memoryMB":0,"mode":"cold","procs":0,"visualMs":567,"windowMs":565,"name":"Zed"}
+{"app":"Zed","file":"index.html","frontMs":576,"memoryMB":0,"mode":"cold","procs":0,"visualMs":576,"windowMs":574,"name":"Zed"}
+{"app":"Zed","file":"Makefile","frontMs":567,"memoryMB":0,"mode":"cold","procs":0,"visualMs":567,"windowMs":565,"name":"Zed"}
+{"app":"Visual Studio Code","file":"view.go","frontMs":1251,"memoryMB":0,"mode":"cold","procs":0,"visualMs":1879,"windowMs":1248,"name":"VS Code"}
+{"app":"Visual Studio Code","file":"README.md","frontMs":1186,"memoryMB":0,"mode":"cold","procs":0,"visualMs":1854,"windowMs":1184,"name":"VS Code"}
+{"app":"Visual Studio Code","file":"summary.json","frontMs":1166,"memoryMB":0,"mode":"cold","procs":0,"visualMs":1540,"windowMs":1164,"name":"VS Code"}
+{"app":"Visual Studio Code","file":"index.html","frontMs":1178,"memoryMB":0,"mode":"cold","procs":0,"visualMs":1856,"windowMs":1174,"name":"VS Code"}
+{"app":"Visual Studio Code","file":"Makefile","frontMs":1182,"memoryMB":0,"mode":"cold","procs":0,"visualMs":1319,"windowMs":1178,"name":"VS Code"}

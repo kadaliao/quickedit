@@ -49,6 +49,9 @@ VIA=qe ./resident.sh 5                            # 同上，用 qe 打开
 python3 summarize.py                              # 中位数表格，results/summary.json
 ```
 
+`project.sh` 是几分钟就能跑完的版本：用本仓库里的 5 个真实文件（Go、Markdown、JSON、HTML、Makefile），
+QuickEdit 后台常驻、其他编辑器冷启动，每个文件只打开一次，不测内存，结果在 `results/project.jsonl`。
+
 `run.sh` 结束时会删除这些编辑器在 `~/Library`、`~/.config` 里新建的目录（`KEEP_EDITOR_DATA=1` 保留）。
 
 结果见 [results/](results/)。

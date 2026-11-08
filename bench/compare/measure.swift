@@ -20,7 +20,7 @@ import ImageIO
 
 setvbuf(stdout, nil, _IOLBF, 0)
 var appPath = "", filePath = "", warm = false, extraArgs: [String] = [], execPath = ""
-var timeout = 30.0, settle = 1.5
+var timeout = 30.0, settle = 1.5, noMemory = false
 var it = CommandLine.arguments.dropFirst().makeIterator()
 while let a = it.next() {
     switch a {
@@ -29,6 +29,7 @@ while let a = it.next() {
     case "--warm": warm = true
     case "--arg": extraArgs.append(it.next()!)
     case "--exec": execPath = it.next()!
+    case "--no-memory": noMemory = true
     case "--timeout": timeout = Double(it.next()!)!
     case "--settle": settle = Double(it.next()!)! / 1000
     default: fatalError("unknown argument \(a)")
@@ -210,6 +211,6 @@ while true {
     if now() - lastChange > settle && frontAt > 0 { break }
     RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.005))
 }
-Thread.sleep(forTimeInterval: 2)
-let (mem, procs) = footprint()
+if !noMemory { Thread.sleep(forTimeInterval: 2) }
+let (mem, procs) = noMemory ? (0.0, 0) : footprint()
 emit(["windowMs": ((windowAt - t0) * 1000).rounded(), "visualMs": ((lastChange - t0) * 1000).rounded(), "frontMs": ((frontAt - t0) * 1000).rounded(), "memoryMB": mem.rounded(), "procs": procs])
