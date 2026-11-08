@@ -72,6 +72,7 @@ func newWindow(hidden bool) *docWindow {
 func takeWindow(v *docView) *mygo.Window {
 	if h := front; h != nil && h.usable() {
 		h.add(v)
+		h.win.SetTitle(v.doc.State().Name)
 		go mygo.RunOnMain(h.win.Show)
 		return h.win
 	}

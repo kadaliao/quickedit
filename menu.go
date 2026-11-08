@@ -16,6 +16,9 @@ type appSettings struct {
 	// loginItemOffered tells that QuickEdit made itself start at login
 	// once, which the user may have turned off since.
 	loginItemOffered bool
+	// markdownSource opens Markdown files in their source rather than
+	// their preview.
+	markdownSource bool
 }
 
 var settings = appSettings{fontSize: defaultFontSize}
@@ -25,6 +28,7 @@ const defaultFontSize = 13
 type savedSettings struct {
 	FontSize         float32 `json:"fontSize"`
 	LoginItemOffered bool    `json:"loginItemOffered,omitempty"`
+	MarkdownSource   bool    `json:"markdownSource,omitempty"`
 }
 
 // userData is the app's directory of its own data.
@@ -50,17 +54,22 @@ func loadSettings() {
 		settings.fontSize = s.FontSize
 	}
 	settings.loginItemOffered = s.LoginItemOffered
+	settings.markdownSource = s.MarkdownSource
 }
 
 func saveSettings() {
-	b, _ := json.MarshalIndent(savedSettings{FontSize: settings.fontSize, LoginItemOffered: settings.loginItemOffered}, "", "  ")
+	b, _ := json.MarshalIndent(savedSettings{FontSize: settings.fontSize, LoginItemOffered: settings.loginItemOffered, MarkdownSource: settings.markdownSource}, "", "  ")
 	os.MkdirAll(filepath.Dir(settingsPath()), 0o755)
 	os.WriteFile(settingsPath(), b, 0o644)
 }
 
 // wrap tells whether lines wrap by default: prose does, as in TextEdit,
-// and code doesn't, as in Sublime Text.
-func (s *appSettings) wrap(prose bool) bool { return prose }
+// and code doesn't, as in Sublime Text. Nor does a long file, as a log,
+// which wrapping takes tens of milliseconds to show.
+func (s *appSettings) wrap(prose bool, lines int) bool { return prose && lines <= wrapLines }
+
+// wrapLines is the most lines a file wrapped by default has.
+const wrapLines = 20_000
 
 func setFontSize(size float32) {
 	settings.fontSize = max(8, min(40, size))
@@ -186,6 +195,12 @@ func buildMenu() *mygo.Menu {
 						v.setMode(modeSplit)
 					}
 				})},
+			{Label: tr("打开 Markdown 时显示预览", "Open Markdown in Preview"), Type: mygo.MenuItemCheckbox, Checked: !settings.markdownSource,
+				Click: func(item *mygo.MenuItem, _ *mygo.Window) {
+					settings.markdownSource = !settings.markdownSource
+					item.SetChecked(!settings.markdownSource)
+					saveSettings()
+				}},
 			mygo.Separator(),
 			{Label: tr("自动换行", "Word Wrap"), Accelerator: "Alt+Z",
 				Click: onView(func(v *docView) { v.st.SoftWrap = !v.st.SoftWrap })},

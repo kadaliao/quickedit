@@ -85,6 +85,7 @@ func main() {
 					go docs.New()
 				}
 				time.AfterFunc(500*time.Millisecond, func() { mygo.RunOnMain(prepareSpare) })
+				time.AfterFunc(1500*time.Millisecond, func() { mygo.RunOnMain(warmText) })
 			})
 		}()
 		offerOpenAtLogin()

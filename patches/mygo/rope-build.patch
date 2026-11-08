@@ -1,0 +1,62 @@
+--- a/internal/rope/rope.go	2026-11-08 23:50:37
++++ b/internal/rope/rope.go	2026-11-08 23:50:37
+@@ -12,7 +12,9 @@
+ 	"encoding/binary"
+ 	"fmt"
+ 	"io"
++	"runtime"
+ 	"strings"
++	"sync"
+ 	"unicode/utf16"
+ 	"unicode/utf8"
+ )
+@@ -147,16 +149,43 @@
+ // Build returns a tree of s, owning its bytes, so that a small surviving
+ // fragment cannot pin a large input string.
+ func Build(s string) *Node {
+-	var leaves []*Node
++	// The chunks end at most ChunkBytes on, before a rune: within the
++	// text's last ChunkBytes+3 bytes when a rune is cut, as a byte that
++	// starts no rune (invalid UTF-8) ends one too.
++	var ends []int
+ 	for start := 0; start < len(s); {
+-		end := start
+-		for end < len(s) && end-start < ChunkBytes {
+-			_, n := utf8.DecodeRuneInString(s[end:])
+-			end += n
++		end := min(start+ChunkBytes, len(s))
++		for e := end; e > start && e < len(s); e-- {
++			if utf8.RuneStart(s[e]) {
++				end = e
++				break
++			}
+ 		}
+-		leaves = append(leaves, leaf(s[start:end]))
++		ends = append(ends, end)
+ 		start = end
+ 	}
++	// The leaves are made on every core: summing a long text's chunks
++	// takes most of the time.
++	leaves := make([]*Node, len(ends))
++	makeLeaves := func(a, z int) {
++		for i := a; i < z; i++ {
++			start := 0
++			if i > 0 {
++				start = ends[i-1]
++			}
++			leaves[i] = leaf(s[start:ends[i]])
++		}
++	}
++	if workers := min(runtime.GOMAXPROCS(0), len(ends)/64); workers > 1 {
++		var wg sync.WaitGroup
++		per := (len(ends) + workers - 1) / workers
++		for a := 0; a < len(ends); a += per {
++			wg.Go(func() { makeLeaves(a, min(a+per, len(ends))) })
++		}
++		wg.Wait()
++	} else {
++		makeLeaves(0, len(ends))
++	}
+ 	var build func(int, int) *Node
+ 	build = func(a, z int) *Node {
+ 		if a == z {

@@ -5,8 +5,13 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"io/fs"
+	"runtime"
 	"strings"
+	"sync"
+	"sync/atomic"
 	"unicode/utf8"
+	"unsafe"
 
 	"github.com/egoist/mygo/ui/editor"
 	"golang.org/x/text/encoding"
@@ -63,20 +68,19 @@ const hexLimit = 1 << 20
 const sniffSize = 8000
 
 func readContent(r io.Reader) (content, error) {
-	head := make([]byte, sniffSize)
-	n, err := io.ReadFull(r, head)
-	if err != nil && err != io.ErrUnexpectedEOF && err != io.EOF {
+	// Into one buffer the size of the file: a 44 MB log then is copied
+	// once, by the reads, and its text shares the buffer's bytes.
+	data := bytes.NewBuffer(make([]byte, 0, sizeHint(r)))
+	if _, err := io.CopyN(data, r, sniffSize); err != nil && err != io.EOF {
 		return content{}, err
 	}
-	head = head[:n]
-	if looksBinary(head) {
+	if looksBinary(data.Bytes()) {
 		// Only the start of a binary file is read: a video opened by
 		// mistake must not fill the memory.
-		rest, err := io.ReadAll(io.LimitReader(r, hexLimit-int64(len(head))+1))
-		if err != nil {
+		if _, err := data.ReadFrom(io.LimitReader(r, hexLimit-int64(data.Len())+1)); err != nil {
 			return content{}, err
 		}
-		b := append(head, rest...)
+		b := data.Bytes()
 		truncated := len(b) > hexLimit
 		if truncated {
 			b = b[:hexLimit]
@@ -84,14 +88,10 @@ func readContent(r io.Reader) (content, error) {
 		buf := editor.NewBuffer(hexDump(b))
 		return content{buf: buf, snap: buf.Snapshot(), binary: true, truncated: truncated}, nil
 	}
-	rest, err := io.ReadAll(r)
-	if err != nil {
+	if _, err := data.ReadFrom(r); err != nil {
 		return content{}, err
 	}
-	b := head
-	if len(rest) > 0 {
-		b = append(head, rest...)
-	}
+	b := data.Bytes()
 	text, enc, ok := decode(b)
 	if !ok {
 		buf := editor.NewBuffer(hexDump(b[:min(len(b), hexLimit)]))
@@ -99,6 +99,18 @@ func readContent(r io.Reader) (content, error) {
 	}
 	buf := editor.NewBuffer(text)
 	return content{buf: buf, snap: buf.Snapshot(), enc: enc}, nil
+}
+
+// sizeHint returns how many bytes reading r takes, as read with
+// bytes.Buffer.ReadFrom: the size of a file, and some room for the read
+// that finds its end.
+func sizeHint(r io.Reader) int {
+	if f, ok := r.(interface{ Stat() (fs.FileInfo, error) }); ok {
+		if info, err := f.Stat(); err == nil && info.Mode().IsRegular() && info.Size() < 1<<31 {
+			return int(info.Size()) + bytes.MinRead
+		}
+	}
+	return 64 << 10
 }
 
 // looksBinary reports whether the start of a file holds a NUL byte, as
@@ -112,22 +124,54 @@ func looksBinary(head []byte) bool {
 
 // decode returns the text of a file and its encoding: UTF-8, with or
 // without a BOM, UTF-16 with a BOM, or else GB18030, which reads GBK and
-// GB2312 too. ok is false when none of them reads it.
+// GB2312 too. ok is false when none of them reads it. UTF-8 text shares
+// b's bytes, which must not change afterwards.
 func decode(b []byte) (text string, enc textEncoding, ok bool) {
 	switch {
 	case bytes.HasPrefix(b, bomUTF8):
-		if utf8.Valid(b[3:]) {
-			return string(b[3:]), encUTF8BOM, true
+		if validUTF8(b[3:]) {
+			return unsafe.String(unsafe.SliceData(b[3:]), len(b)-3), encUTF8BOM, true
 		}
 	case bytes.HasPrefix(b, []byte{0xFF, 0xFE}):
 		return decodeWith(b, encUTF16LE)
 	case bytes.HasPrefix(b, []byte{0xFE, 0xFF}):
 		return decodeWith(b, encUTF16BE)
 	}
-	if utf8.Valid(b) {
-		return string(b), encUTF8, true
+	if validUTF8(b) {
+		return unsafe.String(unsafe.SliceData(b), len(b)), encUTF8, true
 	}
 	return decodeWith(b, encGB18030)
+}
+
+// validUTF8 is utf8.Valid, on every core for a long text: cut before
+// bytes that start a rune, each part is valid UTF-8 only if the whole is.
+func validUTF8(b []byte) bool {
+	const part = 1 << 20
+	workers := min(runtime.GOMAXPROCS(0), len(b)/part)
+	if workers < 2 {
+		return utf8.Valid(b)
+	}
+	var bad atomic.Bool
+	var wg sync.WaitGroup
+	start := 0
+	for i := 1; i <= workers; i++ {
+		end := len(b)
+		if i < workers {
+			end = len(b) * i / workers
+			for end > start && !utf8.RuneStart(b[end]) {
+				end--
+			}
+		}
+		part := b[start:end]
+		wg.Go(func() {
+			if !utf8.Valid(part) {
+				bad.Store(true)
+			}
+		})
+		start = end
+	}
+	wg.Wait()
+	return !bad.Load()
 }
 
 func decodeWith(b []byte, enc textEncoding) (string, textEncoding, bool) {

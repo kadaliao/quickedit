@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"strings"
 	"testing"
+	"unicode/utf8"
 
 	"github.com/egoist/mygo/ui/editor"
 	"golang.org/x/text/encoding/simplifiedchinese"
@@ -128,6 +129,22 @@ func TestShebang(t *testing.T) {
 		}
 		if got != want {
 			t.Errorf("%q: %q, want %q", line, got, want)
+		}
+	}
+}
+
+// validUTF8 agrees with utf8.Valid on long texts, cut anywhere.
+func TestValidUTF8(t *testing.T) {
+	long := strings.Repeat("日志 log 行\n", 1<<18) // 4 MB
+	cases := map[string][]byte{
+		"valid":             []byte(long),
+		"bad at the end":    append([]byte(long), 0xE6, 0x97),
+		"bad in the middle": append(append([]byte(long[:len(long)/2]), 0xFF), long[len(long)/2:]...),
+		"rune cut by half":  []byte(long[:len(long)/2-1] + long[len(long)/2:]),
+	}
+	for name, b := range cases {
+		if got, want := validUTF8(b), utf8.Valid(b); got != want {
+			t.Errorf("%s: validUTF8 %v, utf8.Valid %v", name, got, want)
 		}
 	}
 }

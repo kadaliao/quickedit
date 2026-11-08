@@ -58,7 +58,7 @@ func newDocWindow(doc *mygo.Document[content]) *mygo.Window {
 	v.applyPath(doc.State().Path)
 	if v.markdown {
 		v.mode = modePreview
-		if doc.State().Path == "" || c.snap.Len() == 0 {
+		if settings.markdownSource || doc.State().Path == "" || c.snap.Len() == 0 {
 			v.mode = modeSource // nothing to preview yet: write
 		}
 	}
@@ -116,7 +116,7 @@ func (v *docView) applyPath(path string) {
 func (v *docView) applySettings() {
 	v.st.Font = ui.Font{Size: settings.fontSize}
 	v.st.ReadOnly = v.binary
-	v.st.SoftWrap = settings.wrap(v.prose())
+	v.st.SoftWrap = settings.wrap(v.prose(), v.st.Buffer.Snapshot().LineCount())
 	if v.binary {
 		v.st.LineNumbers = editor.LineNumbersOff
 		v.st.SoftWrap = false
