@@ -118,7 +118,7 @@ func claimed(path string) bool {
 }
 
 // fileArg returns the absolute path of a command-line argument naming a
-// file.
+// file or a folder.
 func fileArg(a string) (string, bool) {
 	if strings.HasPrefix(a, "-") {
 		return "", false
@@ -127,16 +127,17 @@ func fileArg(a string) (string, bool) {
 	if err != nil {
 		return "", false
 	}
-	if info, err := os.Stat(p); err != nil || !info.Mode().IsRegular() {
+	if info, err := os.Stat(p); err != nil || !(info.Mode().IsRegular() || info.IsDir()) {
 		return "", false
 	}
 	return p, true
 }
 
 // openAnyFile opens a file the documents don't claim by its extension,
-// as Makefile or LICENSE.
+// as Makefile or LICENSE, or a folder, which the sidebar lists.
 func openAnyFile(path string) {
 	if info, err := os.Stat(path); err == nil && info.IsDir() {
+		mygo.RunOnMain(func() { openFolder(path) })
 		return
 	}
 	if _, err := docs.Open(path); err != nil {
@@ -194,4 +195,6 @@ var appBindings = []editor.Binding{
 	{Mods: ui.Cmd | ui.Shift, Key: ui.KeyW, Command: editor.NoCommand},
 	{Mods: ui.Cmd | ui.Shift, Key: ui.KeyBracketLeft, Command: editor.NoCommand},
 	{Mods: ui.Cmd | ui.Shift, Key: ui.KeyBracketRight, Command: editor.NoCommand},
+	{Mods: ui.Cmd | ui.Shift, Key: ui.KeyO, Command: editor.NoCommand},
+	{Mods: ui.Cmd | ui.Shift, Key: ui.KeyB, Command: editor.NoCommand},
 }

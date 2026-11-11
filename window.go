@@ -1,6 +1,7 @@
 package main
 
 import (
+	"path/filepath"
 	"slices"
 	"time"
 
@@ -28,6 +29,13 @@ type docWindow struct {
 	cur  int
 	// showing tells that the window shows, or is about to.
 	showing bool
+
+	// folder is the folder the sidebar lists (see sidebar.go), "" for
+	// none, and files its entries, nil until listed.
+	folder      string
+	files       []folderEntry
+	folderErr   error
+	showSidebar bool
 }
 
 var (
@@ -48,7 +56,10 @@ func newWindow(hidden bool) *docWindow {
 		Hidden:   hidden,
 		Content:  ui.View(w.view),
 	})
-	w.win.OnFocus(func() { front = w })
+	w.win.OnFocus(func() {
+		front = w
+		syncSidebarItem()
+	})
 	// Before any document's: a window of several tabs closes them one by
 	// one, each asking to save when it must.
 	w.win.OnClose(func(e *mygo.CloseEvent) {
@@ -102,10 +113,10 @@ func prepareSpare() {
 	}
 }
 
-// usable reports whether new documents may open in w: it shows, and is
-// not minimized.
+// usable reports whether new documents may open in w: it shows a document
+// or a folder, and is not minimized.
 func (w *docWindow) usable() bool {
-	return !w.win.IsDestroyed() && len(w.tabs) > 0 && (w.showing || w.win.IsVisible()) && !w.win.IsMinimized()
+	return !w.win.IsDestroyed() && (len(w.tabs) > 0 || w.folder != "") && (w.showing || w.win.IsVisible()) && !w.win.IsMinimized()
 }
 
 func (w *docWindow) current() *docView {
@@ -144,10 +155,10 @@ func (w *docWindow) next(d int) {
 }
 
 // closeTab closes v's tab, asking to save first when it must; the last tab
-// closes the window. done, if not nil, learns whether it closed. Main
-// thread.
+// closes the window, unless it has a folder, which it then goes on
+// listing. done, if not nil, learns whether it closed. Main thread.
 func (w *docWindow) closeTab(v *docView, done func(bool)) {
-	if len(w.tabs) == 1 {
+	if len(w.tabs) == 1 && w.folder == "" {
 		w.win.Close()
 		return
 	}
@@ -159,6 +170,11 @@ func (w *docWindow) closeTab(v *docView, done func(bool)) {
 			i := slices.Index(w.tabs, v)
 			w.tabs = slices.Delete(w.tabs, i, i+1)
 			w.choose(min(i, len(w.tabs)-1))
+			if len(w.tabs) == 0 {
+				w.cur = 0
+				w.win.SetTitle(filepath.Base(w.folder))
+				w.win.Update(func() {})
+			}
 		}
 		if done != nil {
 			done(ok)
@@ -203,8 +219,30 @@ func viewOf(w *mygo.Window) *docView {
 }
 
 func (w *docWindow) view(c *ui.Context) {
+	if w.folder == "" {
+		w.documents(c)
+		return
+	}
+	ui.Row(c).Fill().AlignItems(ui.Stretch).Children(func() {
+		if w.showSidebar {
+			w.sidebar(c)
+		}
+		// Keyed, so that the document keeps its state as the sidebar
+		// shows and hides.
+		ui.Column(c.Key("documents")).Grow(1).Basis(0).Children(func() { w.documents(c) })
+	})
+}
+
+// documents shows the tab bar and the current document, or, in a window
+// with a folder and no document, how to open one.
+func (w *docWindow) documents(c *ui.Context) {
 	v := w.current()
 	if v == nil {
+		if w.folder != "" {
+			ui.Column(c).Fill().AlignItems(ui.Center).Justify(ui.Center).Children(func() {
+				ui.Text(c, tr("在侧边栏中点一个文件打开它。", "Click a file in the sidebar to open it.")).FontSize(13).TextColor(c.Theme().TextMuted)
+			})
+		}
 		return
 	}
 	ui.Column(c).Fill().Children(func() {
