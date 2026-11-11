@@ -175,9 +175,20 @@ func buildMenu() *mygo.Menu {
 		{Label: tr("文件", "File"), Submenu: []*mygo.MenuItem{
 			{Role: mygo.RoleNew},
 			{Label: tr("打开…", "Open…"), Accelerator: "CmdOrCtrl+O", Click: func(*mygo.MenuItem, *mygo.Window) { openDialog() }},
+			{Label: tr("打开文件夹…", "Open Folder…"), Accelerator: "CmdOrCtrl+Shift+O", Click: func(*mygo.MenuItem, *mygo.Window) { openFolderDialog() }},
 			{Role: mygo.RoleOpenRecent},
 			mygo.Separator(),
-			{Label: tr("关闭标签页", "Close Tab"), Accelerator: "CmdOrCtrl+W", Click: onWindow(func(w *docWindow) { w.closeTab(w.current(), nil) })},
+			{Label: tr("关闭标签页", "Close Tab"), Accelerator: "CmdOrCtrl+W", Click: func(_ *mygo.MenuItem, w *mygo.Window) {
+				h := hosts[orFocused(w)]
+				if h == nil {
+					return
+				}
+				if v := h.current(); v != nil {
+					h.closeTab(v, nil)
+				} else {
+					h.win.Close() // a folder's window, without documents
+				}
+			}},
 			{Label: tr("关闭窗口", "Close Window"), Accelerator: "CmdOrCtrl+Shift+W", Click: func(_ *mygo.MenuItem, w *mygo.Window) {
 				if w = orFocused(w); w != nil {
 					w.Close()
@@ -218,6 +229,12 @@ func buildMenu() *mygo.Menu {
 			mygo.Separator(),
 			{Role: mygo.RoleToggleFullScreen},
 			mygo.Separator(),
+			{ID: "sidebar", Label: tr("显示 / 隐藏文件侧边栏", "Show / Hide File Sidebar"), Accelerator: "CmdOrCtrl+Shift+B", Disabled: true,
+				Click: func(_ *mygo.MenuItem, w *mygo.Window) {
+					if h := hosts[orFocused(w)]; h != nil {
+						h.toggleSidebar()
+					}
+				}},
 			{Label: tr("显示上一个标签页", "Show Previous Tab"), Accelerator: "CmdOrCtrl+Shift+[", Click: onWindow(func(w *docWindow) { w.next(-1) })},
 			{Label: tr("显示下一个标签页", "Show Next Tab"), Accelerator: "CmdOrCtrl+Shift+]", Click: onWindow(func(w *docWindow) { w.next(1) })},
 		}},
