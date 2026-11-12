@@ -2,7 +2,7 @@
   "name": "QuickEdit",
   "slug": "quickedit",
   "identifier": "com.kadaliao.quickedit",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "copyright": "© 2026 Kada Liao",
   "license": "MIT",
   "out": "build",
