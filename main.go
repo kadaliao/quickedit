@@ -89,6 +89,7 @@ func main() {
 			})
 		}()
 		undoLoginItemOffer()
+		startUpdateChecks()
 	})
 	if err := mygo.App.Run(); err != nil {
 		log.Fatal(err)

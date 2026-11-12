@@ -121,6 +121,10 @@ sudo ln -sf /Applications/QuickEdit.app/Contents/Resources/qe /usr/local/bin/qe
 
 想让每天第一次打开文件也不用冷启动，可以在 QuickEdit 菜单里勾选"登录时在后台启动"（默认关闭）。
 
+**更新**：QuickEdit 每天向 GitHub 查一次有没有新版本，有就弹出提示：可以去下载、以后再说（第二天再提示），或者跳过这个版本。
+Homebrew 装的会等 Homebrew 有了新版才提示，并给出更新命令 `brew update && brew upgrade --cask quickedit`。
+它不会自己下载安装。QuickEdit 菜单里可以随时"检查更新…"，也可以取消勾选"自动检查更新"。
+
 ## 快捷键
 
 | 键 | 作用 |

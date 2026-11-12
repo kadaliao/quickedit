@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/egoist/mygo"
 )
@@ -24,6 +25,12 @@ type appSettings struct {
 	markdownSource bool
 	// sidebarWidth is the width of a folder's sidebar, the last one moved.
 	sidebarWidth float32
+	// updateCheckOff turns off the daily check for a newer release.
+	updateCheckOff bool
+	// lastUpdateCheck is when the app last learned the newest release.
+	lastUpdateCheck time.Time
+	// skippedVersion is the release the user chose to skip.
+	skippedVersion string
 }
 
 var settings = appSettings{fontSize: defaultFontSize, sidebarWidth: defaultSidebarWidth}
@@ -39,6 +46,9 @@ type savedSettings struct {
 	LoginItemChosen  bool    `json:"loginItemChosen,omitempty"`
 	MarkdownSource   bool    `json:"markdownSource,omitempty"`
 	SidebarWidth     float32 `json:"sidebarWidth,omitempty"`
+	UpdateCheckOff   bool    `json:"updateCheckOff,omitempty"`
+	LastUpdateCheck  int64   `json:"lastUpdateCheck,omitempty"`
+	SkippedVersion   string  `json:"skippedVersion,omitempty"`
 }
 
 // userData is the app's directory of its own data.
@@ -69,10 +79,20 @@ func loadSettings() {
 	if s.SidebarWidth >= 120 && s.SidebarWidth <= 800 {
 		settings.sidebarWidth = s.SidebarWidth
 	}
+	settings.updateCheckOff = s.UpdateCheckOff
+	if s.LastUpdateCheck > 0 {
+		settings.lastUpdateCheck = time.Unix(s.LastUpdateCheck, 0)
+	}
+	settings.skippedVersion = s.SkippedVersion
 }
 
 func saveSettings() {
-	b, _ := json.MarshalIndent(savedSettings{FontSize: settings.fontSize, LoginItemOffered: settings.loginItemOffered, LoginItemChosen: settings.loginItemChosen, MarkdownSource: settings.markdownSource, SidebarWidth: settings.sidebarWidth}, "", "  ")
+	saved := savedSettings{FontSize: settings.fontSize, LoginItemOffered: settings.loginItemOffered, LoginItemChosen: settings.loginItemChosen, MarkdownSource: settings.markdownSource, SidebarWidth: settings.sidebarWidth,
+		UpdateCheckOff: settings.updateCheckOff, SkippedVersion: settings.skippedVersion}
+	if !settings.lastUpdateCheck.IsZero() {
+		saved.LastUpdateCheck = settings.lastUpdateCheck.Unix()
+	}
+	b, _ := json.MarshalIndent(saved, "", "  ")
 	os.MkdirAll(filepath.Dir(settingsPath()), 0o755)
 	os.WriteFile(settingsPath(), b, 0o644)
 }
@@ -169,7 +189,10 @@ func buildMenu() *mygo.Menu {
 	return mygo.NewMenu([]*mygo.MenuItem{
 		{Label: "QuickEdit", Submenu: []*mygo.MenuItem{
 			{Role: mygo.RoleAbout},
+			{Label: tr("检查更新…", "Check for Updates…"), Click: func(*mygo.MenuItem, *mygo.Window) { go checkForUpdateNow() }},
 			mygo.Separator(),
+			{ID: "update-check", Label: tr("自动检查更新", "Check for Updates Automatically"), Type: mygo.MenuItemCheckbox,
+				Checked: installed() && !settings.updateCheckOff, Disabled: !installed(), Click: toggleUpdateCheck},
 			{ID: "open-at-login", Label: tr("登录时在后台启动", "Open at Login in the Background"), Type: mygo.MenuItemCheckbox,
 				Checked: installed() && mygo.App.OpenAtLogin(), Disabled: !installed(), Click: toggleOpenAtLogin},
 			mygo.Separator(),

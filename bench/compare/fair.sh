@@ -111,6 +111,7 @@ p = sys.argv[1]
 try: s = json.load(open(p))
 except Exception: s = {"fontSize": 13}
 s["markdownSource"] = True
+s["updateCheckOff"] = True  # as the others' update checks are off
 json.dump(s, open(p, "w"))
 PY
 
