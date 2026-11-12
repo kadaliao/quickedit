@@ -25,6 +25,18 @@ func makeTree(t *testing.T, files ...string) string {
 	return root
 }
 
+// click clicks the middle of the row showing name: the row's own click,
+// which the tree's rows take, where Tester.Click wants the row it names
+// for assistive technology.
+func click(t *testing.T, tt *ui.Tester, name string) {
+	t.Helper()
+	r, ok := tt.Find(name)
+	if !ok {
+		t.Fatalf("no row %q: %q", name, tt.Texts())
+	}
+	tt.ClickAt(r.X+r.W/2, r.Y+r.H/2)
+}
+
 func TestCompareNames(t *testing.T) {
 	names := []string{"file10", "File2", "b", "a", "file1", "_x", "A"}
 	slices.SortFunc(names, compareNames)
@@ -83,9 +95,7 @@ func TestFolderTreeView(t *testing.T) {
 	if !tt.HasText("src") || tt.HasText("app.ts") {
 		t.Fatalf("closed src: %q", tt.Texts())
 	}
-	if err := tt.Click("src"); err != nil {
-		t.Fatal(err)
-	}
+	click(t, tt, "src")
 	tt.Frame()
 	if !tt.HasText("app.ts") || !tt.HasText("deep") {
 		t.Fatalf("src did not open: %q", tt.Texts())
@@ -96,9 +106,7 @@ func TestFolderTreeView(t *testing.T) {
 	if !tt.HasText("data.json") {
 		t.Fatalf("not revealed: %q", tt.Texts())
 	}
-	if err := tt.Click("docs"); err != nil {
-		t.Fatal(err)
-	}
+	click(t, tt, "docs")
 	tt.Frame()
 	if out := os.Getenv("QE_TREE_SHOT"); out != "" {
 		light := tt.Image()
@@ -110,5 +118,66 @@ func TestFolderTreeView(t *testing.T) {
 		}
 		defer f.Close()
 		png.Encode(f, stack(light, tt.Image()))
+	}
+}
+
+// The keys go through the tree: Down chooses, Right and Left open and
+// close, Enter opens a folder, letters choose by name, and Escape gives
+// the keys back to the text.
+func TestFolderTreeKeys(t *testing.T) {
+	root := makeTree(t, "alpha/one.go", "beta/two.go", "main.go", "notes.md")
+	w := &docWindow{tree: newFolderTree(root), sidebar: defaultSidebarWidth}
+	tree := w.tree
+	view := func(c *ui.Context) {
+		ui.Split(c, &w.sidebar, func() { tree.view(c, w) }, func() { ui.Box(c).Fill() }).Fill()
+	}
+	tt := ui.NewTester(view, 600, 400)
+	tt.Frame()
+	if !tree.focused {
+		t.Fatal("a folder's window without files does not give its tree the keys")
+	}
+	chosen := func() string {
+		if tree.sel < 0 || tree.sel >= tree.state.Rows() {
+			return ""
+		}
+		return filepath.Base(tree.state.Item(tree.sel))
+	}
+	key := func(k ui.Key) { tt.Key(0, k); tt.Frame() }
+	key(ui.KeyDown)
+	if chosen() != "alpha" {
+		t.Fatalf("Down chose %q", chosen())
+	}
+	key(ui.KeyRight)
+	if !tree.state.Open.Has(filepath.Join(root, "alpha")) {
+		t.Fatal("Right did not open alpha")
+	}
+	key(ui.KeyRight)
+	if chosen() != "one.go" {
+		t.Fatalf("Right in an open folder chose %q", chosen())
+	}
+	key(ui.KeyLeft)
+	key(ui.KeyLeft)
+	if chosen() != "alpha" || tree.state.Open.Has(filepath.Join(root, "alpha")) {
+		t.Fatalf("Left twice: %q chosen, alpha open %v", chosen(), tree.state.Open.Has(filepath.Join(root, "alpha")))
+	}
+	key(ui.KeyDown)
+	key(ui.KeyEnter)
+	if chosen() != "beta" || !tree.state.Open.Has(filepath.Join(root, "beta")) {
+		t.Fatalf("Enter on beta: %q chosen, open %v", chosen(), tree.state.Open.Has(filepath.Join(root, "beta")))
+	}
+	tt.TypeKey(0, ui.KeyN, "n")
+	tt.Frame()
+	if chosen() != "notes.md" {
+		t.Fatalf("typing n chose %q", chosen())
+	}
+	// With a tab, Escape gives the keys to its text.
+	w.tabs = []*docView{{path: filepath.Join(root, "main.go")}}
+	tt.Frame()
+	if chosen() != "main.go" {
+		t.Fatalf("the tab's file is not chosen: %q", chosen())
+	}
+	key(ui.KeyEscape)
+	if !w.tabs[0].focusEditor {
+		t.Fatal("Escape did not give the keys back to the text")
 	}
 }

@@ -45,6 +45,10 @@ type docView struct {
 	mdDir     string
 	// previewScroll is where the preview is scrolled to.
 	previewScroll ui.ScrollState
+	// focusEditor gives the text the keyboard focus in the next frame, as
+	// Escape in a folder's tree asks: the editor, or the preview it shows
+	// alone, whose keys scroll it.
+	focusEditor bool
 }
 
 func newDocWindow(doc *mygo.Document[content]) *mygo.Window {
@@ -224,6 +228,7 @@ func (v *docView) view(c *ui.Context) {
 		})
 		v.statusBar(c, state)
 	})
+	v.focusEditor = false
 }
 
 func (v *docView) banner(c *ui.Context, color ui.Color, msg string, buttons func()) {
@@ -240,6 +245,9 @@ func (v *docView) source(c *ui.Context) {
 	if v.mode != modePreview {
 		el.AutoFocus()
 	}
+	if v.focusEditor {
+		el.Focus()
+	}
 }
 
 func (v *docView) preview(c *ui.Context) {
@@ -251,7 +259,11 @@ func (v *docView) preview(c *ui.Context) {
 	th := markdown.DefaultTheme(c.Theme())
 	th.FontSize = settings.fontSize + 2
 	v.md.Theme = th
-	ui.Scroll(c.Key("preview")).Grow(1).Basis(0).TrackScroll(&v.previewScroll).Children(func() {
+	sc := ui.Scroll(c.Key("preview")).Grow(1).Basis(0).TrackScroll(&v.previewScroll).Focusable().FocusRing(false)
+	if v.focusEditor && v.mode == modePreview {
+		sc.Focus()
+	}
+	sc.Children(func() {
 		ui.Column(c).FillWidth().AlignItems(ui.Center).Padding(28, 32).Children(func() {
 			ui.Column(c).FillWidth().MaxWidth(860).Children(func() {
 				markdown.View(c, v.mdText, &v.md)

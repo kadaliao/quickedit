@@ -19,9 +19,12 @@ import (
 
 // A folder opens in a window of its own, which shows its files as a tree
 // beside the documents, as Zed's and VS Code's do: a click on a file opens
-// it there, as a tab, and one on a folder opens or closes it. The tree
-// reads a folder the first time it opens, and again when the system says
-// that something in it changed.
+// it there, as a tab, and one on a folder opens or closes it. The keys go
+// through it as through Finder's list: Up and Down, Home and End, and the
+// first letters of a name choose a row, Right and Left open and close
+// folders, Enter opens what is chosen, and Escape goes back to the text.
+// The tree reads a folder the first time it opens, and again when the
+// system says that something in it changed.
 
 // folderTree is the tree of a window's folder. Main thread.
 type folderTree struct {
@@ -35,16 +38,22 @@ type folderTree struct {
 	// row is the row of the outline being built, which its Prefix gives.
 	row ui.OutlineRow
 	// shown is the file of the tab last shown, which the tree reveals, and
-	// reveal the one to scroll to once the tree is built.
+	// reveal the one to choose and scroll to once the tree is built.
 	shown, reveal string
-	stop          context.CancelFunc
+	// sel is the row chosen, -1 for none.
+	sel int
+	// focus gives the tree the keyboard focus once it is built; focused
+	// tells that it had it as the last frame was built.
+	focus, focused bool
+	stop           context.CancelFunc
 }
 
 // noEntries are those of a folder not read yet: none, but a folder.
 var noEntries = []string{}
 
 func newFolderTree(root string) *folderTree {
-	return &folderTree{root: root, name: filepath.Base(root), dirs: map[string][]string{}, isDir: map[string]bool{root: true}}
+	return &folderTree{root: root, name: filepath.Base(root), dirs: map[string][]string{}, isDir: map[string]bool{root: true},
+		sel: -1, focus: true}
 }
 
 // hiddenEntry reports whether the tree leaves out a file or folder named
@@ -197,7 +206,7 @@ var chevron = sync.OnceValue(func() *ui.SVG {
 })
 
 // view shows the folder's name over its tree. w is the window, whose
-// current tab's file shows chosen.
+// current tab's file the tree chooses as it shows.
 func (t *folderTree) view(c *ui.Context, w *docWindow) {
 	th := c.Theme()
 	cur := ""
@@ -216,36 +225,75 @@ func (t *folderTree) view(c *ui.Context, w *docWindow) {
 			ui.Text(c, t.name).FontSize(12).FontWeight(600).TextColor(th.TextMuted).SingleLine().Tooltip(t.root)
 		}).ContextMenu(func(m *ui.Menu) { t.menu(m, t.root) })
 		t.state.Prefix = func(r ui.OutlineRow) { t.row = r }
-		ui.Outline(c, &t.state, t.children(t.root), t.children, func(p string) { t.item(c, w, p, cur) }).
+		t.state.List.Selected = &t.sel
+		t.state.List.Label = func(i int) string { return filepath.Base(t.state.Item(i)) }
+		tree := ui.Outline(c, &t.state, t.children(t.root), t.children, func(p string) { t.item(c, w, p) }).
 			Grow(1).Padding(0, 6, 8, 6).Label(t.name)
+		if tree.Submitted() && t.sel >= 0 && t.sel < t.state.Rows() {
+			t.activate(w, t.state.Item(t.sel))
+		}
+		if v := w.current(); v != nil && t.state.List.Shortcut(c, 0, ui.KeyEscape) {
+			v.focusEditor = true
+		}
 		if t.reveal != "" {
-			for i := range t.state.Rows() {
-				if t.state.Item(i) == t.reveal {
-					t.state.List.ScrollIntoView(i)
-					break
-				}
+			if i := t.rowOf(t.reveal); i >= 0 {
+				t.sel = i
+				t.state.List.ScrollIntoView(i)
 			}
 			t.reveal = ""
 		}
+		if t.focus && t.state.List.Focus(c) {
+			t.focus = false
+		}
+		t.focused = t.state.List.FocusWithin(c)
 	})
 }
 
-// item builds the row of the file or folder at p.
-func (t *folderTree) item(c *ui.Context, w *docWindow, p, cur string) {
+// rowOf returns the row of the tree showing p, or -1.
+func (t *folderTree) rowOf(p string) int {
+	for i := range t.state.Rows() {
+		if t.state.Item(i) == p {
+			return i
+		}
+	}
+	return -1
+}
+
+// activate opens or closes the folder at p, or opens the file at p in a
+// tab of w.
+func (t *folderTree) activate(w *docWindow, p string) {
+	switch {
+	case !t.isDir[p]:
+		go mygo.RunOnMain(func() { w.openFile(p) })
+	case t.state.Open.Has(p):
+		t.state.Open.Remove(p)
+	default:
+		t.state.Open.Add(p)
+	}
+}
+
+// item builds the row of the file or folder at p. The row chosen shows in
+// the accent color while the tree has the focus, as in Finder, and in a
+// tint of it otherwise.
+func (t *folderTree) item(c *ui.Context, w *docWindow, p string) {
 	th := c.Theme()
 	r := t.row
 	name := filepath.Base(p)
 	dir := t.isDir[p]
 	open := dir && t.state.Open.Has(p)
+	chosen := t.sel >= 0 && t.sel < t.state.Rows() && t.state.Item(t.sel) == p
+	accent := chosen && t.state.List.FocusWithin(c)
 	row := ui.Row(c).Grow(1).Height(24).PaddingStart(4 + 14*float32(r.Depth)).PaddingEnd(8).Gap(4).AlignItems(ui.Center).Radius(5)
-	switch {
-	case p == cur:
-		row.Background(th.Accent.Alpha(0.18))
-	case row.Hovered():
-		row.Background(th.SurfaceHover)
+	if chosen && !accent {
+		// Over the list's accent, which it paints whether it has the
+		// focus or not.
+		row.Background(th.Surface.Mix(th.Accent, 0.2)).TextColor(th.Text)
 	}
 	row.Children(func() {
-		arrow := ui.Icon(c, chevron()).Size(12, 12).TextColor(th.TextMuted)
+		arrow := ui.Icon(c, chevron()).Size(12, 12)
+		if !accent {
+			arrow.TextColor(th.TextMuted)
+		}
 		if open {
 			arrow.Rotate(90)
 		}
@@ -256,14 +304,8 @@ func (t *folderTree) item(c *ui.Context, w *docWindow, p, cur string) {
 		ui.Text(c, name).FontSize(13).SingleLine().Shrink(1)
 	}).ContextMenu(func(m *ui.Menu) { t.menu(m, p) })
 	if row.Clicked() {
-		switch {
-		case open:
-			t.state.Open.Remove(p)
-		case dir:
-			t.state.Open.Add(p)
-		default:
-			go mygo.RunOnMain(func() { w.openFile(p) })
-		}
+		t.sel = t.rowOf(p)
+		t.activate(w, p)
 	}
 }
 

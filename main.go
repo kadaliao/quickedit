@@ -197,4 +197,5 @@ var appBindings = []editor.Binding{
 	{Mods: ui.Cmd | ui.Shift, Key: ui.KeyBracketRight, Command: editor.NoCommand},
 	{Mods: ui.Cmd | ui.Shift, Key: ui.KeyO, Command: editor.NoCommand},
 	{Mods: ui.Cmd | ui.Shift, Key: ui.KeyB, Command: editor.NoCommand},
+	{Mods: ui.Cmd | ui.Shift, Key: ui.KeyE, Command: editor.NoCommand},
 }

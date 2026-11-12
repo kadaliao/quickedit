@@ -239,6 +239,20 @@ func buildMenu() *mygo.Menu {
 					h.win.Update(func() {})
 				}
 			}},
+			// The tree takes the keys, or gives them back to the text.
+			{ID: "tree-focus", Label: tr("在文件树和编辑器间切换", "Switch Between File Tree and Editor"), Accelerator: "CmdOrCtrl+Shift+E", Disabled: true, Click: func(_ *mygo.MenuItem, w *mygo.Window) {
+				h := hosts[orFocused(w)]
+				if h == nil || h.tree == nil {
+					return
+				}
+				if v := h.current(); v != nil && h.tree.focused && !h.hideSidebar {
+					v.focusEditor = true
+				} else {
+					h.hideSidebar = false
+					h.tree.focus = true
+				}
+				h.win.Update(func() {})
+			}},
 			{Role: mygo.RoleToggleFullScreen},
 			mygo.Separator(),
 			{Label: tr("显示上一个标签页", "Show Previous Tab"), Accelerator: "CmdOrCtrl+Shift+[", Click: onWindow(func(w *docWindow) { w.next(-1) })},

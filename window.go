@@ -182,6 +182,7 @@ func (w *docWindow) closeTab(v *docView, done func(bool)) {
 				w.win.SetTitle(w.tree.name)
 				w.win.SetRepresentedFile(w.tree.root)
 				w.win.SetDocumentEdited(false)
+				w.tree.focus = true
 				w.win.Update(func() {})
 			} else {
 				w.choose(min(i, len(w.tabs)-1))
@@ -237,6 +238,11 @@ func (w *docWindow) view(c *ui.Context) {
 	if ui.Split(c, &w.sidebar, func() { w.tree.view(c, w) }, func() { w.documents(c) }).
 		SplitReset(defaultSidebarWidth).Fill().Changed() {
 		settings.sidebarWidth = w.sidebar
+	}
+	// The text took the keys from the tree, or gave them back, after the
+	// tree was drawn: draw it again, its row chosen in its new color.
+	if w.tree.focused != w.tree.state.List.FocusWithin(c) {
+		c.Invalidate()
 	}
 }
 
