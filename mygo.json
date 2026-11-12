@@ -17,6 +17,12 @@
           "LSItemContentTypes": ["public.text", "public.plain-text", "public.source-code", "public.script", "net.daringfireball.markdown", "public.json", "public.xml", "public.yaml"]
         },
         {
+          "CFBundleTypeName": "Folder",
+          "CFBundleTypeRole": "Viewer",
+          "LSHandlerRank": "Alternate",
+          "LSItemContentTypes": ["public.folder"]
+        },
+        {
           "CFBundleTypeName": "Any File",
           "CFBundleTypeRole": "Viewer",
           "LSHandlerRank": "Alternate",

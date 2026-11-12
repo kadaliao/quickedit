@@ -1,7 +1,6 @@
 package main
 
 import (
-	"path/filepath"
 	"slices"
 	"time"
 
@@ -29,13 +28,11 @@ type docWindow struct {
 	cur  int
 	// showing tells that the window shows, or is about to.
 	showing bool
-
-	// folder is the folder the sidebar lists (see sidebar.go), "" for
-	// none, and files its entries, nil until listed.
-	folder      string
-	files       []folderEntry
-	folderErr   error
-	showSidebar bool
+	// tree is the folder the window shows beside its documents, or nil.
+	// Such a window stays open without documents.
+	tree        *folderTree
+	sidebar     float32
+	hideSidebar bool
 }
 
 var (
@@ -48,17 +45,23 @@ var (
 	quitting bool
 )
 
-func newWindow(hidden bool) *docWindow {
-	w := &docWindow{}
-	w.win = mygo.NewWindow(mygo.WindowOptions{
+// newWindow makes a window of documents, and of the folder of tree when
+// it is not nil.
+func newWindow(hidden bool, tree *folderTree) *docWindow {
+	w := &docWindow{tree: tree, sidebar: settings.sidebarWidth}
+	opts := mygo.WindowOptions{
 		Width: 960, Height: 720, MinWidth: 360, MinHeight: 240,
 		StateKey: "document",
 		Hidden:   hidden,
 		Content:  ui.View(w.view),
-	})
+	}
+	if tree != nil {
+		opts.Width, opts.Height, opts.MinWidth, opts.StateKey = 1180, 780, 480, "folder"
+	}
+	w.win = mygo.NewWindow(opts)
 	w.win.OnFocus(func() {
 		front = w
-		syncSidebarItem()
+		syncFolderItems()
 	})
 	// Before any document's: a window of several tabs closes them one by
 	// one, each asking to save when it must.
@@ -69,6 +72,10 @@ func newWindow(hidden bool) *docWindow {
 		}
 	})
 	w.win.OnClosed(func() {
+		if w.tree != nil {
+			w.tree.close()
+			saveSettings() // the sidebar's width
+		}
 		delete(hosts, w.win)
 		if front == w {
 			front = nil
@@ -90,7 +97,7 @@ func takeWindow(v *docView) *mygo.Window {
 	w := spare
 	spare = nil
 	if w == nil {
-		w = newWindow(false)
+		w = newWindow(false, nil)
 		w.tabs = []*docView{v}
 	} else {
 		w.tabs = []*docView{v}
@@ -109,14 +116,14 @@ func takeWindow(v *docView) *mygo.Window {
 // none. Main thread.
 func prepareSpare() {
 	if spare == nil {
-		spare = newWindow(true)
+		spare = newWindow(true, nil)
 	}
 }
 
-// usable reports whether new documents may open in w: it shows a document
-// or a folder, and is not minimized.
+// usable reports whether new documents may open in w: it shows, and is
+// not minimized.
 func (w *docWindow) usable() bool {
-	return !w.win.IsDestroyed() && (len(w.tabs) > 0 || w.folder != "") && (w.showing || w.win.IsVisible()) && !w.win.IsMinimized()
+	return !w.win.IsDestroyed() && (len(w.tabs) > 0 || w.tree != nil) && (w.showing || w.win.IsVisible()) && !w.win.IsMinimized()
 }
 
 func (w *docWindow) current() *docView {
@@ -155,10 +162,10 @@ func (w *docWindow) next(d int) {
 }
 
 // closeTab closes v's tab, asking to save first when it must; the last tab
-// closes the window, unless it has a folder, which it then goes on
-// listing. done, if not nil, learns whether it closed. Main thread.
+// closes the window, unless it shows a folder. done, if not nil, learns
+// whether it closed. Main thread.
 func (w *docWindow) closeTab(v *docView, done func(bool)) {
-	if len(w.tabs) == 1 && w.folder == "" {
+	if len(w.tabs) == 1 && w.tree == nil {
 		w.win.Close()
 		return
 	}
@@ -169,11 +176,15 @@ func (w *docWindow) closeTab(v *docView, done func(bool)) {
 		if ok {
 			i := slices.Index(w.tabs, v)
 			w.tabs = slices.Delete(w.tabs, i, i+1)
-			w.choose(min(i, len(w.tabs)-1))
 			if len(w.tabs) == 0 {
+				// A folder's window, which now shows only the folder.
 				w.cur = 0
-				w.win.SetTitle(filepath.Base(w.folder))
+				w.win.SetTitle(w.tree.name)
+				w.win.SetRepresentedFile(w.tree.root)
+				w.win.SetDocumentEdited(false)
 				w.win.Update(func() {})
+			} else {
+				w.choose(min(i, len(w.tabs)-1))
 			}
 		}
 		if done != nil {
@@ -219,29 +230,22 @@ func viewOf(w *mygo.Window) *docView {
 }
 
 func (w *docWindow) view(c *ui.Context) {
-	if w.folder == "" {
+	if w.tree == nil || w.hideSidebar {
 		w.documents(c)
 		return
 	}
-	ui.Row(c).Fill().AlignItems(ui.Stretch).Children(func() {
-		if w.showSidebar {
-			w.sidebar(c)
-		}
-		// Keyed, so that the document keeps its state as the sidebar
-		// shows and hides.
-		ui.Column(c.Key("documents")).Grow(1).Basis(0).Children(func() { w.documents(c) })
-	})
+	if ui.Split(c, &w.sidebar, func() { w.tree.view(c, w) }, func() { w.documents(c) }).
+		SplitReset(defaultSidebarWidth).Fill().Changed() {
+		settings.sidebarWidth = w.sidebar
+	}
 }
 
-// documents shows the tab bar and the current document, or, in a window
-// with a folder and no document, how to open one.
+// documents shows the tab chosen, under the tabs when there are several.
 func (w *docWindow) documents(c *ui.Context) {
 	v := w.current()
 	if v == nil {
-		if w.folder != "" {
-			ui.Column(c).Fill().AlignItems(ui.Center).Justify(ui.Center).Children(func() {
-				ui.Text(c, tr("在侧边栏中点一个文件打开它。", "Click a file in the sidebar to open it.")).FontSize(13).TextColor(c.Theme().TextMuted)
-			})
+		if w.tree != nil {
+			emptyFolderView(c)
 		}
 		return
 	}

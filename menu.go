@@ -22,17 +22,23 @@ type appSettings struct {
 	// markdownSource opens Markdown files in their source rather than
 	// their preview.
 	markdownSource bool
+	// sidebarWidth is the width of a folder's sidebar, the last one moved.
+	sidebarWidth float32
 }
 
-var settings = appSettings{fontSize: defaultFontSize}
+var settings = appSettings{fontSize: defaultFontSize, sidebarWidth: defaultSidebarWidth}
 
-const defaultFontSize = 13
+const (
+	defaultFontSize     = 13
+	defaultSidebarWidth = 248
+)
 
 type savedSettings struct {
 	FontSize         float32 `json:"fontSize"`
 	LoginItemOffered bool    `json:"loginItemOffered,omitempty"`
 	LoginItemChosen  bool    `json:"loginItemChosen,omitempty"`
 	MarkdownSource   bool    `json:"markdownSource,omitempty"`
+	SidebarWidth     float32 `json:"sidebarWidth,omitempty"`
 }
 
 // userData is the app's directory of its own data.
@@ -60,10 +66,13 @@ func loadSettings() {
 	settings.loginItemOffered = s.LoginItemOffered
 	settings.loginItemChosen = s.LoginItemChosen
 	settings.markdownSource = s.MarkdownSource
+	if s.SidebarWidth >= 120 && s.SidebarWidth <= 800 {
+		settings.sidebarWidth = s.SidebarWidth
+	}
 }
 
 func saveSettings() {
-	b, _ := json.MarshalIndent(savedSettings{FontSize: settings.fontSize, LoginItemOffered: settings.loginItemOffered, LoginItemChosen: settings.loginItemChosen, MarkdownSource: settings.markdownSource}, "", "  ")
+	b, _ := json.MarshalIndent(savedSettings{FontSize: settings.fontSize, LoginItemOffered: settings.loginItemOffered, LoginItemChosen: settings.loginItemChosen, MarkdownSource: settings.markdownSource, SidebarWidth: settings.sidebarWidth}, "", "  ")
 	os.MkdirAll(filepath.Dir(settingsPath()), 0o755)
 	os.WriteFile(settingsPath(), b, 0o644)
 }
@@ -179,14 +188,11 @@ func buildMenu() *mygo.Menu {
 			{Role: mygo.RoleOpenRecent},
 			mygo.Separator(),
 			{Label: tr("关闭标签页", "Close Tab"), Accelerator: "CmdOrCtrl+W", Click: func(_ *mygo.MenuItem, w *mygo.Window) {
-				h := hosts[orFocused(w)]
-				if h == nil {
-					return
-				}
-				if v := h.current(); v != nil {
-					h.closeTab(v, nil)
-				} else {
-					h.win.Close() // a folder's window, without documents
+				// A folder's window without files closes.
+				if h := hosts[orFocused(w)]; h != nil && len(h.tabs) > 0 {
+					h.closeTab(h.current(), nil)
+				} else if h != nil {
+					h.win.Close()
 				}
 			}},
 			{Label: tr("关闭窗口", "Close Window"), Accelerator: "CmdOrCtrl+Shift+W", Click: func(_ *mygo.MenuItem, w *mygo.Window) {
@@ -227,14 +233,14 @@ func buildMenu() *mygo.Menu {
 			{Label: tr("缩小", "Smaller"), Accelerator: "CmdOrCtrl+-", Click: func(*mygo.MenuItem, *mygo.Window) { setFontSize(settings.fontSize - 1) }},
 			{Label: tr("实际大小", "Actual Size"), Accelerator: "CmdOrCtrl+0", Click: func(*mygo.MenuItem, *mygo.Window) { setFontSize(defaultFontSize) }},
 			mygo.Separator(),
+			{ID: "sidebar", Label: tr("显示 / 隐藏边栏", "Toggle Sidebar"), Accelerator: "CmdOrCtrl+Shift+B", Disabled: true, Click: func(_ *mygo.MenuItem, w *mygo.Window) {
+				if h := hosts[orFocused(w)]; h != nil && h.tree != nil {
+					h.hideSidebar = !h.hideSidebar
+					h.win.Update(func() {})
+				}
+			}},
 			{Role: mygo.RoleToggleFullScreen},
 			mygo.Separator(),
-			{ID: "sidebar", Label: tr("显示 / 隐藏文件侧边栏", "Show / Hide File Sidebar"), Accelerator: "CmdOrCtrl+Shift+B", Disabled: true,
-				Click: func(_ *mygo.MenuItem, w *mygo.Window) {
-					if h := hosts[orFocused(w)]; h != nil {
-						h.toggleSidebar()
-					}
-				}},
 			{Label: tr("显示上一个标签页", "Show Previous Tab"), Accelerator: "CmdOrCtrl+Shift+[", Click: onWindow(func(w *docWindow) { w.next(-1) })},
 			{Label: tr("显示下一个标签页", "Show Next Tab"), Accelerator: "CmdOrCtrl+Shift+]", Click: onWindow(func(w *docWindow) { w.next(1) })},
 		}},

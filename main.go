@@ -127,17 +127,17 @@ func fileArg(a string) (string, bool) {
 	if err != nil {
 		return "", false
 	}
-	if info, err := os.Stat(p); err != nil || !(info.Mode().IsRegular() || info.IsDir()) {
+	if info, err := os.Stat(p); err != nil || !info.Mode().IsRegular() && !info.IsDir() {
 		return "", false
 	}
 	return p, true
 }
 
 // openAnyFile opens a file the documents don't claim by its extension,
-// as Makefile or LICENSE, or a folder, which the sidebar lists.
+// as Makefile or LICENSE, or a folder, in a window of its own.
 func openAnyFile(path string) {
 	if info, err := os.Stat(path); err == nil && info.IsDir() {
-		mygo.RunOnMain(func() { openFolder(path) })
+		mygo.RunOnMain(func() { openFolder(filepath.Clean(path)) })
 		return
 	}
 	if _, err := docs.Open(path); err != nil {
@@ -146,7 +146,7 @@ func openAnyFile(path string) {
 }
 
 // openDialog asks for files of any kind, as the documents' own Open asks
-// only for the kinds they claim.
+// only for the kinds they claim. Folders open with openFolderDialog.
 func openDialog() {
 	paths, err := mygo.Dialog.Open(mygo.OpenDialogOptions{Parent: mygo.FocusedWindow(), Multiple: true})
 	if err != nil {
