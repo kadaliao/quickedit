@@ -33,6 +33,9 @@ type docWindow struct {
 	tree        *folderTree
 	sidebar     float32
 	hideSidebar bool
+	// printed is the web view of the last print, whose pages the print
+	// panel shows (printDocument).
+	printed *mygo.WebView
 }
 
 var (

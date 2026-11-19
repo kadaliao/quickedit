@@ -49,6 +49,8 @@ type docView struct {
 	// Escape in a folder's tree asks: the editor, or the preview it shows
 	// alone, whose keys scroll it.
 	focusEditor bool
+	// busy tells, in the status bar, what a print does (setBusy).
+	busy string
 }
 
 func newDocWindow(doc *mygo.Document[content]) *mygo.Window {
@@ -288,6 +290,9 @@ func (v *docView) statusBar(c *ui.Context, state mygo.DocumentState) {
 			muted(fmt.Sprintf(tr("%d 行", "%d lines"), v.st.Buffer.Snapshot().LineCount()))
 		}
 		ui.Spacer(c)
+		if v.busy != "" {
+			muted(v.busy)
+		}
 		if state.ReadOnly && !v.binary {
 			muted(tr("只读", "Read-only"))
 		}

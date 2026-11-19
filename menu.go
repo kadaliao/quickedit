@@ -229,6 +229,10 @@ func buildMenu() *mygo.Menu {
 			{Role: mygo.RoleRename},
 			{Role: mygo.RoleMoveTo},
 			{Role: mygo.RoleRevert},
+			mygo.Separator(),
+			{Label: tr("导出为 PDF…", "Export as PDF…"), Click: onView(exportPDF)},
+			mygo.Separator(),
+			{Label: tr("打印…", "Print…"), Accelerator: "CmdOrCtrl+P", Click: onView(printDocument)},
 		}},
 		{Role: mygo.RoleEditMenu},
 		{Label: tr("显示", "View"), Submenu: []*mygo.MenuItem{
